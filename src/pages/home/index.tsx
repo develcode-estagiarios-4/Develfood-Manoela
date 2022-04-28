@@ -1,5 +1,7 @@
+import style from "./style.module.scss";
+
 function Home() {
-  return <div>home</div>;
+  return <div className={style.home}>home</div>;
 }
 
 export default Home;

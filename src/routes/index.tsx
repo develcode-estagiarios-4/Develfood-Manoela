@@ -22,7 +22,6 @@ export function Routes() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/promocoes" element={<Promocoes />} />
-
         <Route path="*" element={<Navigate to="/home" />} />
       </Stwitch>
     </BrowserRouter>
