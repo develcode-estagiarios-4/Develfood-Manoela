@@ -5,12 +5,8 @@ import {
   Routes as Stwitch,
 } from "react-router-dom";
 
-import Navbar from "../components/navbar";
-import Home from "../pages/home";
-import Menu from "../pages/menu";
-import Pedidos from "../pages/pedidos";
-import Perfil from "../pages/perfil";
-import Promocoes from "../pages/promocoes";
+import Navbar from "../components/NavBar";
+import { Home, Menu, Pedidos, Perfil, Promocoes } from "../pages";
 
 export function Routes() {
   return (

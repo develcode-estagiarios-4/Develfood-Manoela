@@ -5,7 +5,7 @@ import style from "./style.module.scss";
 function Navbar() {
   return (
     <nav className={style.navbar}>
-      <ul>
+      <ul className={style.navbarOptions}>
         <li>
           <Link to="/home">Home</Link>
         </li>
