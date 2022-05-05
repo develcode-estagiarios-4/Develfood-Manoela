@@ -24,9 +24,9 @@ A plataforma web da Develfood permite ao usuário:
 ## :crab: Layout
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: space-around;">
-  <img src="./src/assets/img/login_develcode.png" width="330px" alt="Layout do login">
-  <img src="./src/assets/img/home_develcode.png" width="330px" alt="Layout do home">
-  <img src="./src/assets/img/manu_develcode.png" width="330px" alt="Layout do menu">
+  <img src="./src/assets/img/login_develcode.png" width="300px" alt="Layout do login">
+  <img src="./src/assets/img/home_develcode.png" width="300px" alt="Layout do home">
+  <img src="./src/assets/img/manu_develcode.png" width="300px" alt="Layout do menu">
 </p>
 
 ## :computer: Tecnologias
