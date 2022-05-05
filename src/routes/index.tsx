@@ -5,7 +5,7 @@ import {
   Routes as Stwitch,
 } from "react-router-dom";
 
-import { Home, Menu, Pedidos, Perfil, Promocoes } from "../pages";
+import { Menu, Home, Pedidos, Perfil, Promocoes } from "../pages";
 
 export function Routes() {
   return (

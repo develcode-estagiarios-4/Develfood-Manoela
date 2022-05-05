@@ -5,12 +5,8 @@
     height: 100%;
     width: 260px;
     background-color: $color-theme;
-    display: flex;
+    display: inline-block;
     padding: 10px 0 0 10px;
-}
-
-.navbar-menu:hover {
-  color: white;
 }
 
 .navbarMenu {
@@ -19,8 +15,14 @@
     line-height: 46px;
 }
 
+.navbarMenu:hover {
+  color: white;
+}
+
+
 .navbarIcons {
   padding: 0 10px 0 0;
   vertical-align: center;
-  width: 50px;
+  width: 45px;
+  height: 40px;
 }
