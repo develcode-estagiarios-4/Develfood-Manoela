@@ -4,7 +4,7 @@ import style from "./style.module.scss";
 export function Menu() {
   return (
     <Container>
-      <div className={style.menu}>Menu</div>
+      <div className={style.menu}>Menu do restaurante</div>
     </Container>
   );
 }

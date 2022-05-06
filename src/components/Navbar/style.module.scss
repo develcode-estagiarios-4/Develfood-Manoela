@@ -7,13 +7,16 @@
     background-color: $color-theme;
     display: inline-block;
     padding: 10px 0 0 10px;
+    line-height: 55px;
 }
 
 .navbarMenu {
     color: black;
     font-size: 40px;
-    line-height: 46px;
+    line-height: 60px;
+    display: flex;
 }
+
 
 .navbarMenu:hover {
   color: white;
@@ -22,7 +25,21 @@
 
 .navbarIcons {
   padding: 0 10px 0 0;
-  vertical-align: center;
   width: 45px;
-  height: 40px;
+  height: 44px;
+  padding-top: 5px;
+}
+
+.navbarHome {
+  position:fixed;
+  height: 100%;
+  width: 60px;
+  display: flex;
+  padding: 10px 0 0 10px;
+  line-height: 55px;
+  background-color: $color-theme;
+}
+
+
+.menuNone {
 }

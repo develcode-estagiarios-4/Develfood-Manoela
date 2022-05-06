@@ -6,40 +6,42 @@ import style from "./style.module.scss";
 
 function Navbar() {
   return (
-    <nav className={style.navbar}>
-      <ul>
-        <li>
-          <Link to="/home" className={style.navbarMenu}>
-            <MdIcons.MdHome className={style.navbarIcons} />
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/perfil" className={style.navbarMenu}>
-            <FaIcons.FaUserCircle className={style.navbarIcons} />
-            Perfil
-          </Link>
-        </li>
-        <li>
-          <Link to="/menu" className={style.navbarMenu}>
-            <MdIcons.MdRestaurant className={style.navbarIcons} />
-            Menu
-          </Link>
-        </li>
-        <li>
-          <Link to="/pedidos" className={style.navbarMenu}>
-            <MdIcons.MdPhone className={style.navbarIcons} />
-            Pedidos
-          </Link>
-        </li>
-        <li>
-          <Link to="/promocoes" className={style.navbarMenu}>
-            <MdIcons.MdOutlineMoneyOffCsred className={style.navbarIcons} />
-            Promoções
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <span className={style.navbar}>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/home" className={style.navbarMenu}>
+              <MdIcons.MdHome className={style.navbarIcons} />
+              <div className={style.menuNone}>Home</div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/perfil" className={style.navbarMenu}>
+              <FaIcons.FaUserCircle className={style.navbarIcons} />
+              <div className={style.menuNone}>Perfil</div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/menu" className={style.navbarMenu}>
+              <MdIcons.MdRestaurant className={style.navbarIcons} />
+              <div className={style.menuNone}>Menu</div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/pedidos" className={style.navbarMenu}>
+              <MdIcons.MdPhone className={style.navbarIcons} />
+              <div className={style.menuNone}>Pedidos</div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/promocoes" className={style.navbarMenu}>
+              <MdIcons.MdOutlineMoneyOffCsred className={style.navbarIcons} />
+              <div className={style.menuNone}>Promoções</div>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </span>
   );
 }
 
