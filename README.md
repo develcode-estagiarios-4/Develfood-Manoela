@@ -2,7 +2,7 @@
   <img src="./src/assets/img/develcode_logo.png" alt="Logotipo Develcode" width="800px">
 </h1>
 
-<p align="center">Um sistema que irá auxiliar as tarefas do dia-a-dia do seu restaurante.</p>
+<p align="center">Um sistema que irá otimizar as tarefas do dia-a-dia do seu restaurante.</p>
 
 <p align="center">
   <a href="#plate_with_cutlery-plataforma">Plataforma</a> •
