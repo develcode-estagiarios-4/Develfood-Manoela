@@ -15,13 +15,13 @@
 
 A plataforma web da Develfood permite ao usuário: 
 
-  - Gerenciamento do menu do restaurante, havendo a possibilidade da inclusão, exclusão ou edição de novos pratos.  
+  - Gerenciamento do menu do restaurante, havendo a possibilidade da inclusão, exclusão ou edição de pratos.  
   - Controle em tempo real da situação de cada pedido.
   - Inclusão e exclusão de possíveis promoções.
   - Visualização do feedback dos clientes.
 
 
-## :crab: Layout
+## :art: Layout
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: space-around;">
   <img src="./src/assets/img/login_develcode.png" width="250px" alt="Layout do login">
@@ -33,9 +33,9 @@ A plataforma web da Develfood permite ao usuário:
 
 As ferramentas utilizadas na construção do projeto foram:
 
-- [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en/)
 - [Eslint](https://eslint.org/)
 - [Sass](https://sass-lang.com/)
 - [Prettier](https://prettier.io/)
