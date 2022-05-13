@@ -1,9 +1,9 @@
 <h1 align="center">
-  <img src="./src/assets/img/develcode_logo.png" alt="Logotipo Develcode">
+  <img src="./src/assets/img/develcode_logo.png" alt="Logotipo Develcode" width="800px">
 </h1>
 
 <p align="center">Um sistema que irá auxiliar as tarefas do dia-a-dia do seu restaurante.</p>
-
+git s
 <p align="center">
   <a href="#plate_with_cutlery-plataforma">Plataforma</a> •
   <a href="#crab-layout">Layout</a> •
@@ -24,9 +24,10 @@ A plataforma web da Develfood permite ao usuário:
 ## :crab: Layout
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: space-around;">
-  <img src="./src/assets/img/login_develcode.png" width="300px" alt="Layout do login">
-  <img src="./src/assets/img/home_develcode.png" width="300px" alt="Layout do home">
-  <img src="./src/assets/img/manu_develcode.png" width="300px" alt="Layout do menu">
+  <img src="./src/assets/img/login_develcode.png" width="250px" alt="Layout do login">
+  <img src="./src/assets/img/home_develcode.png" width="250px" alt="Layout do home">
+  <img src="./src/assets/img/manu_develcode.png" width="250px" alt="Layout do menu">
+
 </p>
 
 ## :computer: Tecnologias

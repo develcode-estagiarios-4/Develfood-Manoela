@@ -1,0 +1,19 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.inputForm {
+  border: 0.5px solid black;
+  border-radius: 8px;
+  width: 99%;
+  height: 11.5%;
+  text-align: left;
+  padding: 0%;
+  margin: 1% 0 1% 0;
+}
+
+::-webkit-input-placeholder {
+  color: $grey-light;
+  font-family: $roboto;
+  padding-left: 15%;
+  font-size: 105%;
+}

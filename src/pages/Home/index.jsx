@@ -76,7 +76,6 @@ export function Home() {
 
   return (
     <Container>
-      <div>home</div>
       <button type="button" onClick={() => handleCreateUser(USER_DATA)}>
         Cadastrar
       </button>

@@ -1,45 +1,59 @@
 @import "../../styles/common/colors.scss";
 
 .navbar {
-    position:fixed;
-    height: 100%;
-    width: 260px;
-    background-color: $color-theme;
-    display: inline-block;
-    padding: 10px 0 0 10px;
-    line-height: 55px;
+  position:fixed;
+  height: 100%;
+  width: 60px;
+  background-color: $color-theme;
+  display: inline-block;
+  padding: 10px 0 0 10px;
+  line-height: 33px;
+
+  .navbarMenu {
+    color: black;
+  }
+
+  .navbarMenu:hover {
+    color: white;
+  
+  }
+  .navbarIcons {
+    padding: 0 10px 0 0;
+    width: 45px;
+    height: 44px;
+    padding-top: 5px;
+  }
+
+  .menuNone {
+    display: none;
+  }
 }
 
-.navbarMenu {
+.navbarActive {
+  position:fixed;
+  height: 100%;
+  width: 260px;
+  background-color: $color-theme;
+  display: inline-block;
+  padding: 10px 0 0 10px;
+  line-height: 55px;
+
+  .navbarMenu {
     color: black;
     font-size: 40px;
     line-height: 60px;
     display: flex;
-}
+  }
 
-
-.navbarMenu:hover {
-  color: white;
-}
-
-
-.navbarIcons {
-  padding: 0 10px 0 0;
-  width: 45px;
-  height: 44px;
-  padding-top: 5px;
-}
-
-.navbarHome {
-  position:fixed;
-  height: 100%;
-  width: 60px;
-  display: flex;
-  padding: 10px 0 0 10px;
-  line-height: 55px;
-  background-color: $color-theme;
-}
-
-
-.menuNone {
+  .navbarMenu:hover {
+    color: white;
+  
+  }
+  .navbarIcons {
+    padding: 0 10px 0 0;
+    width: 45px;
+    height: 44px;
+    padding-top: 5px;
+  }
+  
 }

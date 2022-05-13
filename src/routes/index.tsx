@@ -5,7 +5,7 @@ import {
   Routes as Stwitch,
 } from "react-router-dom";
 
-import { Menu, Home, Pedidos, Perfil, Promocoes } from "../pages";
+import { Menu, Home, Pedidos, Perfil, Promocoes, Login } from "../pages";
 
 export function Routes() {
   return (
@@ -16,6 +16,7 @@ export function Routes() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/promocoes" element={<Promocoes />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/home" />} />
       </Stwitch>
     </BrowserRouter>
