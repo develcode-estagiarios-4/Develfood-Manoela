@@ -6,11 +6,11 @@ interface IProps {
   placeholder: string;
   type: string;
   value: any;
-  onChange: (event: any) => void;
+  onChange: (newValue: string) => void;
   children: ReactNode;
 }
 
-export function Input({
+export default function Input2({
   placeholder,
   type,
   value,

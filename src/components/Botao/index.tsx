@@ -1,16 +1,17 @@
+import { ReactNode } from "react";
+
 import style from "./style.module.scss";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-interface Props {
-  onClick: () => void;
-  children?: string;
+interface IProps {
+  onClick: (event: any) => void;
+  children: ReactNode;
+  type: "button" | "submit" | "reset" | undefined;
 }
 
-// eslint-disable-next-line react/function-component-definition, react/prop-types
-export const Button: React.FC<Props> = ({ onClick, children }) => {
+export function Button({ onClick, children, type }: IProps) {
   return (
-    <button onClick={onClick} type="button" className={style.botaoInput}>
+    <button onClick={onClick} type="submit" className={style.botaoInput}>
       {children}
     </button>
   );
-};
+}
