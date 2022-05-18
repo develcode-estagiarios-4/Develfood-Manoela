@@ -19,9 +19,7 @@ export function Login() {
   const [passwordUser, setPassword] = useState("");
   const [isEmailError, setIsEmailError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
-
   const { loginEfetuado, login } = useLogin();
-
   const user = {
     email: emailUser,
     password: passwordUser,
@@ -30,7 +28,6 @@ export function Login() {
     erroEmail: "Insira um e-mail válido",
     erroPassword: "Insira uma senha válida",
   };
-
   const validateEmail = (event: string) => {
     if (event.length > 0) {
       if (!event.includes("@")) {
@@ -42,7 +39,6 @@ export function Login() {
       setIsEmailError(false);
     }
   };
-
   const validatePassword = (event: string) => {
     if (event.length > 0) {
       if (event.length < 6) {
@@ -54,25 +50,21 @@ export function Login() {
       setIsPasswordError(false);
     }
   };
-
-  const handleClickEnter = (event: any) => {
+  const handleClickEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     console.log(user);
     login(user);
   };
-
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     validateEmail(event.target.value);
     setEmail(event.target.value);
     console.log(emailUser);
   };
-
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     validatePassword(event.target.value);
     setPassword(event.target.value);
     console.log(passwordUser);
   };
-
   return (
     <>
       <div className={style.spanLogin}>
@@ -108,9 +100,7 @@ export function Login() {
           ) : (
             " "
           )}
-          <Button type="submit" onClick={handleClickEnter}>
-            Entrar
-          </Button>
+          <Button onClick={handleClickEnter}>Entrar</Button>
           <LoginItem to="/home"> Esqueci minha senha </LoginItem>
           <div className={style.newAccount}>
             <LoginItem to="/home">

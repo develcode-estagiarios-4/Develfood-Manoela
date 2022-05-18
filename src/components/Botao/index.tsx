@@ -1,16 +1,14 @@
-import { ReactNode } from "react";
+import { ReactEventHandler, ReactNode } from "react";
 
 import style from "./style.module.scss";
 
-interface IProps {
-  onClick: (event: any) => void;
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  type: "button" | "submit" | "reset" | undefined;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
-
-export function Button({ onClick, children, type }: IProps) {
+export function Button({ children, onClick }: IProps) {
   return (
-    <button onClick={onClick} type="submit" className={style.botaoInput}>
+    <button type="submit" onClick={onClick} className={style.botaoInput}>
       {children}
     </button>
   );
