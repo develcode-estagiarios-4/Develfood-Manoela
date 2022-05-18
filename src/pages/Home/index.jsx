@@ -76,31 +76,22 @@ export function Home() {
 
   return (
     <Container>
-      <div className={style.home}>home</div>
-      <button
-        type="button"
-        className={style.home}
-        onClick={() => handleCreateUser(USER_DATA)}
-      >
+      <button type="button" onClick={() => handleCreateUser(USER_DATA)}>
         Cadastrar
       </button>
       {users.length > 0 ? (
         users.map((user) => (
           <div key={user.id}>
-            <div className={style.home}>
+            <div>
               {user.name} - id: {user.id}
             </div>
-            <button
-              type="button"
-              className={style.home}
-              onClick={() => handleDeleteUser(user.id)}
-            >
+            <button type="button" onClick={() => handleDeleteUser(user.id)}>
               Excluir
             </button>
           </div>
         ))
       ) : (
-        <div className={style.home}>
+        <div>
           <Skeleton count={3} width="30%" />
         </div>
       )}

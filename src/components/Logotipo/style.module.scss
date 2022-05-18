@@ -1,0 +1,22 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanLogotipo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7%;
+  height: 17%;
+}
+
+.logoDevelfood {
+  position: relative;
+  width: 60;
+  height: 100%;
+}
+
+.nameDevelfood {
+  position: relative;
+  height: 27%;
+  margin-left: 4%;
+}

@@ -1,0 +1,81 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanLogin {
+  width: 49%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10%;
+  margin-left: 8px;
+}
+
+.formRegister {
+  position: absolute;
+  width: 37%;
+  height: 45%;
+  margin-right: 2%;
+  margin-bottom: 3%;
+}
+
+.passwordText {
+  color: $grey-light;
+  font-family: $roboto-400;
+  font-size: 75%;
+  display: flow-root;
+  margin-top: 7%;
+}
+
+.newAccount {
+  display: inline-flex;
+  margin-top: 20%;
+
+  .iconNewAccount {
+    margin-right: 2%;
+    position: relative;
+    margin: 0px 4px -2px 0px;
+  }
+}
+
+.spanImage {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  margin-left: 50%;
+  text-align: center;
+}
+
+.imageLogin {
+  height: 95%;
+  padding-top: 16px;
+  display: inline-block;
+}
+
+.formValidation {
+  color: $color-theme ;
+  font-size: 60%;
+  font-family: $roboto-400;
+  position: relative;
+  display: block;
+  margin: 0 0 2% 0%;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .spanLogin {
+    width: 100%;
+  }
+
+  .formRegister {
+    max-width: 300px;
+  }
+  
+  .spanImage {
+    display: none;
+  }
+
+}

@@ -1,0 +1,10 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.passwordText {
+  color: $grey-light;
+  font-family: $roboto-400;
+  font-size: 75%;
+  display: flow-root;
+  margin-top: 7%;
+}
