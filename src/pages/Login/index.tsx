@@ -3,10 +3,12 @@ import * as FiIcons from "react-icons/fi";
 import * as HiIcons from "react-icons/hi";
 import * as MdIcons from "react-icons/md";
 import { Link } from "react-router-dom";
+import { convertCompilerOptionsFromJson } from "typescript";
 
 import img from "../../assets/img/login.png";
 import { Button } from "../../components/Botao";
 import { Input } from "../../components/Input";
+import { LoginItem } from "../../components/LoginItem";
 import { Logotipo } from "../../components/Logotipo";
 import { useLogin } from "../../hooks/useLogin";
 import { Loader } from "../Loader";
@@ -26,10 +28,10 @@ export function Login() {
   };
   const mensagemErro = {
     erroEmail: "Insira um e-mail válido",
-    erroPassword: "Insira uma Password válida",
+    erroPassword: "Insira uma senha válida",
   };
 
-  const validateEmail = (event: any) => {
+  const validateEmail = (event: string) => {
     if (event.length > 0) {
       if (!event.includes("@")) {
         setIsEmailError(true);
@@ -41,7 +43,7 @@ export function Login() {
     }
   };
 
-  const validatePassword = (event: any) => {
+  const validatePassword = (event: string) => {
     if (event.length > 0) {
       if (event.length < 6) {
         setIsPasswordError(true);
@@ -55,17 +57,20 @@ export function Login() {
 
   const handleClickEnter = (event: any) => {
     event.preventDefault();
+    console.log(user);
     login(user);
   };
 
-  const handleChangeEmail = (event: any) => {
-    validateEmail(event);
-    setEmail(event);
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    validateEmail(event.target.value);
+    setEmail(event.target.value);
+    console.log(emailUser);
   };
 
-  const handleChangePassword = (event: any) => {
-    validatePassword(event);
-    setPassword(event);
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    validatePassword(event.target.value);
+    setPassword(event.target.value);
+    console.log(passwordUser);
   };
 
   return (
@@ -82,7 +87,7 @@ export function Login() {
             <HiIcons.HiOutlineMail />
           </Input>
           {isEmailError ? (
-            <span className={style.emailValidation}>
+            <span className={style.formValidation}>
               {mensagemErro.erroEmail}
             </span>
           ) : (
@@ -97,7 +102,7 @@ export function Login() {
             <MdIcons.MdLockOpen />
           </Input>{" "}
           {isPasswordError ? (
-            <span className={style.emailValidation}>
+            <span className={style.formValidation}>
               {mensagemErro.erroPassword}
             </span>
           ) : (
@@ -106,15 +111,11 @@ export function Login() {
           <Button type="submit" onClick={handleClickEnter}>
             Entrar
           </Button>
-          <div>
-            <Link to="/home" className={style.passwordText}>
-              Esqueci minha Password
-            </Link>
-
-            <Link to="/home" className={style.newAccount}>
-              <FiIcons.FiLogIn className={style.iconNewAccount} />
-              Criar conta
-            </Link>
+          <LoginItem to="/home"> Esqueci minha senha </LoginItem>
+          <div className={style.newAccount}>
+            <LoginItem to="/home">
+              <FiIcons.FiLogIn className={style.iconNewAccount} /> Criar conta
+            </LoginItem>
           </div>
         </form>
       </div>

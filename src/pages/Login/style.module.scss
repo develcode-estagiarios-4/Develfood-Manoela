@@ -31,16 +31,13 @@
 }
 
 .newAccount {
-  color: $grey-light;
-  font-family: $roboto-400;
-  font-size: 75%;
   display: inline-flex;
   margin-top: 20%;
 
   .iconNewAccount {
     margin-right: 2%;
     position: relative;
-    margin: 2px 9px 0px 0px;
+    margin: 0px 4px -2px 0px;
   }
 }
 
@@ -68,3 +65,17 @@
 }
 
 
+@media only screen and (max-width: 800px) {
+  .spanLogin {
+    width: 100%;
+  }
+
+  .formRegister {
+    max-width: 300px;
+  }
+  
+  .spanImage {
+    display: none;
+  }
+
+}

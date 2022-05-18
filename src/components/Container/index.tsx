@@ -5,9 +5,9 @@ import style from "./style.module.scss";
 
 export default function Container({ children }: IContainer) {
   return (
-    <div>
+    <>
       <Navbar />
       <main className={style.main}>{children}</main>
-    </div>
+    </>
   );
 }

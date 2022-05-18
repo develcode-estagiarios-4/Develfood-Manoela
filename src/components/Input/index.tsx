@@ -5,8 +5,8 @@ import style from "./style.module.scss";
 interface IProps {
   placeholder: string;
   type: string;
-  value: any;
-  onChange: (event: any) => void;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: ReactNode;
 }
 
@@ -24,7 +24,7 @@ export function Input({
         placeholder={placeholder}
         type={type}
         className={style.inputForm}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e)}
       />
     </span>
   );
