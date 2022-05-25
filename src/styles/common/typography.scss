@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Kreon&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mogra&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 //main-fonts
+$mogra: "Mogra", cursive;
 $main-font: "Kreon", serif;
-$roboto: "Roboto", sans-serif;
-$roboto-400: "Roboto Slab", serif;
-$roboto-500: "Roboto Slab", serif;
+$robotoSlab-500: "Roboto Slab", serif;
+$roboto-400: "Roboto", sans-serif;
+$robotoSlab-400: "Roboto Slab", serif;
+$roboto-500: "Roboto", sans-serif;

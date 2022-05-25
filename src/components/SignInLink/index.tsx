@@ -3,13 +3,13 @@ import { Link, To } from "react-router-dom";
 
 import style from "./style.module.scss";
 
-interface ILoginItem {
+interface ISignInLink {
   children: ReactNode;
   to: To;
 }
-export function LoginItem({ children, to }: ILoginItem) {
+export function SignInLink({ children, to }: ISignInLink) {
   return (
-    <Link to={to} className={style.passwordText}>
+    <Link to={to} className={style.signInLink}>
       {children}
     </Link>
   );

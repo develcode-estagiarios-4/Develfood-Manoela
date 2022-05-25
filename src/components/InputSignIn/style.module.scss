@@ -6,22 +6,23 @@
   border: 0;
   border-radius: 8px;
   outline: 0;
+  height: 24px;
+  font-size: 92%;
 }
 
 ::-webkit-input-placeholder {
   color: $grey-light;
-  font-family: $roboto;
-  font-size: 95%;
+  font-family: $roboto-400;
+  font-size: 92%;
 }
 
-.iconeInput{
+.iconInput {
   color: $grey-light;
-  padding: 2% 2% 0 0 ;
-  font-size: 90%;
-
+  padding: 2% 3% 0 0;
+  font-size: 110%;
 }
 
-.spaniput {
+.spanInput {
   border: 0.5px solid black;
   border-radius: 8px;
   height: 11.5%;

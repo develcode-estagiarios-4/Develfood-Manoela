@@ -1,25 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as FiIcons from "react-icons/fi";
 import * as HiIcons from "react-icons/hi";
 import * as MdIcons from "react-icons/md";
-import { Link } from "react-router-dom";
-import { convertCompilerOptionsFromJson } from "typescript";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
-import img from "../../assets/img/login.png";
-import { Button } from "../../components/Botao";
-import { Input } from "../../components/Input";
-import { LoginItem } from "../../components/LoginItem";
-import { Logotipo } from "../../components/Logotipo";
-import { useLogin } from "../../hooks/useLogin";
-import { Loader } from "../Loader";
+import img from "../../assets/img/signIn.png";
+import {
+  ButtonSignIn,
+  InputSignIn,
+  Logomark,
+  SignInLink,
+  Loader,
+} from "../../components";
+import { useSignIn } from "../../hooks/useSignIn";
 import style from "./style.module.scss";
 
-export function Login() {
+export function SignIn() {
+  const navigate = useNavigate();
+
   const [emailUser, setEmail] = useState("");
   const [passwordUser, setPassword] = useState("");
   const [isEmailError, setIsEmailError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
-  const { loginEfetuado, login } = useLogin();
+  const [isUnputEmpty, setIsUnputEmpty] = useState(false);
+
+  const { signInSucceeded, login } = useSignIn();
   const user = {
     email: emailUser,
     password: passwordUser,
@@ -27,6 +33,7 @@ export function Login() {
   const mensagemErro = {
     erroEmail: "Insira um e-mail válido",
     erroPassword: "Insira uma senha válida",
+    erroEmpty: "Preencha todos os campos",
   };
   const validateEmail = (event: string) => {
     if (event.length > 0) {
@@ -50,34 +57,49 @@ export function Login() {
       setIsPasswordError(false);
     }
   };
+
   const handleClickEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (
+      user.email.length === 0 ||
+      user.password.length === 0 ||
+      isPasswordError === true ||
+      isEmailError === true
+    ) {
+      setIsUnputEmpty(true);
+    } else {
+      login(user);
+    }
     event.preventDefault();
     console.log(user);
-    login(user);
   };
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     validateEmail(event.target.value);
+    setIsUnputEmpty(false);
     setEmail(event.target.value);
     console.log(emailUser);
   };
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     validatePassword(event.target.value);
+    setIsUnputEmpty(false);
     setPassword(event.target.value);
     console.log(passwordUser);
   };
+
   return (
     <>
-      <div className={style.spanLogin}>
+      <div className={style.spanSignIn}>
         <form className={style.formRegister}>
-          <Logotipo />
-          <Input
+          <div className={style.spanLogotype}>
+            <Logomark />
+          </div>
+          <InputSignIn
             placeholder="E-mail"
             type="text"
             value={emailUser}
             onChange={handleChangeEmail}
           >
             <HiIcons.HiOutlineMail />
-          </Input>
+          </InputSignIn>
           {isEmailError ? (
             <span className={style.formValidation}>
               {mensagemErro.erroEmail}
@@ -85,14 +107,14 @@ export function Login() {
           ) : (
             " "
           )}
-          <Input
-            placeholder="Password"
+          <InputSignIn
+            placeholder="Senha"
             type="password"
             value={passwordUser}
             onChange={handleChangePassword}
           >
             <MdIcons.MdLockOpen />
-          </Input>{" "}
+          </InputSignIn>{" "}
           {isPasswordError ? (
             <span className={style.formValidation}>
               {mensagemErro.erroPassword}
@@ -100,19 +122,30 @@ export function Login() {
           ) : (
             " "
           )}
-          <Button onClick={handleClickEnter}>Entrar</Button>
-          <LoginItem to="/home"> Esqueci minha senha </LoginItem>
-          <div className={style.newAccount}>
-            <LoginItem to="/home">
-              <FiIcons.FiLogIn className={style.iconNewAccount} /> Criar conta
-            </LoginItem>
+          {isUnputEmpty ? (
+            <span className={style.formValidation}>
+              {mensagemErro.erroEmpty}
+            </span>
+          ) : (
+            " "
+          )}
+          <ButtonSignIn onClick={handleClickEnter}>Entrar</ButtonSignIn>
+          <SignInLink to="/home"> Esqueci minha senha </SignInLink>
+          <div className={style.signUpLink}>
+            <SignInLink to="/signupfirst">
+              <FiIcons.FiLogIn className={style.iconSignUpLink} /> Criar conta
+            </SignInLink>
           </div>
         </form>
       </div>
       <div className={style.spanImage}>
-        <img src={img} className={style.imageLogin} alt="pagina de login" />
+        <img
+          src={img}
+          className={style.imageSignIn}
+          alt="Chef cutting tomatoes"
+        />
       </div>
-      {loginEfetuado ? <Loader /> : " "}
+      {signInSucceeded ? <Loader /> : " "}
     </>
   );
 }
