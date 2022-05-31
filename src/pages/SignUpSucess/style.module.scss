@@ -1,0 +1,57 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanSuccess {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.successContent {
+  width: 73%;
+  height: 65%;
+  margin-bottom: 5%;
+}
+
+.logomark {
+  height: 12%;
+  width: min-content;
+}
+
+.spanContentSuccess {
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  min-width: 380px;
+}
+
+.spanContentCenter {
+  padding-top: 2%;
+  width: 100%;
+  height: 66%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.sucessTitle {
+  font-size: 130%;
+  margin: 0.5% 0% 0% 3%;
+  position: absolute;
+  font-family: $roboto-500;
+}
+
+.textBody {
+  color: $grey-light;
+  font-size: 90%;
+  margin: 10% 1.8% 10% 4%;
+  font-family: $roboto-500;
+}
+
+.imageSuccess {
+  margin: 1% 0% 0 8%;
+  height: 65%;
+}
