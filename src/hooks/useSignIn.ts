@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context";
 import api from "../services/api";
 
-interface IUsuario {
+export interface IUsuario {
   email: string;
   password: string;
 }
@@ -27,7 +27,7 @@ export function useSignIn() {
           navigate("/home");
         }, 5000);
       }
-    } catch (error: any) {
+    } catch (error) {
       alert("Usuário não encontrado!");
     }
   };

@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { Control } from "react-hook-form";
 
 import style from "./style.module.scss";
 
@@ -7,24 +6,23 @@ interface IProps {
   placeholder: string;
   type: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: ReactNode;
-  control: Control;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  control: object;
 }
 
-export function InputSignIn({
+export function InputSignUp({
   placeholder,
   type,
   value,
-  onChange,
   children,
+  onChange,
   control,
 }: IProps) {
   return (
     <span className={style.spanInput}>
       <div className={style.iconInput}>{children}</div>
       <input
-        value={value}
         placeholder={placeholder}
         type={type}
         className={style.inputForm}

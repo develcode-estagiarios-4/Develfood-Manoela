@@ -12,9 +12,9 @@ import {
   Perfil,
   Promocoes,
   SignIn,
-  // SignUpFirst,
-  // SignUpSecond,
-  // SignUpThird,
+  SignUpFirst,
+  SignUpSecond,
+  SignUpThird,
   // SignUpSuccess,
 } from "../pages";
 
@@ -29,6 +29,9 @@ export function Routes() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/pedidos" element={<Pedidos />} />
         <Route path="/promocoes" element={<Promocoes />} />
+        <Route path="/signupfirst" element={<SignUpFirst />} />
+        <Route path="/signupsecond" element={<SignUpSecond />} />
+        <Route path="/signupthird" element={<SignUpThird />} />
 
         <Route path="*" element={<Navigate to="/signin" />} />
       </Stwitch>
@@ -36,7 +39,4 @@ export function Routes() {
   );
 }
 
-// <Route path="/signupfirst" element={<SignUpFirst />} />
-// <Route path="/signupsecond" element={<SignUpSecond />} />
-// <Route path="/signupthird" element={<SignUpThird />} />
 // <Route path="/signupsuccess" element={<SignUpSuccess />} />
