@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 
 import Container from "../../components/Container";
+import { useAuth } from "../../context";
 import useUsers from "../../hooks/useUsers";
 import style from "./style.module.scss";
 
@@ -13,6 +14,7 @@ const USER_DATA = {
 };
 
 export function Home() {
+  const { authState, setAuthState } = useAuth();
   const {
     users,
     getUsers,
@@ -74,8 +76,15 @@ export function Home() {
     updateUser(id, userData);
   };
 
+  const handleToken = () => {
+    console.log({ authState });
+  };
+
   return (
     <Container>
+      <button type="button" onClick={handleToken}>
+        Token
+      </button>
       <button type="button" onClick={() => handleCreateUser(USER_DATA)}>
         Cadastrar
       </button>

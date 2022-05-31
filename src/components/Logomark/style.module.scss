@@ -1,21 +1,20 @@
 @import "../../styles/common/colors.scss";
 @import "../../styles/common/typography.scss";
 
-.spanLogotipo {
+.spanLogomark {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 7%;
-  height: 17%;
+  height: 100%;
 }
 
-.logoDevelfood {
+.symbol {
   position: relative;
   width: 60;
   height: 100%;
 }
 
-.nameDevelfood {
+.logotype {
   position: relative;
   height: 27%;
   margin-left: 4%;

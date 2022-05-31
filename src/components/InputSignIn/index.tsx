@@ -1,4 +1,4 @@
-import React, { Children, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 import style from "./style.module.scss";
 
@@ -10,7 +10,7 @@ interface IProps {
   children: ReactNode;
 }
 
-export function Input({
+export function InputSignIn({
   placeholder,
   type,
   value,
@@ -18,8 +18,8 @@ export function Input({
   children,
 }: IProps) {
   return (
-    <span className={style.spaniput}>
-      <div className={style.iconeInput}>{children}</div>
+    <span className={style.spanInput}>
+      <div className={style.iconInput}>{children}</div>
       <input
         placeholder={placeholder}
         type={type}

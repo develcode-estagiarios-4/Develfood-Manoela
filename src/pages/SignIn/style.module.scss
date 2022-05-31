@@ -1,7 +1,7 @@
 @import "../../styles/common/colors.scss";
 @import "../../styles/common/typography.scss";
 
-.spanLogin {
+.spanSignIn {
   width: 49%;
   height: 100%;
   position: absolute;
@@ -20,21 +20,29 @@
   height: 45%;
   margin-right: 2%;
   margin-bottom: 3%;
+  min-width: 250px;
+  //min-height: 310px;
 }
 
-.passwordText {
-  color: $grey-light;
+.spanLogotype {
+  height: 19%;
+  margin-bottom: 8%;
+}
+
+.formValidation {
+  color: $color-theme;
+  font-size: 92%;
   font-family: $roboto-400;
-  font-size: 75%;
-  display: flow-root;
-  margin-top: 7%;
+  position: relative;
+  display: block;
+  margin: 0 0 2% 0%;
 }
 
-.newAccount {
+.signUpLink {
   display: inline-flex;
   margin-top: 20%;
 
-  .iconNewAccount {
+  .iconSignUpLink {
     margin-right: 2%;
     position: relative;
     margin: 0px 4px -2px 0px;
@@ -49,33 +57,22 @@
   text-align: center;
 }
 
-.imageLogin {
+.imageSignIn {
   height: 95%;
   padding-top: 16px;
   display: inline-block;
 }
 
-.formValidation {
-  color: $color-theme ;
-  font-size: 60%;
-  font-family: $roboto-400;
-  position: relative;
-  display: block;
-  margin: 0 0 2% 0%;
-}
-
-
 @media only screen and (max-width: 800px) {
-  .spanLogin {
+  .spanSignIn {
     width: 100%;
   }
 
   .formRegister {
     max-width: 300px;
   }
-  
+
   .spanImage {
     display: none;
   }
-
 }

@@ -1,10 +1,10 @@
 @import "../../styles/common/colors.scss";
 @import "../../styles/common/typography.scss";
 
-.passwordText {
+.signInLink {
   color: $grey-light;
-  font-family: $roboto-400;
-  font-size: 75%;
+  font-family: $robotoSlab-400;
+  font-size: 90%;
   display: flow-root;
   margin-top: 7%;
 }
