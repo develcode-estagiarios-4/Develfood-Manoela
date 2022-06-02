@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import Skeleton from "react-loading-skeleton";
 
 import Container from "../../components/Container";
 import { useAuth } from "../../context";
+import { useFoodType } from "../../hooks/useFoodType";
 import useUsers from "../../hooks/useUsers";
 import style from "./style.module.scss";
 
@@ -14,6 +16,8 @@ const USER_DATA = {
 };
 
 export function Home() {
+  const { signUpPost } = useFoodType();
+
   const { authState, setAuthState } = useAuth();
   const {
     users,
@@ -80,10 +84,18 @@ export function Home() {
     console.log({ authState });
   };
 
+  const handlApe = (data) => {
+    useFoodType();
+    console.log({ data });
+  };
+
   return (
     <Container>
       <button type="button" onClick={handleToken}>
         Token
+      </button>
+      <button type="button" onClick={handlApe}>
+        foodtype
       </button>
       <button type="button" onClick={() => handleCreateUser(USER_DATA)}>
         Cadastrar

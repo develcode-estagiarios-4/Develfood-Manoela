@@ -1,0 +1,103 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanSignUp {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+}
+.signUpForm {
+  text-align: center;
+  width: 29%;
+  min-width: 400px;
+  justify-content: center;
+  height: 51%;
+  position: absolute;
+  margin-bottom: 10.5%;
+  max-width: 557px;
+
+}
+.stepper {
+  width: 43%;
+  margin: 6% 0 4.3% 0;
+}
+.spanLogomark {
+  height: 13.5%;
+  margin-bottom: 9%;
+}
+.formValidation {
+  color: $color-theme;
+  font-size: 80%;
+  font-family: $roboto-400;
+  position: relative;
+  display: block;
+  margin: -2% 0 2% 0%;
+
+}
+.doubleInput {
+  position: relative;
+  display: flex;
+  height: 10%;
+  .doubleUpLeft {
+    width: 55%;
+  }
+  .doubleUpRight {
+    width: 45%;
+    padding-left: 3.5%;
+    
+  }
+  .doubleDownLeft {
+    width: 65%;
+  }
+  .doubleDownRight {
+    width: 35%;
+    padding-left: 3%;
+  }
+}
+
+.spanErrorformUp {
+  display: flex;
+  padding-bottom: -2%;
+}
+.formValidationDoubleNick {
+   width: 57%;
+    color: #bf1b1b;
+    font-size: 80%;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    display: inline-block;
+    margin: 2% 0 2% 0%;
+}
+.formValidationDoubleZip {
+  width: 43%;
+  color: #bf1b1b;
+  font-size: 75%;
+  font-family: "Roboto", sans-serif;
+  display: inline-block;
+  position: relative;
+  padding-top: 2%;
+}
+.formValidationDoubleNumber {
+  width: 27%;
+  padding-left: 19%;
+  color: #bf1b1b;
+  font-size: 80%;
+  font-family: "Roboto", sans-serif;
+  display: contents;
+  position: relative;
+}
+.formValidationDoubleState {
+    width: 80%;
+    color: #bf1b1b;
+    font-size: 80%;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    display: inline-block;
+    margin: 2% 0 2% 0%;
+}

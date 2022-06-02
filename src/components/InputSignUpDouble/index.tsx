@@ -7,26 +7,26 @@ interface IProps {
   placeholder: string;
   type: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children: ReactNode;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   control: Control;
 }
 
-export function InputSignIn({
+export function InputSignUpDouble({
   placeholder,
   type,
   value,
-  onChange,
   children,
+  onChange,
   control,
 }: IProps) {
   return (
     <span className={style.spanInput}>
       <div className={style.iconInput}>{children}</div>
       <input
-        value={value}
         placeholder={placeholder}
         type={type}
+        value={value}
         className={style.inputForm}
         onChange={(e) => onChange(e)}
       />
