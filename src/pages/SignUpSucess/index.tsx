@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import signUpSuccess from "../../assets/img/signUpSuccess.png";
-import { ButtonSignUp, Logomark } from "../../components";
+import { Button, Logomark } from "../../components";
 import style from "./style.module.scss";
 
 export function SignUpSuccess() {
@@ -26,10 +26,17 @@ export function SignUpSuccess() {
               className={style.imageSuccess}
             />
             <p className={style.textBody}>
-              Parabéns! Agora você pode aproveitar nossas ofertas e serviços e
-              economizar com super cupons Develfood.
+              Parabéns! Agora você pode aproveitar nossas ofertas e <br />{" "}
+              serviços e economizar com super cupons Develfood.
             </p>
-            <ButtonSignUp onClick={handleClick}> Concluir</ButtonSignUp>
+            <Button
+              variant="red"
+              onClick={handleClick}
+              className={style.buttonSuccess}
+            >
+              {" "}
+              Concluir
+            </Button>
           </div>
         </div>
       </div>

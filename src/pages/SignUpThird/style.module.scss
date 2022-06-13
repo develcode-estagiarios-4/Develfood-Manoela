@@ -10,94 +10,70 @@
   justify-content: center;
   display: flex;
   align-items: center;
-
 }
+
 .signUpForm {
   text-align: center;
-  width: 29%;
-  min-width: 400px;
+  width: 37rem;
+  max-width: 100%;
   justify-content: center;
   height: 51%;
   position: absolute;
   margin-bottom: 10.5%;
-  max-width: 557px;
-
 }
+
 .stepper {
-  width: 43%;
+  width: 16rem;
   margin: 6% 0 4.3% 0;
 }
 .spanLogomark {
-  height: 13.5%;
+  height: 5rem;
   margin-bottom: 9%;
 }
-.formValidation {
-  color: $color-theme;
-  font-size: 80%;
-  font-family: $roboto-400;
-  position: relative;
-  display: block;
-  margin: -2% 0 2% 0%;
 
+.spanForm {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.4rem;
+  justify-content: center;
+  max-width: 100%;
 }
+
+.buttonSignUp {
+  font-family: $mogra;
+  border: 1px solid black;
+}
+
 .doubleInput {
-  position: relative;
   display: flex;
-  height: 10%;
-  .doubleUpLeft {
-    width: 55%;
-  }
-  .doubleUpRight {
-    width: 45%;
-    padding-left: 3.5%;
-    
-  }
-  .doubleDownLeft {
-    width: 65%;
-  }
-  .doubleDownRight {
-    width: 35%;
-    padding-left: 3%;
-  }
+  justify-content: center;
+  width: 37rem;
+  padding-right: 1.1rem;
+  max-width: 100%;
 }
 
-.spanErrorformUp {
-  display: flex;
-  padding-bottom: -2%;
+.inputNickname {
+  width: 18.7rem;
+  margin-bottom: 0.5rem;
 }
-.formValidationDoubleNick {
-   width: 57%;
-    color: #bf1b1b;
-    font-size: 80%;
-    font-family: "Roboto", sans-serif;
-    position: relative;
-    display: inline-block;
-    margin: 2% 0 2% 0%;
+
+.inputZipCode {
+  margin-left: 1.3rem;
+  width: 14.8rem;
 }
-.formValidationDoubleZip {
-  width: 43%;
-  color: #bf1b1b;
-  font-size: 75%;
-  font-family: "Roboto", sans-serif;
-  display: inline-block;
-  position: relative;
-  padding-top: 2%;
+
+.inputNumber {
+  margin-left: 1.3rem;
+  width: 10.3rem;
+  max-width: 100%;
 }
-.formValidationDoubleNumber {
-  width: 27%;
-  padding-left: 19%;
-  color: #bf1b1b;
-  font-size: 80%;
-  font-family: "Roboto", sans-serif;
-  display: contents;
-  position: relative;
+
+.inputState {
+  width: 22.8rem;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
 }
-.formValidationDoubleState {
-    width: 80%;
-    color: #bf1b1b;
-    font-size: 80%;
-    font-family: "Roboto", sans-serif;
-    position: relative;
-    display: inline-block;
-    margin: 2% 0 2% 0%;
+
+.inputMargin {
+  margin-bottom: 0.5rem;
 }

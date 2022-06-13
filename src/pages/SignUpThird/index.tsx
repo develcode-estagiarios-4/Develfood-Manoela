@@ -4,25 +4,29 @@ import * as MdIcons from "react-icons/md";
 import * as yup from "yup";
 
 import stepper from "../../assets/img/signUpStepperIII.png";
-import {
-  ButtonSignUp,
-  InputSignUp,
-  Logomark,
-  InputSignUpDouble,
-  Loader,
-} from "../../components";
+import { Logomark, Loader } from "../../components";
+import { Button } from "../../components/Button";
+import { ErrorMessage } from "../../components/ErrorMessage";
+import { Input } from "../../components/Input";
 import { useAuth } from "../../context";
 import { signUp } from "../../hooks/useSignUp";
+import { removeLetters } from "../../utils/textUtils";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
   nickname: yup.string().required("O campo Apelido é obrigatório"),
-  zipCode: yup.string().required("O campo CEP é obrigatório"),
-  street: yup.string().required("O campo CNPJ é obrigatório"),
+  zipCode: yup
+    .number()
+    .required("O campo CEP é obrigatório")
+    .typeError("Apenas números são permitidos"),
+  street: yup.string().required("O campo Rua é obrigatório"),
   city: yup.string().required("O campo Cidade é obrigatório"),
   neighborhood: yup.string().required("O campo Bairro é obrigatório"),
   state: yup.string().required("O campo Estado é obrigatório"),
-  number: yup.string().required("O campo número é obrigatório"),
+  number: yup
+    .number()
+    .required("O campo número é obrigatório")
+    .typeError("Apenas números são permitidos"),
 });
 export function SignUpThird() {
   const { body } = useAuth();
@@ -67,152 +71,152 @@ export function SignUpThird() {
             <Logomark />
           </div>
           <img src={stepper} alt="Third stepper" className={style.stepper} />
-          <div className={style.doubleInput}>
-            <div className={style.doubleUpLeft}>
-              <Controller
-                control={control}
-                rules={{ required: true }}
-                name="nickname"
-                render={({ field: { onChange, value } }) => (
-                  <InputSignUpDouble
-                    placeholder="Apelido do endereço"
-                    type="input"
-                    value={value}
-                    control={control}
-                    onChange={onChange}
-                  >
-                    <MdIcons.MdHome />
-                  </InputSignUpDouble>
-                )}
-              />
+
+          <div className={style.spanForm}>
+            <div className={style.doubleInput}>
+              <div>
+                <Controller
+                  control={control}
+                  rules={{ required: true }}
+                  name="nickname"
+                  render={({ field: { onChange, value } }) => (
+                    <Input
+                      placeholder="Apelido do endereço"
+                      control={control}
+                      type="input"
+                      value={value}
+                      onChange={onChange}
+                      className={style.inputNickname}
+                    >
+                      <MdIcons.MdHome />
+                    </Input>
+                  )}
+                />
+                <ErrorMessage> {errors.nickname?.message}</ErrorMessage>
+              </div>
+
+              <div className={style.inputZipCode}>
+                <Controller
+                  control={control}
+                  rules={{ required: true }}
+                  name="zipCode"
+                  render={({ field: { onChange, value } }) => (
+                    <Input
+                      placeholder="CEP"
+                      control={control}
+                      type="input"
+                      value={value}
+                      onChange={(e) => onChange(removeLetters(e.target.value))}
+                      className={style.inputMargin}
+                    >
+                      <MdIcons.MdHome />
+                    </Input>
+                  )}
+                />
+                <ErrorMessage> {errors.zipCode?.message}</ErrorMessage>
+              </div>
             </div>
-            <div className={style.doubleUpRight}>
-              <Controller
-                control={control}
-                rules={{ required: true }}
-                name="zipCode"
-                render={({ field: { onChange, value } }) => (
-                  <InputSignUpDouble
-                    placeholder="CEP"
-                    type="input"
-                    value={value}
-                    control={control}
-                    onChange={onChange}
-                  >
-                    <MdIcons.MdHome />
-                  </InputSignUpDouble>
-                )}
-              />
+
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              name="street"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Rua"
+                  control={control}
+                  type="input"
+                  value={value}
+                  onChange={onChange}
+                >
+                  <MdIcons.MdHome />
+                </Input>
+              )}
+            />
+            <ErrorMessage> {errors.street?.message}</ErrorMessage>
+
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              name="city"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Cidade"
+                  control={control}
+                  type="input"
+                  value={value}
+                  onChange={onChange}
+                >
+                  <MdIcons.MdHome />
+                </Input>
+              )}
+            />
+
+            <ErrorMessage> {errors.city?.message}</ErrorMessage>
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              name="neighborhood"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Bairro"
+                  control={control}
+                  type="input"
+                  value={value}
+                  onChange={onChange}
+                >
+                  <MdIcons.MdHome />
+                </Input>
+              )}
+            />
+            <ErrorMessage> {errors.neighborhood?.message}</ErrorMessage>
+            <div className={style.doubleInput}>
+              <div>
+                <Controller
+                  control={control}
+                  rules={{ required: true }}
+                  name="state"
+                  render={({ field: { onChange, value } }) => (
+                    <Input
+                      placeholder="Estado"
+                      control={control}
+                      type="input"
+                      value={value}
+                      onChange={onChange}
+                      className={style.inputState}
+                    >
+                      <MdIcons.MdHome />
+                    </Input>
+                  )}
+                />
+                <ErrorMessage> {errors.state?.message}</ErrorMessage>
+              </div>
+
+              <div className={style.inputNumber}>
+                <Controller
+                  control={control}
+                  rules={{ required: true }}
+                  name="number"
+                  render={({ field: { onChange, value } }) => (
+                    <Input
+                      placeholder="Número"
+                      control={control}
+                      type="input"
+                      value={value}
+                      onChange={(e) => onChange(removeLetters(e.target.value))}
+                      className={style.inputMargin}
+                    >
+                      <MdIcons.MdHome />
+                    </Input>
+                  )}
+                />
+                <ErrorMessage> {errors.number?.message}</ErrorMessage>
+              </div>
             </div>
+            <Button variant="red" type="submit" className={style.buttonSignUp}>
+              Continuar
+            </Button>
           </div>
-          <div className={style.spanErrorformUp}>
-            <div className={style.formValidationDoubleNick}>
-              {errors.nickname?.message}
-            </div>
-            <div className={style.formValidationDoubleZip}>
-              {errors.zipCode?.message}
-            </div>
-          </div>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            name="street"
-            render={({ field: { onChange, value } }) => (
-              <InputSignUp
-                placeholder="Rua"
-                type="input"
-                control={control}
-                value={value}
-                onChange={onChange}
-              >
-                <MdIcons.MdHome />
-              </InputSignUp>
-            )}
-          />
-          <div className={style.formValidation}>{errors.street?.message}</div>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            name="city"
-            render={({ field: { onChange, value } }) => (
-              <InputSignUp
-                placeholder="Cidade"
-                type="input"
-                control={control}
-                value={value}
-                onChange={onChange}
-              >
-                <MdIcons.MdHome />
-              </InputSignUp>
-            )}
-          />
-          <div className={style.formValidation}>{errors.city?.message}</div>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            name="neighborhood"
-            render={({ field: { onChange, value } }) => (
-              <InputSignUp
-                placeholder="Bairro"
-                type="input"
-                value={value}
-                control={control}
-                onChange={onChange}
-              >
-                <MdIcons.MdHome />
-              </InputSignUp>
-            )}
-          />
-          <div className={style.formValidation}>
-            {errors.neighborhood?.message}
-          </div>
-          <div className={style.doubleInput}>
-            <div className={style.doubleDownLeft}>
-              <Controller
-                control={control}
-                rules={{ required: true }}
-                name="state"
-                render={({ field: { onChange, value } }) => (
-                  <InputSignUpDouble
-                    placeholder="Estado"
-                    type="input"
-                    value={value}
-                    control={control}
-                    onChange={onChange}
-                  >
-                    <MdIcons.MdHome />
-                  </InputSignUpDouble>
-                )}
-              />
-            </div>
-            <div className={style.doubleDownRight}>
-              <Controller
-                control={control}
-                rules={{ required: true }}
-                name="number"
-                render={({ field: { onChange, value } }) => (
-                  <InputSignUpDouble
-                    placeholder="Número"
-                    type="input"
-                    control={control}
-                    value={value}
-                    onChange={onChange}
-                  >
-                    <MdIcons.MdHome />
-                  </InputSignUpDouble>
-                )}
-              />
-            </div>
-          </div>
-          <div className={style.spanErrorformUp}>
-            <div className={style.formValidationDoubleState}>
-              {errors.state?.message}
-            </div>
-            <div className={style.formValidationDoubleNumber}>
-              {errors.number?.message}
-            </div>
-          </div>
-          <ButtonSignUp type="submit"> Continuar</ButtonSignUp>
         </form>
       </div>
       {signUpSucceeded ? <Loader /> : " "}

@@ -2,7 +2,7 @@
 @import "../../styles/common/typography.scss";
 
 .spanSignIn {
-  width: 49%;
+  width: 50%;
   height: 100%;
   position: absolute;
   text-align: center;
@@ -16,37 +16,22 @@
 
 .formRegister {
   position: absolute;
-  width: 37%;
-  height: 45%;
-  margin-right: 2%;
-  margin-bottom: 3%;
-  min-width: 250px;
-  //min-height: 310px;
+  height: 26rem;
+  margin-bottom: 3.2rem;
+  width: 23rem;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .spanLogotype {
-  height: 19%;
-  margin-bottom: 8%;
+  height: 5.6rem;
+  margin-bottom: 2.4rem;
 }
 
-.formValidation {
-  color: $color-theme;
-  font-size: 92%;
-  font-family: $roboto-400;
+.iconSignUpLink {
+  margin-right: 2%;
   position: relative;
-  display: block;
-  margin: 0 0 2% 0%;
-}
-
-.signUpLink {
-  display: inline-flex;
-  margin-top: 20%;
-
-  .iconSignUpLink {
-    margin-right: 2%;
-    position: relative;
-    margin: 0px 4px -2px 0px;
-  }
+  margin: 0px 4px -2px 0px;
 }
 
 .spanImage {
@@ -59,19 +44,42 @@
 
 .imageSignIn {
   height: 95%;
+  max-height: 100%;
   padding-top: 16px;
   display: inline-block;
+}
+
+.buttonSignIn {
+  font-size: 1.2rem;
+  height: 3.8rem;
+  margin-top: 1.3rem;
+  border-radius: 0.8rem;
+}
+
+.inputSignIn {
+  width: 23rem;
+  border: 1px solid black;
+  height: 3.4rem;
+  border-radius: 0.8rem;
+  margin: 0.3rem 0 0.1rem 0;
+}
+
+.spanForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.signInLink {
+  height: 9rem;
+  justify-content: center;
+  line-height: 4.5rem;
 }
 
 @media only screen and (max-width: 800px) {
   .spanSignIn {
     width: 100%;
   }
-
-  .formRegister {
-    max-width: 300px;
-  }
-
   .spanImage {
     display: none;
   }

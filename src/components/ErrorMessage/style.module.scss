@@ -1,9 +1,9 @@
 @import "../../styles/common/colors.scss";
 @import "../../styles/common/typography.scss";
 
-.signInLink {
-  color: $grey-light;
-  font-family: $robotoSlab-400;
+.errorMessage {
+  color: #bf1b1b;
+  margin-top: 0.1rem;
   font-size: 1.2rem;
-  display: flow-root;
+  font-family: "Roboto", sans-serif;
 }
