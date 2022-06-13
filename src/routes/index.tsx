@@ -15,7 +15,8 @@ import {
   SignUpFirst,
   SignUpSecond,
   SignUpThird,
-  // SignUpSuccess,
+  RegisterPromotion,
+  SignUpSuccess,
 } from "../pages";
 
 export function Routes() {
@@ -23,7 +24,6 @@ export function Routes() {
     <BrowserRouter>
       <Stwitch>
         <Route path="/signin" element={<SignIn />} />
-
         <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/menu" element={<Menu />} />
@@ -32,11 +32,10 @@ export function Routes() {
         <Route path="/signupfirst" element={<SignUpFirst />} />
         <Route path="/signupsecond" element={<SignUpSecond />} />
         <Route path="/signupthird" element={<SignUpThird />} />
-
+        <Route path="/promotionregister" element={<RegisterPromotion />} />
+        <Route path="/signupsuccess" element={<SignUpSuccess />} />
         <Route path="*" element={<Navigate to="/signin" />} />
       </Stwitch>
     </BrowserRouter>
   );
 }
-
-// <Route path="/signupsuccess" element={<SignUpSuccess />} />

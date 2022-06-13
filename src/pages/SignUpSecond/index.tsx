@@ -6,21 +6,33 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import stepper from "../../assets/img/signUpStepperII.png";
-import { ButtonSignUp, InputSignUp, Logomark } from "../../components";
-import { SelectSignUp } from "../../components/SelectInput";
+import { Logomark } from "../../components";
+import { Button } from "../../components/Button";
+import { ErrorMessage } from "../../components/ErrorMessage";
+import { Input } from "../../components/Input";
+import { SelectSignUp } from "../../components/SelectSignUp";
 import { useAuth } from "../../context";
+import { removeLetters } from "../../utils/textUtils";
+import { phonenumber } from "../../utils/validation";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
   name: yup.string().required("O campo nome é obrigatório"),
-  phone: yup.string().required("O campo telefone é obrigatório"),
-  foodTypes: yup.string(),
+  phone: yup
+    .number()
+    .required("O campo telefone é obrigatório")
+    .typeError("Apenas números são permitidos"),
 });
 export function SignUpSecond() {
   const navigate = useNavigate();
+
   const { body } = useAuth();
   const [selectedOption, setSelectedOption] = useState([]);
+  const [isSelectEmpty, setIsSelectEmpty] = useState(false);
 
+  const onChangeSelect = () => {
+    console.log("oi");
+  };
   const {
     control,
     handleSubmit,
@@ -33,6 +45,11 @@ export function SignUpSecond() {
   const handleChange = (e: any) => {
     setSelectedOption(e);
     console.log(e);
+    if (e.length === 0) {
+      setIsSelectEmpty(true);
+    } else {
+      setIsSelectEmpty(false);
+    }
   };
 
   function formatSelectedOptions() {
@@ -47,13 +64,26 @@ export function SignUpSecond() {
     return optionsList;
   }
 
+  const handleErrorSelect = () => {
+    if (selectedOption.length === 0) {
+      setIsSelectEmpty(true);
+    } else {
+      setIsSelectEmpty(false);
+    }
+  };
+
   const onSubmit = () => {
+    if (selectedOption.length === 0) {
+      setIsSelectEmpty(true);
+    } else {
+      navigate("/signupthird");
+    }
     const values = getValues();
     console.log(values);
     body.restaurant.name = values.name;
     body.restaurant.phone = values.phone;
     body.restaurant.foodTypes = formatSelectedOptions();
-    navigate("/signupthird");
+    // navigate("/signupthird");
     console.log(body);
   };
 
@@ -64,47 +94,64 @@ export function SignUpSecond() {
           <Logomark />
         </div>
         <img src={stepper} alt="Second stepper" className={style.stepper} />
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          name="name"
-          render={({ field: { onChange, value } }) => (
-            <InputSignUp
-              placeholder="Nome"
-              type="input"
-              value={value}
-              control={control}
-              onChange={onChange}
-            >
-              <MdIcons.MdAccessibility />
-            </InputSignUp>
+        <div className={style.spanForm}>
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            name="name"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder="Nome"
+                control={control}
+                type="input"
+                value={value}
+                onChange={onChange}
+              >
+                <MdIcons.MdAccessibility />
+              </Input>
+            )}
+          />
+          <ErrorMessage>{errors.name?.message}</ErrorMessage>
+
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            name="phone"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder="Telefone"
+                control={control}
+                type="tel"
+                value={value}
+                onChange={(e) => onChange(removeLetters(e.target.value))}
+              >
+                <MdIcons.MdPhone />
+              </Input>
+            )}
+          />
+
+          <ErrorMessage>{errors.phone?.message}</ErrorMessage>
+
+          <SelectSignUp
+            placeholder="Tipos de comida"
+            type="select"
+            onChange={handleChange}
+          />
+          {isSelectEmpty ? (
+            <ErrorMessage>Escolha uma opção de comida</ErrorMessage>
+          ) : (
+            ""
           )}
-        />
-        <div className={style.formValidation}>{errors.name?.message}</div>
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          name="phone"
-          render={({ field: { onChange, value } }) => (
-            <InputSignUp
-              placeholder="Telefone"
-              type="tel"
-              control={control}
-              value={value}
-              onChange={onChange}
-            >
-              <MdIcons.MdPhone />
-            </InputSignUp>
-          )}
-        />
-        <div className={style.formValidation}>{errors.phone?.message}</div>
-        <SelectSignUp
-          placeholder="Tipos de comida"
-          type="select"
-          onChange={handleChange}
-        />
-        <div className={style.formValidation}>{errors.foodTypes?.message}</div>
-        <ButtonSignUp type="submit"> Continuar</ButtonSignUp>{" "}
+
+          <Button
+            variant="red"
+            type="submit"
+            onClick={handleErrorSelect}
+            className={style.buttonSignUp}
+          >
+            Continuar
+          </Button>
+        </div>
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { cnpj } from "cpf-cnpj-validator";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as HiIcons from "react-icons/hi";
@@ -8,8 +9,12 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import stepper from "../../assets/img/signUpStepperI.png";
-import { ButtonSignUp, InputSignUp, Logomark } from "../../components";
+import { Logomark } from "../../components";
+import { Button } from "../../components/Button";
+import { ErrorMessage } from "../../components/ErrorMessage";
+import { Input } from "../../components/Input";
 import { useAuth } from "../../context";
+import { removeLetters } from "../../utils/textUtils";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
@@ -23,8 +28,9 @@ const schema = yup.object().shape({
     .required("O campo senha é obrigatório"),
   cnpj: yup
     .string()
+    .required("O campo CNPJ é obrigatório")
     .min(14, "Insira um CNPJ válido")
-    .required("O campo CNPJ é obrigatório"),
+    .max(14, "Insira um CNPJ válido"),
 });
 
 export function SignUpFirst() {
@@ -58,58 +64,65 @@ export function SignUpFirst() {
           <Logomark />
         </div>
         <img src={stepper} alt="First stepper" className={style.stepper} />
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          name="email"
-          render={({ field: { onChange, value } }) => (
-            <InputSignUp
-              placeholder="Email"
-              type="input"
-              value={value}
-              control={control}
-              onChange={onChange}
-            >
-              <HiIcons.HiOutlineMail />
-            </InputSignUp>
-          )}
-        />
-        <div className={style.formValidation}>{errors.email?.message}</div>
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          name="password"
-          render={({ field: { onChange, value } }) => (
-            <InputSignUp
-              placeholder="Senha"
-              type="password"
-              value={value}
-              control={control}
-              onChange={onChange}
-            >
-              <MdIcons.MdLockOpen />
-            </InputSignUp>
-          )}
-        />
-        <div className={style.formValidation}>{errors.password?.message}</div>
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          name="cnpj"
-          render={({ field: { onChange, value } }) => (
-            <InputSignUp
-              placeholder="Cnpj"
-              type="input"
-              value={value}
-              control={control}
-              onChange={onChange}
-            >
-              <IoIcons.IoMdCard />
-            </InputSignUp>
-          )}
-        />
-        <div className={style.formValidation}>{errors.cnpj?.message}</div>
-        <ButtonSignUp type="button"> Continuar</ButtonSignUp>
+        <div className={style.spanForm}>
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            name="email"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder="Email"
+                control={control}
+                type="input"
+                value={value}
+                onChange={onChange}
+              >
+                <HiIcons.HiOutlineMail />
+              </Input>
+            )}
+          />
+          <ErrorMessage>{errors.email?.message}</ErrorMessage>
+
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            name="password"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder="Senha"
+                control={control}
+                type="password"
+                value={value}
+                onChange={onChange}
+              >
+                <MdIcons.MdLockOpen />
+              </Input>
+            )}
+          />
+          <ErrorMessage>{errors.password?.message}</ErrorMessage>
+
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            name="cnpj"
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder="Cnpj"
+                control={control}
+                type="input"
+                value={cnpj.format(value)}
+                onChange={(e) => onChange(removeLetters(e.target.value))}
+              >
+                <IoIcons.IoMdCard />
+              </Input>
+            )}
+          />
+          <ErrorMessage>{errors.cnpj?.message}</ErrorMessage>
+        </div>
+
+        <Button variant="red" type="submit" className={style.buttonSignUp}>
+          Continuar
+        </Button>
       </form>
     </span>
   );
