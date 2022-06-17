@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { cnpj } from "cpf-cnpj-validator";
-import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as HiIcons from "react-icons/hi";
 import * as IoIcons from "react-icons/io";

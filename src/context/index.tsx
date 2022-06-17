@@ -1,24 +1,28 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+
+import { IBodyContext } from "../interface/IBodyContext";
 
 interface IAuthProps {
   children: ReactNode;
 }
 
-interface IPropContext {
-  token: string;
-  type: string;
-}
 interface IAuthContextData {
-  authState: IPropContext;
-  setAuthState: React.Dispatch<React.SetStateAction<IPropContext>>;
-  body: any;
+  authState: string;
+  setAuthState: React.Dispatch<React.SetStateAction<string>>;
+  body: IBodyContext;
 }
 
 export const authenticationContext = createContext({} as IAuthContextData);
 
 export function AuthenticationProvider({ children }: IAuthProps) {
-  const [authState, setAuthState] = useState({} as IPropContext);
+  const [authState, setAuthState] = useState("");
 
   const body = {
     email: "",
@@ -31,8 +35,10 @@ export function AuthenticationProvider({ children }: IAuthProps) {
       name: "",
       cnpj: "",
       phone: "",
-      photo: "",
-      foodTypes: "",
+      photo: {
+        code: "",
+      },
+      foodTypes: [],
       address: {
         street: "",
         number: "",
@@ -44,8 +50,15 @@ export function AuthenticationProvider({ children }: IAuthProps) {
       },
     },
   };
+
   return (
-    <authenticationContext.Provider value={{ authState, setAuthState, body }}>
+    <authenticationContext.Provider
+      value={{
+        authState,
+        setAuthState,
+        body,
+      }}
+    >
       {children}
     </authenticationContext.Provider>
   );
