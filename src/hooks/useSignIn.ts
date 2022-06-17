@@ -14,7 +14,7 @@ export function useSignIn() {
       const response = await post("/auth", data);
       setSignInSucceeded(true);
       console.log(response.data.token);
-      localStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("token", response.data.token);
       setTimeout(() => {
         navigate("/home");
       }, 5000);

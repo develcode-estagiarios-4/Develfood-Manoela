@@ -1,9 +1,8 @@
 import api from "./api";
 
 const config = {
-  // headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNjYiLCJpYXQiOjE2NTU0ODQ3NTEsImV4cCI6MTY1NTU3MTE1MX0.FoAPj_a4FnPtljZfyyKu9ep1Uu9KfhMzUJLjTf5pWCw`,
+    Authorization: `Bearer ${sessionStorage.getItem("token")}`,
   },
 };
 
