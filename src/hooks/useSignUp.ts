@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import api from "../services/api";
-import { IUsuario } from "./useSignIn";
-
-const url = "https://develfood-3.herokuapp.com/user";
+import { IBodyContext } from "../interface/IBodyContext";
+import { post } from "../services/apiRequest";
 
 export function signUp() {
   const navigate = useNavigate();
 
   const [signUpSucceeded, setIsSignUpSucceeded] = useState(false);
 
-  const signUpPost = async (data: any) => {
+  const signUpPost = async (data: IBodyContext) => {
     try {
-      const response = await api.post(url, data);
+      const response = await post("/user", data);
       if (response.status === 201) {
         setIsSignUpSucceeded(true);
         setTimeout(() => {
-          navigate("/signin");
+          navigate("/signupsuccess");
         }, 5000);
       }
     } catch (error) {

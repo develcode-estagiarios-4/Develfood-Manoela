@@ -1,0 +1,48 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.button {
+  opacity: 70%;
+  color: white;
+  font-size: 3.8rem;
+  z-index: 2;
+  border: 1px solid black;
+  width: 35rem;
+  font-family: "Kreon", serif;
+  height: 10rem;
+  position: absolute;
+  margin-top: 8rem;
+  right: 1rem;
+  text-align: center;
+  position: fixed;
+  align-content: center;
+  display: inline-grid;
+  animation: fadeIn 3s ease-in-out;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  -moz-animation: fadeIn 0.5s ease-in-out;
+  -o-animation: fadeIn 0.5s ease-in-out;
+   animation: fadeIn 0.5s ease-in-out;
+}
+  
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 50%; } 
+  }
+  @-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 50%; }
+  }
+  @keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 50%; }
+  }
+
+
+.red {
+  background-color: $color-theme;
+}
+
+.green {
+  background-color: $green;
+}

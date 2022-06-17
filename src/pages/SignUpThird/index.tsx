@@ -11,6 +11,7 @@ import { Input } from "../../components/Input";
 import { useAuth } from "../../context";
 import { signUp } from "../../hooks/useSignUp";
 import { removeLetters } from "../../utils/textUtils";
+import { newDate } from "../../utils/todayDate";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
@@ -39,14 +40,7 @@ export function SignUpThird() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  function newDate() {
-    const date = new Date();
-    const dia = String(date.getDate());
-    const mes = String(date.getMonth() + 1).padStart(2, "0");
-    const ano = String(date.getFullYear());
-    const currentlyData = `${ano}-${mes}-${dia}`;
-    return currentlyData;
-  }
+
   const onSubmit = () => {
     const createdData = newDate();
     const values = getValues();

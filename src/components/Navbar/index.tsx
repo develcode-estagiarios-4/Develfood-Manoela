@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -6,17 +5,6 @@ import { Link } from "react-router-dom";
 import style from "./style.module.scss";
 
 function Navbar() {
-  // const [sidebar, setSidebar] = useState(false);
-  // const showSidebar = () => {
-  //  setSidebar(!false);
-  //  console.log(sidebar);
-  // };
-
-  // const othermenu = () => {
-  //  setSidebar(true);
-  //  console.log(sidebar);
-  // };
-
   return (
     <nav className={style.navbarActive}>
       <ul>
@@ -28,7 +16,7 @@ function Navbar() {
         </li>
         <li>
           <Link to="/perfil" className={style.navbarMenu}>
-            <FaIcons.FaUserCircle className={style.navbarIcons} />
+            <FaIcons.FaUserCircle className={style.navbarIconUser} />
             <div className={style.menuNone}>Perfil</div>
           </Link>
         </li>
@@ -45,7 +33,7 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/promocoes" className={style.navbarMenu}>
+          <Link to="/promotion" className={style.navbarMenu}>
             <MdIcons.MdOutlineMoneyOffCsred className={style.navbarIcons} />
             <div className={style.menuNone}>Promoções</div>
           </Link>

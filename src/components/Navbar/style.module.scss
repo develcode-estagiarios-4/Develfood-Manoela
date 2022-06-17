@@ -1,13 +1,11 @@
 @import "../../styles/common/colors.scss";
 
 .navbar {
-  position:fixed;
+  position: fixed;
   height: 100%;
   width: 60px;
   background-color: $color-theme;
   display: inline-block;
-  padding: 10px 0 0 10px;
-  line-height: 33px;
 
   .navbarMenu {
     color: black;
@@ -15,45 +13,41 @@
 
   .navbarMenu:hover {
     color: white;
-  
   }
-  .navbarIcons {
-    padding: 0 10px 0 0;
-    width: 45px;
-    height: 44px;
-    padding-top: 5px;
-  }
-
   .menuNone {
     display: none;
   }
 }
 
 .navbarActive {
-  position:fixed;
+  position: fixed;
   height: 100%;
-  width: 260px;
+  width: 32rem;
   background-color: $color-theme;
   display: inline-block;
-  padding: 10px 0 0 10px;
-  line-height: 55px;
+  padding: 1rem 0 0 0.1rem;
 
   .navbarMenu {
     color: black;
-    font-size: 40px;
-    line-height: 60px;
+    font-size: 7.5rem;
+    line-height: 6.5rem;
     display: flex;
   }
 
   .navbarMenu:hover {
     color: white;
-  
+    -webkit-text-stroke: 0.1rem black;
   }
   .navbarIcons {
-    padding: 0 10px 0 0;
-    width: 45px;
-    height: 44px;
-    padding-top: 5px;
+    padding: 0 2rem 0 0;
+    width: 7rem;
+    height: 5.6rem;
+    padding-top: 0.2rem;
   }
-  
+  .navbarIconUser {
+    padding: 4rem 2rem 0 0;
+    width: 7rem;
+    height: 4.5rem;
+    padding-top: 0.8rem;
+  }
 }
