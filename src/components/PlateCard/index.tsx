@@ -1,26 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-import { Input } from "..";
+import { Input } from "../Input";
 
-import { usePlate } from "../../../hooks/usePlate";
-import { IPlate } from "../../../interface/IPlate";
+import { usePlate } from "../../hooks/usePlate";
+import { IPlate } from "../../interface/IPlate";
 import style from "./style.module.scss";
 
 interface IPlateProps {
   data: IPlate;
-  onDelete: () => void;
+  onDelete: (id: number) => void;
 }
 
 export function PlateCard({ data, onDelete }: IPlateProps) {
   const navigate = useNavigate();
-  const { deletePlate, plateBanner, getPlateBanner } = usePlate();
+  const { plateBanner, getPlateBanner } = usePlate();
 
   const handleDelete = (id: number) => {
-    deletePlate(id);
-    console.log("deletadahhh");
+    onDelete(id);
   };
 
   const handleEdit = (id: number) => {

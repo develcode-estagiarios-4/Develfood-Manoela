@@ -8,5 +8,3 @@ export * from "./SignUpFirst/index";
 export * from "./SignUpSecond/index";
 export * from "./SignUpThird/index";
 export * from "./SignUpSucess/index";
-export * from "./PromotionForm/index";
-export * from "./PlateForm/index";

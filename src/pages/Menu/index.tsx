@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Container, NoPlate } from "../../components";
 import { DeleteMessage } from "../../components/DeleteMessage";
-import { PlateCard } from "../../components/Input/PlateCard";
+import { PlateCard } from "../../components/PlateCard";
 import { usePlate } from "../../hooks/usePlate";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import { IPlate } from "../../interface/IPlate";
@@ -16,13 +16,13 @@ function Box({ children }: PropsWithChildren<unknown>) {
       style={{
         border: "1px solid #ccc",
         display: "inline-block",
-        lineHeight: 39,
+        lineHeight: 36,
         padding: "1rem",
         marginBottom: "3rem",
-        width: 228,
+        width: 210,
         justifyContent: "space-between",
-        marginLeft: "4rem",
-        columnGap: "1rem",
+        marginLeft: "3.5rem",
+        columnGap: "4rem",
         flexWrap: "wrap",
       }}
     >
@@ -34,9 +34,19 @@ function Box({ children }: PropsWithChildren<unknown>) {
 export function Menu() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [id, setId] = useState(0);
 
   const { restaurant, getRestaurant } = useRestaurant();
-  const { getPlates, plates, searchPlate } = usePlate();
+  const {
+    getPlates,
+    plates,
+    searchPlate,
+    filteredPlates,
+    setPlates,
+    deletePlate,
+  } = usePlate();
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     getRestaurant();
@@ -52,19 +62,49 @@ export function Menu() {
     }, 2000);
   }, []);
 
-  const handleDeletePromotion = () => {
-    getPlates();
-  };
+  useEffect(() => {
+    console.log(filteredPlates);
+    setPlates(filteredPlates);
+  }, [filteredPlates]);
+
+  function handleSearch(value: string) {
+    if (value.length > 1) {
+      setFilter(value);
+    } else {
+      setFilter("");
+    }
+  }
+
+  useEffect(() => {
+    console.log(filter);
+    if (restaurant?.id !== undefined) {
+      searchPlate(filter, restaurant?.id);
+      getPlates();
+    }
+  }, [filter]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    if (restaurant?.id !== undefined) {
-      searchPlate(e.target.value, restaurant.id);
-    }
+    setFilter(e.target.value);
   };
 
   const handleClick = () => {
     navigate("/plate/new");
+  };
+
+  const handleDeletePromotion = (id: number) => {
+    setId(id);
+    setDeleteAlert(true);
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteAlert(false);
+  };
+
+  const handleDeletePromotionee = () => {
+    deletePlate(id);
+    setDeleteAlert(false);
+    setTimeout(() => getPlates(), 500);
   };
 
   return (
@@ -75,6 +115,14 @@ export function Menu() {
           {restaurant?.name}
         </div>{" "}
         <div className={style.spancontent}>
+          {deleteAlert && (
+            <div className={style.deleteMessage}>
+              <DeleteMessage
+                onDelete={handleDeletePromotionee}
+                cancelDelete={handleCancelDelete}
+              />
+            </div>
+          )}
           <input
             className={style.searchPlate}
             placeholder="Nome do Prato"
@@ -86,9 +134,8 @@ export function Menu() {
             className={style.buttonPromotion}
             onClick={handleClick}
           >
-            Nova Promoção
+            Nova Prato
           </Button>
-          {/* <DeleteMessage /> */}
 
           {loading ? (
             <div className={style.contentNoPromotion}>
@@ -105,7 +152,10 @@ export function Menu() {
               {plates.length > 0 ? (
                 plates.map((plate: IPlate) => (
                   <div key={plate.id}>
-                    <PlateCard data={plate} onDelete={handleDeletePromotion} />
+                    <PlateCard
+                      data={plate}
+                      onDelete={(id) => handleDeletePromotion(id)}
+                    />
                   </div>
                 ))
               ) : (

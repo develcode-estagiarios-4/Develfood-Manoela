@@ -2,11 +2,12 @@ import api from "./api";
 
 const config = {
   headers: {
-    Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNDQzIiwiaWF0IjoxNjU1NjU4MjA3LCJleHAiOjE2NTU3NDQ2MDd9.RpavHlmBpuwZBDQJ1Q95xBflZfVlFF_PB-0AhXK_34o`,
   },
 };
+// Authorization: `Bearer ${sessionStorage.getItem("token")}`,
 
-const defaultDomainURL = "https://d0cd-179-235-88-84.ngrok.io";
+const defaultDomainURL = "https://develfood-3.herokuapp.com";
 
 export const get = (url: string) => {
   return api

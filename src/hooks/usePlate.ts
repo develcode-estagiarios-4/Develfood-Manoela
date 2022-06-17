@@ -18,28 +18,29 @@ const defaultPlateValues = {
 };
 
 export function usePlate() {
-  const [postSuccessed, setPostSuccessed] = useState(false);
-  const [postError, setError] = useState(false);
-  const [putSuccessed, setPutSuccessed] = useState(false);
-  const [putError, setPutError] = useState(false);
+  const [postPlateSuccessed, setPostPlateSuccessed] = useState(false);
+  const [postPlateError, setPlateError] = useState(false);
+  const [putPlateSuccessed, setPutPlateSuccessed] = useState(false);
+  const [putPlateError, setPutPlateError] = useState(false);
   const [platesUpdated, setPlatesUpdated] = useState(false);
 
   const [plate, setPlate] = useState(defaultPlateValues);
   const [plates, setPlates] = useState<IPlate[]>([]);
   const [plateBanner, setPlateBanner] = useState("");
+  const [filteredPlates, setFilteredPlates] = useState<IPlate[]>([]);
 
-  const postPlate = async (data: INewPlate) => {
+  const postPlate = async (data: [INewPlate]) => {
     try {
       const response = await post("/plate", data);
-      setPostSuccessed(true);
+      setPostPlateSuccessed(true);
       setTimeout(() => {
-        setPostSuccessed(false);
+        setPostPlateSuccessed(false);
       }, 3000);
     } catch (error) {
-      setError(true);
+      setPlateError(true);
       if (error)
         setTimeout(() => {
-          setError(false);
+          setPlateError(false);
         }, 3000);
     }
   };
@@ -48,7 +49,6 @@ export function usePlate() {
     try {
       const response = await Delete(`/plate/${id}`);
       setPlatesUpdated(true);
-      console.log("deletadoohhh");
       console.log(response);
     } catch (error) {
       // alert(error);
@@ -78,7 +78,6 @@ export function usePlate() {
   async function getPlateBanner(id: string) {
     try {
       const response = await get(`/photo/${id}`);
-      // console.log(response.data.code);
       setPlateBanner(response.data.code);
     } catch (error) {
       // console.log(error);
@@ -88,24 +87,25 @@ export function usePlate() {
   async function updatePlate(id: string, data: INewPlate) {
     try {
       const response = await put(`/plate/${id}`, data);
-      setPutSuccessed(true);
+      setPutPlateSuccessed(true);
       setTimeout(() => {
-        setPutSuccessed(false);
+        setPutPlateSuccessed(false);
       }, 3000);
     } catch (error) {
-      setPutError(true);
+      setPutPlateError(true);
       setTimeout(() => {
-        setPutError(false);
+        setPutPlateError(false);
       }, 3000);
       // console.log(error);
     }
   }
 
-  async function searchPlate(data: string, id: number) {
+  async function searchPlate(filter: string, id: number) {
     try {
       const response = await get(
-        `plate/search?name=${data}&restaurantid=${id}`
+        `/plate/search?name=${filter}&restaurantid=${id}`
       );
+      setFilteredPlates(response.data);
       console.log(response);
     } catch (error) {
       // console.log(error);
@@ -113,19 +113,21 @@ export function usePlate() {
   }
 
   return {
+    filteredPlates,
     postPlate,
     updatePlate,
-    postSuccessed,
+    postPlateSuccessed,
     searchPlate,
-    postError,
+    postPlateError,
     deletePlate,
     platesUpdated,
     getPlate,
+    setPlates,
     setPlatesUpdated,
     getPlateBanner,
     setPlateBanner,
-    putSuccessed,
-    putError,
+    putPlateSuccessed,
+    putPlateError,
     getPlates,
     plateBanner,
     plates,
