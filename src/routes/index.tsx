@@ -32,8 +32,8 @@ export function Routes() {
         <Route path="/signupfirst" element={<SignUpFirst />} />
         <Route path="/signupsecond" element={<SignUpSecond />} />
         <Route path="/signupthird" element={<SignUpThird />} />
-        <Route path="/promotion/new" element={<PromotionForm />} />
-        <Route path="/promotion/edit/:id" element={<PromotionForm />} />
+        <Route path="/promotionregister" element={<RegisterPromotion />} />
+
         <Route path="/signupsuccess" element={<SignUpSuccess />} />
         <Route path="*" element={<Navigate to="/signin" />} />
       </Stwitch>
