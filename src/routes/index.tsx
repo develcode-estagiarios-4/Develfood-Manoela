@@ -10,13 +10,14 @@ import {
   Home,
   Pedidos,
   Perfil,
-  Promocoes,
   SignIn,
   SignUpFirst,
   SignUpSecond,
   SignUpThird,
   PromotionForm,
   SignUpSuccess,
+  Promotions,
+  PlateForm,
 } from "../pages";
 
 export function Routes() {
@@ -28,12 +29,14 @@ export function Routes() {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/pedidos" element={<Pedidos />} />
-        <Route path="/promotion" element={<Promocoes />} />
+        <Route path="/promotion" element={<Promotions />} />
         <Route path="/signupfirst" element={<SignUpFirst />} />
         <Route path="/signupsecond" element={<SignUpSecond />} />
         <Route path="/signupthird" element={<SignUpThird />} />
         <Route path="/promotion/new" element={<PromotionForm />} />
         <Route path="/promotion/edit/:id" element={<PromotionForm />} />
+        <Route path="/plate/new" element={<PlateForm />} />
+        <Route path="/plate/edit/:id" element={<PlateForm />} />
         <Route path="/signupsuccess" element={<SignUpSuccess />} />
         <Route path="*" element={<Navigate to="/signin" />} />
       </Stwitch>

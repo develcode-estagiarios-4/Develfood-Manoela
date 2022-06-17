@@ -53,6 +53,11 @@ export function usePromotion() {
   const deletePromotion = async (id: number) => {
     try {
       const response = await Delete(`/restaurantPromotion/${id}`);
+      const handleRefresh = async (id: number) => {
+        await deletePromotion(id);
+        setPutSuccessed(true);
+        console.log(putSuccessed);
+      };
     } catch (error) {
       // alert(error);
     }
@@ -120,6 +125,7 @@ export function usePromotion() {
     putError,
     getPromotions,
     promotionBanner,
+    setPutSuccessed,
     promotions,
     promotion,
   };

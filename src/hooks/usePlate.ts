@@ -101,10 +101,22 @@ export function usePlate() {
     }
   }
 
+  async function searchPlate(data: string, id: number) {
+    try {
+      const response = await get(
+        `plate/search?name=${data}&restaurantid=${id}`
+      );
+      console.log(response);
+    } catch (error) {
+      // console.log(error);
+    }
+  }
+
   return {
     postPlate,
     updatePlate,
     postSuccessed,
+    searchPlate,
     postError,
     deletePlate,
     platesUpdated,

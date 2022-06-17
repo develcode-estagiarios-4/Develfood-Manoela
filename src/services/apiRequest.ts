@@ -3,11 +3,11 @@ import api from "./api";
 const config = {
   // headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNDQzIiwiaWF0IjoxNjU1NDQ5NTEzLCJleHAiOjE2NTU1MzU5MTN9.EyDh4OdDCQDICagUv7zEqMbwXQwTpcjxKDThq5LIOrw`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNjYiLCJpYXQiOjE2NTU0ODQ3NTEsImV4cCI6MTY1NTU3MTE1MX0.FoAPj_a4FnPtljZfyyKu9ep1Uu9KfhMzUJLjTf5pWCw`,
   },
 };
 
-const defaultDomainURL = "https://a927-179-235-88-84.ngrok.io";
+const defaultDomainURL = "https://d0cd-179-235-88-84.ngrok.io";
 
 export const get = (url: string) => {
   return api

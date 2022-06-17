@@ -10,3 +10,5 @@ export * from "./Input/index";
 export * from "./NoPromotion/index";
 export * from "./PromotionCard/index";
 export * from "./SelectSignUp/index";
+export * from "./SelectSignUp/index";
+export * from "./NoPlate/index";
