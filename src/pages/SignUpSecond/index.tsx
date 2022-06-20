@@ -30,6 +30,9 @@ export function SignUpSecond() {
   const [selectedOption, setSelectedOption] = useState([]);
   const [isSelectEmpty, setIsSelectEmpty] = useState(false);
 
+  const onChangeSelect = () => {
+    console.log("oi");
+  };
   const {
     control,
     handleSubmit,

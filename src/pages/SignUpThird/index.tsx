@@ -12,6 +12,7 @@ import { useAuth } from "../../context";
 import { signUp } from "../../hooks/useSignUp";
 import { removeLetters } from "../../utils/textUtils";
 import { newDate } from "../../utils/todayDate";
+
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
