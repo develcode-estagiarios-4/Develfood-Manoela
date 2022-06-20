@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import { INewPromotion } from "../interface/INewPromotion";
 import { IPromotion } from "../interface/IPromotion";
@@ -27,8 +28,8 @@ const defaultPromotionValues = {
 export function usePromotion() {
   const [postSuccessed, setPostSuccessed] = useState(false);
   const [postError, setError] = useState(false);
-  const [putSuccessed, setPutSuccessed] = useState(false);
-  const [putError, setPutError] = useState(false);
+  const [putPromotionSuccessed, setPutPromotionSuccessed] = useState(false);
+  const [putError, setPutPromotionError] = useState(false);
 
   const [promotion, setPromotion] = useState(defaultPromotionValues);
   const [promotions, setPromotions] = useState<IPromotion[]>([]);
@@ -41,6 +42,7 @@ export function usePromotion() {
       setTimeout(() => {
         setPostSuccessed(false);
       }, 3000);
+      toast("criada");
     } catch (error) {
       setError(true);
       if (error)
@@ -92,19 +94,22 @@ export function usePromotion() {
   async function updatePromotion(id: string, data: INewPromotion) {
     try {
       const response = await put(`/restaurantPromotion/${id}`, data);
-      setPutSuccessed(true);
-      console.log(putSuccessed);
-      console.log(response);
+      setPutPromotionSuccessed(true);
+      console.log(response.response.status);
+      if (response.response.status === 500) {
+        console.log("Oi");
+        setPutPromotionSuccessed(true);
+      }
       setTimeout(() => {
-        setPutSuccessed(false);
-      }, 3000);
+        // setPutPromotionSuccessed(false);
+        setPutPromotionSuccessed(true);
+        console.log(putPromotionSuccessed);
+      }, 4000);
     } catch (error) {
-      setPutError(true);
-      console.log(error);
+      setPutPromotionError(true);
       setTimeout(() => {
-        setPutError(false);
+        setPutPromotionError(false);
       }, 3000);
-      // console.log(error);
     }
   }
 
@@ -116,10 +121,11 @@ export function usePromotion() {
     deletePromotion,
     getPromotion,
     getPromotionBanner,
-    putSuccessed,
+    putPromotionSuccessed,
     putError,
     getPromotions,
     promotionBanner,
+    setPutPromotionSuccessed,
     promotions,
     promotion,
   };

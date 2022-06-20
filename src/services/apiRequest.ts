@@ -1,13 +1,13 @@
 import api from "./api";
 
 const config = {
-  // headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNDQzIiwiaWF0IjoxNjU1NDQ5NTEzLCJleHAiOjE2NTU1MzU5MTN9.EyDh4OdDCQDICagUv7zEqMbwXQwTpcjxKDThq5LIOrw`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNDQzIiwiaWF0IjoxNjU1NjU4MjA3LCJleHAiOjE2NTU3NDQ2MDd9.RpavHlmBpuwZBDQJ1Q95xBflZfVlFF_PB-0AhXK_34o`,
   },
 };
+// Authorization: `Bearer ${sessionStorage.getItem("token")}`,
 
-const defaultDomainURL = "https://a927-179-235-88-84.ngrok.io";
+const defaultDomainURL = "https://develfood-3.herokuapp.com";
 
 export const get = (url: string) => {
   return api

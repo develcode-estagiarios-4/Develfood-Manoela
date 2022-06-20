@@ -1,0 +1,74 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.promotion {
+  height: 23rem;
+  width: 23rem;
+  border: 1px solid black;
+}
+
+.promotion:hover {
+  border: 1px solid red;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .spanButtons {
+    display: flex;
+    opacity: 100%;
+  }
+
+  .promotionTitle {
+    opacity: 100%;
+  }
+
+  .imagePromotion {
+    opacity: 90%;
+  }
+}
+
+.editButton {
+  height: 7rem;
+}
+
+.spanButtons {
+  justify-content: space-around;
+  margin: 9rem 1.1rem 0 1.1rem;
+  opacity: 0%;
+  display: flex;
+}
+
+.IconDelete {
+  width: 4rem;
+  height: 4rem;
+}
+
+.IconEdit {
+  width: 4rem;
+  height: 4rem;
+}
+
+.spanDelete {
+  background-color: $red-delete;
+  border-radius: 50%;
+  height: 7rem;
+  width: 8rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.spanEdit {
+  background-color: $green-edit;
+  border-radius: 50%;
+  height: 7rem;
+  margin: 0 0 0 0;
+  width: 8rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.imagePromotion {
+  height: 23rem;
+  width: 23rem;
+  z-index: -1;
+  position: absolute;
+  margin: -9rem 0 0 -11.5rem;
+}

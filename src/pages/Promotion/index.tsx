@@ -32,7 +32,7 @@ function Box({ children }: PropsWithChildren<unknown>) {
   );
 }
 
-export function Promocoes() {
+export function Promotions() {
   const navigate = useNavigate();
   const { getPromotions, promotions } = usePromotion();
   const [loading, setLoading] = useState(true);

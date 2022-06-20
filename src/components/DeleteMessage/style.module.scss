@@ -1,0 +1,44 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.deleteMessage {
+  font-size: 3rem;
+  border: 1px solid black;
+  width: 52rem;
+  height: 29rem;
+  background-color: #F8F0F0;
+  align-content: center;
+  display: inline-grid;
+  text-align-last: center;
+}
+
+.buttonDeleteMessage {
+  width: 19rem;
+  border: 0.1rem solid black;
+  height: 4rem;
+  justify-content: space-between;
+  border-radius: 1rem;
+  padding-bottom: 1.5rem;
+  -webkit-text-stroke: 0.50px black;
+}
+
+.buttonSpan {
+  margin-top: 7rem;
+  justify-content: space-around;
+  margin-left: -1rem;
+  padding-left: -4rem;
+
+
+  display: flex;
+  margin-bottom: -6rem;
+}
+
+
+.iconExit {
+  width: 3.5rem;
+  height: 5rem;
+  position: fixed;
+  margin-left: 48rem;
+  margin-top: -0.5rem;
+  cursor: pointer;
+}
