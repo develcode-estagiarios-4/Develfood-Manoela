@@ -1,6 +1,6 @@
 import * as MdIcons from "react-icons/md";
-import { Button } from "../Button";
 
+import { Button } from "../Button";
 import style from "./style.module.scss";
 
 interface IDeleteMessageProps {

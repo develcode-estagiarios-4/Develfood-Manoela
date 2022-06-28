@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { cnpj } from "cpf-cnpj-validator";
 import { Controller, useForm } from "react-hook-form";
 import * as HiIcons from "react-icons/hi";
 import * as IoIcons from "react-icons/io";
@@ -13,7 +12,7 @@ import { Button } from "../../components/Button";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
 import { useAuth } from "../../context";
-import { removeLetters } from "../../utils/textUtils";
+import { cnpj } from "../../utils/textUtils";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
@@ -25,11 +24,7 @@ const schema = yup.object().shape({
     .string()
     .min(6, "A senha deve ter no mínimo 6 carácteres")
     .required("O campo senha é obrigatório"),
-  cnpj: yup
-    .string()
-    .required("O campo CNPJ é obrigatório")
-    .min(14, "Insira um CNPJ válido")
-    .max(14, "Insira um CNPJ válido"),
+  cnpj: yup.string().required("O campo CNPJ é obrigatório"),
 });
 
 export function SignUpFirst() {
@@ -51,9 +46,6 @@ export function SignUpFirst() {
     body.email = values.email;
     body.password = values.password;
     body.restaurant.cnpj = values.cnpj;
-
-    console.log(body);
-    console.log(values);
     navigate("/signupsecond");
   };
   return (
@@ -109,8 +101,8 @@ export function SignUpFirst() {
                 placeholder="Cnpj"
                 control={control}
                 type="input"
-                value={cnpj.format(value)}
-                onChange={(e) => onChange(removeLetters(e.target.value))}
+                value={cnpj(value)}
+                onChange={onChange}
               >
                 <IoIcons.IoMdCard />
               </Input>

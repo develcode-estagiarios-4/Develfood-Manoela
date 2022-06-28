@@ -1,4 +1,4 @@
-export * from "./Home/index.jsx";
+export * from "./Home/index";
 export * from "./Menu/index";
 export * from "./Pedidos/index";
 export * from "./Perfil/index";
@@ -8,3 +8,5 @@ export * from "./SignUpFirst/index";
 export * from "./SignUpSecond/index";
 export * from "./SignUpThird/index";
 export * from "./SignUpSucess/index";
+export * from "./PlateForm/index";
+export * from "./PromotionForm/index";

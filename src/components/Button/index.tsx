@@ -5,7 +5,6 @@ import style from "./style.module.scss";
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   variant: "red" | "green";
-  // className?: any;
 }
 
 export function Button({

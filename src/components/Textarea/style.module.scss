@@ -1,0 +1,21 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+
+  .textarea {
+    width: 33.9rem;
+    height: 12rem;
+    border-radius: 5px;
+    border: "0.1px  solid $grey-light";
+
+  }
+  
+  textarea {
+    border: "0.1px  solid $grey-light";
+    font-family: $roboto-400;
+    outline: 0;
+    padding: 1rem 1rem 1rem 1.5rem;
+  
+  }
+  
+  

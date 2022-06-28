@@ -25,19 +25,21 @@
   width: 20rem;
   height: 3.4rem;
   margin-left: 46.5rem;
-  margin-top: 0.054rem;
+  margin-top: 0.2rem;
   background-color: #F9F8F8;
   outline: 0;
   border: 0.1px solid black;
   padding-left: 1rem;
-
+  padding-bottom: -0.5rem;
+  padding-top: 0.3rem;
 }
 
 .searchPlate::-webkit-input-placeholder {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-family: $main-font;
   color: #00000033;
   padding-left: 00.2em;
+  padding-bottom: 4em;
 }
 
 
@@ -45,14 +47,13 @@
   width: 14rem;
   height: 4rem;
   -webkit-text-stroke: 0.3px black;
-  font-size: 1.9rem;
+  font-size: 2rem;
   text-shadow: 1rem black solid;
   border: 1px solid black;
   float: right;
   margin-right: 5.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.10rem;
 }
-
 
 .contentPromotion {
   height: 100%;

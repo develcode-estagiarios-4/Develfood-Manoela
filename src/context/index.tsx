@@ -1,11 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 import { IBodyContext } from "../interface/IBodyContext";
 
