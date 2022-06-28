@@ -50,41 +50,23 @@ export function Menu() {
 
   useEffect(() => {
     getRestaurant();
-  }, []);
-
-  useEffect(() => {
     getPlates();
-  }, []);
-
-  useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
 
   useEffect(() => {
-    console.log(filteredPlates);
     setPlates(filteredPlates);
   }, [filteredPlates]);
 
-  function handleSearch(value: string) {
-    if (value.length > 1) {
-      setFilter(value);
-    } else {
-      setFilter("");
-    }
-  }
-
   useEffect(() => {
-    console.log(filter);
     if (restaurant?.id !== undefined) {
       searchPlate(filter, restaurant?.id);
-      getPlates();
     }
   }, [filter]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setFilter(e.target.value);
   };
 
@@ -101,7 +83,7 @@ export function Menu() {
     setDeleteAlert(false);
   };
 
-  const handleDeletePromotionee = () => {
+  const handleDeletePromotionResponse = () => {
     deletePlate(id);
     setDeleteAlert(false);
     setTimeout(() => getPlates(), 500);
@@ -118,7 +100,7 @@ export function Menu() {
           {deleteAlert && (
             <div className={style.deleteMessage}>
               <DeleteMessage
-                onDelete={handleDeletePromotionee}
+                onDelete={handleDeletePromotionResponse}
                 cancelDelete={handleCancelDelete}
               />
             </div>
@@ -134,7 +116,7 @@ export function Menu() {
             className={style.buttonPromotion}
             onClick={handleClick}
           >
-            Nova Prato
+            Novo Prato
           </Button>
 
           {loading ? (

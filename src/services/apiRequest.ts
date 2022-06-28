@@ -2,10 +2,9 @@ import api from "./api";
 
 const config = {
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgRGV2ZWxmb29kSUlJIiwic3ViIjoiNDQzIiwiaWF0IjoxNjU1NjU4MjA3LCJleHAiOjE2NTU3NDQ2MDd9.RpavHlmBpuwZBDQJ1Q95xBflZfVlFF_PB-0AhXK_34o`,
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 };
-// Authorization: `Bearer ${sessionStorage.getItem("token")}`,
 
 const defaultDomainURL = "https://develfood-3.herokuapp.com";
 

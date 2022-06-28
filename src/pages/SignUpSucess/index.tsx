@@ -7,7 +7,7 @@ import style from "./style.module.scss";
 export function SignUpSuccess() {
   const navigate = useNavigate();
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = () => {
     navigate("/signin");
   };
 

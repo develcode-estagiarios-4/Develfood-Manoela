@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-
-import { Input } from "../Input";
 
 import { usePlate } from "../../hooks/usePlate";
 import { IPlate } from "../../interface/IPlate";
@@ -22,7 +20,7 @@ export function PlateCard({ data, onDelete }: IPlateProps) {
     onDelete(id);
   };
 
-  const handleEdit = (id: number) => {
+  const handleEdit = () => {
     navigate(`/plate/edit/${data.id}`);
   };
 
@@ -53,7 +51,7 @@ export function PlateCard({ data, onDelete }: IPlateProps) {
             </button>
             <button
               className={style.spanEdit}
-              onClick={() => handleEdit(data.id)}
+              onClick={handleEdit}
               type="button"
             >
               <RiIcons.RiPencilFill className={style.IconEdit} />

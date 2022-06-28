@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import { INewPromotion } from "../interface/INewPromotion";
 import { IPromotion } from "../interface/IPromotion";
@@ -26,9 +26,11 @@ const defaultPromotionValues = {
 };
 
 export function usePromotion() {
+  const navigate = useNavigate();
+
   const [postSuccessed, setPostSuccessed] = useState(false);
   const [postError, setError] = useState(false);
-  const [putPromotionSuccessed, setPutPromotionSuccessed] = useState(false);
+  const [putToast, setPutToast] = useState(false);
   const [putError, setPutPromotionError] = useState(false);
 
   const [promotion, setPromotion] = useState(defaultPromotionValues);
@@ -39,10 +41,10 @@ export function usePromotion() {
     try {
       const response = await post("/restaurantPromotion", data);
       setPostSuccessed(true);
+      navigate("/promotion");
       setTimeout(() => {
         setPostSuccessed(false);
       }, 3000);
-      toast("criada");
     } catch (error) {
       setError(true);
       if (error)
@@ -63,7 +65,6 @@ export function usePromotion() {
   async function getPromotion(id: number) {
     try {
       const response = await get(`/restaurantPromotion/${id}`);
-      console.log(response.data.content);
       setPromotion(response.data);
     } catch (error) {
       // console.log(error);
@@ -84,7 +85,6 @@ export function usePromotion() {
   async function getPromotionBanner(id: string) {
     try {
       const response = await get(`/photo/${id}`);
-      // console.log(response.data.code);
       setPromotionBanner(response.data.code);
     } catch (error) {
       // console.log(error);
@@ -94,17 +94,10 @@ export function usePromotion() {
   async function updatePromotion(id: string, data: INewPromotion) {
     try {
       const response = await put(`/restaurantPromotion/${id}`, data);
-      setPutPromotionSuccessed(true);
-      console.log(response.response.status);
-      if (response.response.status === 500) {
-        console.log("Oi");
-        setPutPromotionSuccessed(true);
-      }
+      setPutToast(true);
       setTimeout(() => {
-        // setPutPromotionSuccessed(false);
-        setPutPromotionSuccessed(true);
-        console.log(putPromotionSuccessed);
-      }, 4000);
+        setPutToast(false);
+      }, 3000);
     } catch (error) {
       setPutPromotionError(true);
       setTimeout(() => {
@@ -121,11 +114,11 @@ export function usePromotion() {
     deletePromotion,
     getPromotion,
     getPromotionBanner,
-    putPromotionSuccessed,
+    putToast,
     putError,
     getPromotions,
     promotionBanner,
-    setPutPromotionSuccessed,
+    setPutToast,
     promotions,
     promotion,
   };

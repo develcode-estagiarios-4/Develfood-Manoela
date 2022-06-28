@@ -1,12 +1,5 @@
 import * as MdIcons from "react-icons/md";
-import Select, {
-  ActionMeta,
-  MultiValue,
-  OnChangeValue,
-  OptionProps,
-  Options,
-  StylesConfig,
-} from "react-select";
+import Select, { StylesConfig } from "react-select";
 
 import "../../styles/common/typography.scss";
 import style from "./style.module.scss";
@@ -23,7 +16,7 @@ interface IProps {
 }
 
 const options = [
-  { value: 1, label: "Fastfood", className: `${style.oi}` },
+  { value: 1, label: "Fastfood" },
   { value: 2, label: "Pizza" },
   { value: 3, label: "Italiana" },
   { value: 4, label: "Doce" },

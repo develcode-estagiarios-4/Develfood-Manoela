@@ -4,7 +4,7 @@ import style from "./style.module.scss";
 export function Pedidos() {
   return (
     <Container>
-      <div className={style.pedidos}>Seus pedidos</div>
+      <div className={style.pedidos}>Menu</div>
     </Container>
   );
 }

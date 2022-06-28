@@ -12,14 +12,13 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
 import { SelectSignUp } from "../../components/SelectSignUp";
 import { useAuth } from "../../context";
-import { removeLetters } from "../../utils/textUtils";
-import { phonenumber } from "../../utils/validation";
+import { normalizePhone } from "../../utils/textUtils";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
   name: yup.string().required("O campo nome é obrigatório"),
   phone: yup
-    .number()
+    .string()
     .required("O campo telefone é obrigatório")
     .typeError("Apenas números são permitidos"),
 });
@@ -30,9 +29,6 @@ export function SignUpSecond() {
   const [selectedOption, setSelectedOption] = useState([]);
   const [isSelectEmpty, setIsSelectEmpty] = useState(false);
 
-  const onChangeSelect = () => {
-    console.log("oi");
-  };
   const {
     control,
     handleSubmit,
@@ -44,7 +40,6 @@ export function SignUpSecond() {
 
   const handleChange = (e: any) => {
     setSelectedOption(e);
-    console.log(e);
     if (e.length === 0) {
       setIsSelectEmpty(true);
     } else {
@@ -79,12 +74,9 @@ export function SignUpSecond() {
       navigate("/signupthird");
     }
     const values = getValues();
-    console.log(values);
     body.restaurant.name = values.name;
     body.restaurant.phone = values.phone;
     body.restaurant.foodTypes = formatSelectedOptions();
-    // navigate("/signupthird");
-    console.log(body);
   };
 
   return (
@@ -122,8 +114,8 @@ export function SignUpSecond() {
                 placeholder="Telefone"
                 control={control}
                 type="tel"
-                value={value}
-                onChange={(e) => onChange(removeLetters(e.target.value))}
+                value={normalizePhone(value)}
+                onChange={onChange}
               >
                 <MdIcons.MdPhone />
               </Input>

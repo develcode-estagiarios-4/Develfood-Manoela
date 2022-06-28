@@ -10,23 +10,19 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
 import { useAuth } from "../../context";
 import { signUp } from "../../hooks/useSignUp";
-import { removeLetters } from "../../utils/textUtils";
+import { cep, removeLetters } from "../../utils/textUtils";
 import { newDate } from "../../utils/todayDate";
-
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
   nickname: yup.string().required("O campo Apelido é obrigatório"),
-  zipCode: yup
-    .number()
-    .required("O campo CEP é obrigatório")
-    .typeError("Apenas números são permitidos"),
+  zipCode: yup.string().required("O campo CEP é obrigatório"),
   street: yup.string().required("O campo Rua é obrigatório"),
   city: yup.string().required("O campo Cidade é obrigatório"),
   neighborhood: yup.string().required("O campo Bairro é obrigatório"),
   state: yup.string().required("O campo Estado é obrigatório"),
   number: yup
-    .number()
+    .string()
     .required("O campo número é obrigatório")
     .typeError("Apenas números são permitidos"),
 });
@@ -54,9 +50,6 @@ export function SignUpThird() {
     body.restaurant.address.state = values.state;
     body.creationDate = createdData;
     signUpPost(body);
-    console.log(values);
-    console.log(body);
-    console.log(signUpSucceeded);
   };
   return (
     <>
@@ -100,8 +93,8 @@ export function SignUpThird() {
                       placeholder="CEP"
                       control={control}
                       type="input"
-                      value={value}
-                      onChange={(e) => onChange(removeLetters(e.target.value))}
+                      value={cep(value)}
+                      onChange={onChange}
                       className={style.inputMargin}
                     >
                       <MdIcons.MdHome />

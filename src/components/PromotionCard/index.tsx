@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-import img from "../../assets/img/layoutHome.png";
-import { useAuth } from "../../context";
 import { usePromotion } from "../../hooks/usePromotion";
-import { useRestaurant } from "../../hooks/useRestaurant";
 import { IPromotion } from "../../interface/IPromotion";
-import api from "../../services/api";
 import style from "./style.module.scss";
 
 interface IPromotionProps {
@@ -22,12 +18,12 @@ export function PromotionCard({ data, onDelete }: IPromotionProps) {
   const { deletePromotion, getPromotionBanner, promotionBanner } =
     usePromotion();
 
-  const handleDelete = async (id: number) => {
-    await deletePromotion(id);
+  const handleDelete = async () => {
+    await deletePromotion(data.id);
     onDelete();
   };
 
-  const handleEdit = (id: number) => {
+  const handleEdit = () => {
     navigate(`/promotion/edit/${data.id}`);
   };
 
@@ -52,14 +48,14 @@ export function PromotionCard({ data, onDelete }: IPromotionProps) {
           <div className={style.spanButtons}>
             <button
               className={style.spanDelete}
-              onClick={() => handleDelete(data.id)}
+              onClick={handleDelete}
               type="button"
             >
               <MdIcons.MdDelete className={style.IconDelete} />
             </button>
             <button
               className={style.spanEdit}
-              onClick={() => handleEdit(data.id)}
+              onClick={handleEdit}
               type="button"
             >
               <RiIcons.RiPencilFill className={style.IconEdit} />
