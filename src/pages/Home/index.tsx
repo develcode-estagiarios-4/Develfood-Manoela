@@ -17,7 +17,7 @@ export function Home() {
   function handleClick() {
     sessionStorage.clear();
     localStorage.clear();
-    localStorage.getItem("token");
+    localStorage.removeItem("token");
     navigate("/");
   }
 

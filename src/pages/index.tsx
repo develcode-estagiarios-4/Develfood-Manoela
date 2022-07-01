@@ -1,6 +1,6 @@
 export * from "./Home/index";
 export * from "./Menu/index";
-export * from "./Pedidos/index";
+export * from "./Requests/index";
 export * from "./Perfil/index";
 export * from "./Promotion/index";
 export * from "./SignIn/index";

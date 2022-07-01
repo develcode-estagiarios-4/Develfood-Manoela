@@ -3,8 +3,8 @@ import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Container, NoPlate } from "../../components";
-import { DeleteMessage } from "../../components/DeleteMessage";
 import { PlateCard } from "../../components/PlateCard";
+import { WarningModal } from "../../components/WarmingModal";
 import { usePlate } from "../../hooks/usePlate";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import { IPlate } from "../../interface/IPlate";
@@ -19,10 +19,10 @@ function Box({ children }: PropsWithChildren<unknown>) {
         lineHeight: 36,
         padding: "1rem",
         marginBottom: "3rem",
-        width: 210,
+        width: 217,
         justifyContent: "space-between",
         marginLeft: "3.5rem",
-        columnGap: "4rem",
+        columnGap: "6rem",
         flexWrap: "wrap",
       }}
     >
@@ -34,7 +34,7 @@ function Box({ children }: PropsWithChildren<unknown>) {
 export function Menu() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [deleteAlert, setDeleteAlert] = useState(false);
+  const [warmingModal, setWarmingModal] = useState(false);
   const [id, setId] = useState(0);
 
   const { restaurant, getRestaurant } = useRestaurant();
@@ -76,16 +76,16 @@ export function Menu() {
 
   const handleDeletePromotion = (id: number) => {
     setId(id);
-    setDeleteAlert(true);
+    setWarmingModal(true);
   };
 
   const handleCancelDelete = () => {
-    setDeleteAlert(false);
+    setWarmingModal(false);
   };
 
-  const handleDeletePromotionResponse = () => {
+  const handleAcceptDelete = () => {
     deletePlate(id);
-    setDeleteAlert(false);
+    setWarmingModal(false);
     setTimeout(() => getPlates(), 500);
   };
 
@@ -97,11 +97,11 @@ export function Menu() {
           {restaurant?.name}
         </div>{" "}
         <div className={style.spancontent}>
-          {deleteAlert && (
+          {warmingModal && (
             <div className={style.deleteMessage}>
-              <DeleteMessage
-                onDelete={handleDeletePromotionResponse}
-                cancelDelete={handleCancelDelete}
+              <WarningModal
+                onAccept={handleAcceptDelete}
+                onReject={handleCancelDelete}
               />
             </div>
           )}
@@ -121,7 +121,7 @@ export function Menu() {
 
           {loading ? (
             <div className={style.contentNoPromotion}>
-              <Skeleton wrapper={Box} count={6} />
+              <Skeleton wrapper={Box} count={10} />
             </div>
           ) : (
             <div

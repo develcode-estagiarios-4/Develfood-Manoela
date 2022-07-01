@@ -1,0 +1,31 @@
+.requestSpan {
+  background-color: #E8D9D9;
+  height: 35rem;
+  text-align: center;
+  border: 0.1px solid black; 
+  padding: 0
+
+}
+
+.column {
+  position: inherit;
+  height: 40rem;
+  width: 27rem;
+  overflow-y: auto;
+  display: inline-block;
+  overflow: auto;
+}
+
+.column::-webkit-scrollbar {
+  width: 1rem;               /* width of the entire scrollbar */
+}
+
+.column::-webkit-scrollbar-track {
+  background: #a79f9f99 
+}
+
+.column::-webkit-scrollbar-thumb {
+  background-color: rgb(141, 131, 131);    
+  border-radius: 0.1rem;     
+  border: 1px solid rgb(71, 68, 68); 
+}

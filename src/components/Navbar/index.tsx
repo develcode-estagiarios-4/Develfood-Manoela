@@ -27,7 +27,7 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/pedidos" className={style.navbarMenu}>
+          <Link to="/requests" className={style.navbarMenu}>
             <MdIcons.MdPhone className={style.navbarIcons} />
             <div className={style.menuNone}>Pedidos</div>
           </Link>

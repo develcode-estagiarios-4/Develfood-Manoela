@@ -1,7 +1,7 @@
 @import "../../styles/common/colors.scss";
 @import "../../styles/common/typography.scss";
 
-.deleteMessage {
+.modalSpan {
   font-size: 3rem;
   border: 1px solid black;
   width: 52rem;
@@ -12,7 +12,7 @@
   text-align-last: center;
 }
 
-.buttonDeleteMessage {
+.button {
   width: 19rem;
   border: 0.1rem solid black;
   height: 4rem;
@@ -31,11 +31,9 @@
   margin-bottom: -6rem;
 }
 
-.iconExit {
-  width: 3.5rem;
-  height: 5rem;
-  position: fixed;
-  margin-left: 48rem;
-  margin-top: -16rem;
+.iconExit {  
+  font-size: 3rem;
   cursor: pointer;
+  margin: -8rem 0 0rem 48.9rem;
+
 }

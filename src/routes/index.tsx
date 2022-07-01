@@ -8,7 +8,7 @@ import {
 import {
   Menu,
   Home,
-  Pedidos,
+  Requests,
   Perfil,
   SignIn,
   SignUpFirst,
@@ -28,7 +28,7 @@ export function Routes() {
         <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/pedidos" element={<Pedidos />} />
+        <Route path="/requests" element={<Requests />} />
         <Route path="/promotion" element={<Promotions />} />
         <Route path="/signupfirst" element={<SignUpFirst />} />
         <Route path="/signupsecond" element={<SignUpSecond />} />
