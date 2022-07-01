@@ -25,9 +25,9 @@ export function RequestCard({ data, initialStatus }: IProps) {
 
   return (
     <div
-      className={
+      className={`${
         initialStatus.id <= 2 ? style.cardSpanLeft : style.cardSpanRight
-      }
+      } ${style.defaultCard}`}
       id={initialStatus.id !== 1 ? style.requestCard : ""}
       ref={dragRef}
     >
@@ -44,8 +44,8 @@ export function RequestCard({ data, initialStatus }: IProps) {
             ) : (
               ""
             )}
-            Quantidade: {`${item.quantity}x`} <br /> Valor do prato:
-            {item.price}
+            Quantidade: {`${item.quantity}x`}
+            <br /> Valor do prato: {formatCurrency(item.price)}
           </div>
         ))}
         <div className={style.line} />

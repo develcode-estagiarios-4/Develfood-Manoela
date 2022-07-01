@@ -13,11 +13,10 @@
   width: 27rem;
   overflow-y: auto;
   display: inline-block;
-  overflow: auto;
 }
 
 .column::-webkit-scrollbar {
-  width: 1rem;               /* width of the entire scrollbar */
+  width: 1rem;          
 }
 
 .column::-webkit-scrollbar-track {

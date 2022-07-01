@@ -52,16 +52,16 @@ export function Requests() {
     <Container>
       <DndProvider backend={HTML5Backend}>
         <div className={style.requests}>Seus pedidos</div>
-        <div className={style.spanWarn}>
-          {warmingModal && (
+        {warmingModal && (
+          <div className={style.spanWarn}>
             <WarningModal
               onReject={handleCancleUpdate}
               onAccept={handleUpdate}
-              className={style.updateWarming}
-            />
-          )}
-        </div>
+            />{" "}
+          </div>
+        )}
         <div className={style.tableSpan}>
+          {" "}
           <table cellSpacing="0" className={style.table}>
             <tr>
               <td className={style.title}>Esperando Aceitação </td>
