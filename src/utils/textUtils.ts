@@ -64,7 +64,7 @@ export const formatCurrency = (value: number) => {
     .replace(/(\d)/, "R$ $1");
 };
 
-export const formatPrice = (value: any) => {
+export const formatPrice = (value: string) => {
   return value
     .replace(/[\D]/g, "")
     .replace(/(\d)(\d{2})$/, "$1.$2")

@@ -9,26 +9,23 @@ import style from "./style.module.scss";
 interface IProps {
   data: IRequest;
   initialStatus: any;
+  className: any;
 }
 
-export function RequestCard({ data, initialStatus }: IProps) {
+export function RequestCard({ data, initialStatus, className }: IProps) {
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: { id: data.id, initialStatus },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult();
-    },
   });
 
   return (
     <div
       className={`${
         initialStatus.id <= 2 ? style.cardSpanLeft : style.cardSpanRight
-      } ${style.defaultCard}`}
-      id={initialStatus.id !== 1 ? style.requestCard : ""}
+      } ${style.defaultCard} ${className}`}
       ref={dragRef}
     >
       <MdIcons.MdFastfood className={style.icon} />

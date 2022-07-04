@@ -11,7 +11,7 @@ import style from "./style.module.scss";
 
 export function Requests() {
   const { updateRequest, getRequests, requests } = useRequest();
-  const [warmingModal, setWarmingModal] = useState(false);
+  const [warningModal, setWarningModal] = useState(false);
   const [onUpdate, setOnUpdate] = useState<IPutRequest>();
 
   interface IPutRequest {
@@ -29,7 +29,7 @@ export function Requests() {
   const handleMove = (id: number, body: IRequestStatus) => {
     console.log(id, body);
     setOnUpdate({ requestId: id, status: body });
-    setWarmingModal(true);
+    setWarningModal(true);
   };
 
   useEffect(() => {
@@ -40,19 +40,19 @@ export function Requests() {
     if (onUpdate) {
       updateRequest(onUpdate?.requestId, onUpdate?.status);
     }
-    setWarmingModal(false);
+    setWarningModal(false);
     getRequests();
   };
 
   const handleCancleUpdate = () => {
-    setWarmingModal(false);
+    setWarningModal(false);
   };
 
   return (
     <Container>
       <DndProvider backend={HTML5Backend}>
         <div className={style.requests}>Seus pedidos</div>
-        {warmingModal && (
+        {warningModal && (
           <div className={style.spanWarn}>
             <WarningModal
               onReject={handleCancleUpdate}

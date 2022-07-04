@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 
 import { useRequest } from "../../hooks/useRequest";
 import { IRequest } from "../../interface/IRequest";
 import { IRequestStatus } from "../../interface/IRequestStatus";
-import { RequestCard } from "../RequestCard";
+import { RequestCard } from "../RequestCardDraggable";
+import { RequestCardHover } from "../RequestCardHover";
 import style from "./style.module.scss";
 
 interface IProps {
   status: { status: string; id: number };
   onMoveCard: (id: number, body: IRequestStatus) => void;
-  requestsList: any;
+  requestsList: IRequest[];
 }
 
 export function Column({ status, onMoveCard, requestsList }: IProps) {
@@ -20,9 +20,12 @@ export function Column({ status, onMoveCard, requestsList }: IProps) {
     status: "",
   };
 
-  const [{ isOver }, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: "card",
-    drop: (index: any) => {
+    drop: (index: {
+      id: number;
+      initialStatus: { id: number; status: string };
+    }) => {
       body.status = status.status;
       if (index.initialStatus.id < status.id) {
         onMoveCard(index.id, body);
@@ -43,7 +46,11 @@ export function Column({ status, onMoveCard, requestsList }: IProps) {
             (request: IRequest) =>
               request.status === status.status && (
                 <div key={request.id}>
-                  <RequestCard data={request} initialStatus={status} />
+                  <RequestCard
+                    data={request}
+                    initialStatus={status}
+                    className={style.card}
+                  />
                 </div>
               )
           )}
