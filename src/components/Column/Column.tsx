@@ -1,10 +1,10 @@
+import { useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
 
 import { useRequest } from "../../hooks/useRequest";
 import { IRequest } from "../../interface/IRequest";
 import { IRequestStatus } from "../../interface/IRequestStatus";
-import { RequestCard } from "../RequestCardDraggable";
-import { RequestCardHover } from "../RequestCardHover";
+import { RequestCard } from "../RequestCard";
 import style from "./style.module.scss";
 
 interface IProps {
@@ -15,6 +15,7 @@ interface IProps {
 
 export function Column({ status, onMoveCard, requestsList }: IProps) {
   const { requests, setRequests } = useRequest();
+  const ref = useRef();
 
   const body: IRequestStatus = {
     status: "",
@@ -37,6 +38,10 @@ export function Column({ status, onMoveCard, requestsList }: IProps) {
     }),
   });
 
+  const handleHover = (id: number) => {
+    console.log(id);
+  };
+
   return (
     <td ref={drop} className={style.requestSpan}>
       <div className={style.column}>
@@ -45,7 +50,7 @@ export function Column({ status, onMoveCard, requestsList }: IProps) {
           requestsList.map(
             (request: IRequest) =>
               request.status === status.status && (
-                <div key={request.id}>
+                <div key={request.id} ref={ref.current}>
                   <RequestCard
                     data={request}
                     initialStatus={status}

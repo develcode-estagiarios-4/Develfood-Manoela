@@ -11,7 +11,6 @@ export function useRequest() {
     try {
       const response = await get("/request/restaurant");
       setRequests(response.data);
-      console.log(response.data);
     } catch (error) {
       // console.log(error);
     }

@@ -14,22 +14,22 @@
   
 }
 
-.defaultCard:hover {
-  width: 35rem;
+// .defaultCard:hover {
+//   width: 35rem;
 
-  .requestItens {
-    display:block;
-  }
+//   .requestItens {
+//     display:block;
+//   }
 
-  .cardInformation {
-    display:none;
-  }
+//   .cardInformation {
+//     display:none;
+//   }
 
-  .icon {
-    font-size: 4rem;
-    padding-right: 0.5rem;
-  }
-}
+//   .icon {
+//     font-size: 4rem;
+//     padding-right: 0.5rem;
+//   }
+// }
 
 .cardInformation {
   color: #44A3FB94;
@@ -39,17 +39,17 @@
   margin-bottom: 0.4rem;
 }
 
-.cardSpanLeft:hover{ 
-  position: absolute;
-  display: block;
-  margin-left: 0.9rem;
-}
+// .cardSpanLeft:hover{ 
+//   position: absolute;
+//   display: block;
+//   margin-left: 0.9rem;
+// }
 
-.cardSpanRight:hover{ 
-  display: block;
-  margin-left: -9.8rem;
-}
-
+// .cardSpanRight:hover{ 
+//   position: absolute;
+//   display: block;
+//   margin-left: -9.8rem;
+// }
 
 .requestItens {
   display:none;

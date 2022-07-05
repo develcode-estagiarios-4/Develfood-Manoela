@@ -11,7 +11,6 @@ export function Home() {
 
   useEffect(() => {
     getRestaurant();
-    console.log();
   }, []);
 
   function handleClick() {
