@@ -10,7 +10,7 @@ const defaultProps = {
 interface IDeleteMessageProps {
   onReject: () => void;
   onAccept: () => void;
-  className?: any;
+  className?: string;
 }
 
 export function WarningModal({

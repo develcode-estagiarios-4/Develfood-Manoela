@@ -41,7 +41,6 @@ export function usePromotion() {
     try {
       const response = await post("/restaurantPromotion", data);
       setPostSuccessed(true);
-      console.log(response);
       navigate("/promotion");
       setTimeout(() => {
         setPostSuccessed(false);

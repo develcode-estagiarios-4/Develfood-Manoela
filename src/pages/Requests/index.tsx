@@ -5,6 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { Column } from "../../components/Column";
 import { Container } from "../../components/Container";
 import { WarningModal } from "../../components/WarmingModal";
+import { requestStatus } from "../../contants/requestStatus";
 import { useRequest } from "../../hooks/useRequest";
 import { IRequest } from "../../interface/IRequest";
 import { IRequestStatus } from "../../interface/IRequestStatus";
@@ -29,13 +30,6 @@ export function Requests() {
     setCurrentRequests(requests);
   }, [requests]);
 
-  const requestStatus = [
-    { status: "PEDIDO_REALIZADO", id: 1 },
-    { status: "PEDIDO_EM_REALIZAÇÃO", id: 2 },
-    { status: "PEDIDO_À_CAMINHO", id: 3 },
-    { status: "PEDIDO_FINALIZADO", id: 4 },
-  ];
-
   const handleMove = (id: number, body: IRequestStatus) => {
     setOnUpdate({ requestId: id, status: body });
     setWarningModal(true);
@@ -56,7 +50,6 @@ export function Requests() {
     setWarningModal(false);
   };
 
-  console.log(requests);
   return (
     <Container>
       <DndProvider backend={HTML5Backend}>

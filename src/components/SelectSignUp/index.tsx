@@ -1,6 +1,8 @@
 import * as MdIcons from "react-icons/md";
 import Select, { StylesConfig } from "react-select";
 
+import { IFoodType } from "../../interface/IFoodType";
+
 import "../../styles/common/typography.scss";
 import style from "./style.module.scss";
 
@@ -10,20 +12,20 @@ export interface ISelectItem {
 }
 
 const defaultProps = {
-  cNameInput: "",
-  cNameIcon: "",
-  cNameSpan: "",
+  classNameSpan: "",
+  classNameIcon: "",
+  classNameInput: "",
   value: "",
 };
 
 interface IProps {
   placeholder: string;
   type: string;
-  cNameSpan?: any;
   onChange: (e: any) => void;
-  cNameIcon?: any;
-  value?: any;
-  cNameInput?: any;
+  value?: IFoodType | IFoodType[];
+  classNameInput?: string;
+  classNameSpan?: string;
+  classNameIcon?: string;
 }
 
 const options = [
@@ -124,13 +126,13 @@ export function SelectSignUp({
   type,
   onChange,
   value,
-  cNameInput,
-  cNameSpan,
-  cNameIcon,
+  classNameInput,
+  classNameSpan,
+  classNameIcon,
 }: IProps & typeof defaultProps) {
   return (
-    <span className={`${style.spanSelect} ${cNameSpan}`}>
-      <div className={`${style.iconInput} ${cNameIcon}`}>
+    <span className={`${style.spanSelect} ${classNameSpan}`}>
+      <div className={`${style.iconInput} ${classNameIcon}`}>
         {" "}
         <MdIcons.MdFastfood />
       </div>
@@ -153,7 +155,7 @@ export function SelectSignUp({
         })}
         styles={styleOptions}
         options={options}
-        className={`${style.select} ${cNameInput}`}
+        className={`${style.select} ${classNameInput}`}
       />
     </span>
   );
