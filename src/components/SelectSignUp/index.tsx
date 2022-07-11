@@ -23,7 +23,6 @@ interface IProps {
   onChange: (e: any) => void;
   cNameIcon?: any;
   value?: any;
-
   cNameInput?: any;
 }
 

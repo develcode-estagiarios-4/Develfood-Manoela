@@ -111,7 +111,6 @@ export function PromotionForm() {
     if (restaurant?.id !== undefined) {
       body.restaurant.id = restaurant.restaurant.id;
     }
-    console.log(body);
     if (id) {
       updatePromotion(id, body);
     } else {

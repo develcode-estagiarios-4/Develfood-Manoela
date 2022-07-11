@@ -21,7 +21,7 @@ export function RequestCardHover({ topCard, data, initialStatus }: IProps) {
     }),
   });
 
-  const positionTop = topCard - 307;
+  const positionTop = topCard - 275;
   return (
     <div
       style={{
