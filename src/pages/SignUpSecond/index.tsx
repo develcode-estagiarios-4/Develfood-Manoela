@@ -59,7 +59,7 @@ export function SignUpSecond() {
     return optionsList;
   }
 
-  const handleErrorSelect = () => {
+  const verifySelect = () => {
     if (selectedOption.length === 0) {
       setIsSelectEmpty(true);
     } else {
@@ -138,7 +138,7 @@ export function SignUpSecond() {
           <Button
             variant="red"
             type="submit"
-            onClick={handleErrorSelect}
+            onClick={verifySelect}
             className={style.buttonSignUp}
           >
             Continuar

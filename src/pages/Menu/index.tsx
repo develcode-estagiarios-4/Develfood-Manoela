@@ -61,8 +61,8 @@ export function Menu() {
   }, [filteredPlates]);
 
   useEffect(() => {
-    if (restaurant?.id !== undefined) {
-      searchPlate(filter, restaurant?.id);
+    if (restaurant?.restaurant.id !== undefined) {
+      searchPlate(filter, restaurant?.restaurant.id);
     }
   }, [filter]);
 
@@ -94,7 +94,7 @@ export function Menu() {
       <div className={style.spanPage}>
         <div className={style.menu}>
           Menu do restaurante: <br />
-          {restaurant?.name}
+          {restaurant?.restaurant.name}
         </div>{" "}
         <div className={style.spancontent}>
           {warmingModal && (

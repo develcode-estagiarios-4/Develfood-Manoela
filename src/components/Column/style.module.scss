@@ -1,47 +1,37 @@
-.requestSpan {
-  background-color: #E8D9D9;
-  height: 35rem;
-  text-align: center;
-  border: 0.1px solid black; 
-  padding: 0
-
-}
-
-.column {
-  position: inherit;
-  height: 40rem;
-  width: 27rem;
+.requestsContainer {
+  height: 60.2rem;
+  display: flex;
+  width: 34.6rem;
+  flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   display: inline-block;
 }
 
-.column::-webkit-scrollbar {
+.tableColumn { 
+  background-color: #E8D9D9;
+  border: 1px solid black;
+  width: 34.6rem;
+  height: 60.2rem;
+  max-width: 34.6rem;
+  text-align: -webkit-center;
+  position: relative;
+}
+
+.requestsContainer::-webkit-scrollbar {
   width: 1rem;          
 }
 
-.column::-webkit-scrollbar-track {
+.requestsContainer::-webkit-scrollbar-track {
   background: #a79f9f99 
 }
 
-.column::-webkit-scrollbar-thumb {
+.requestsContainer::-webkit-scrollbar-thumb {
   background-color: rgb(141, 131, 131);    
   border-radius: 0.1rem;     
   border: 1px solid rgb(71, 68, 68); 
 }
 
-
-// .divhov { display: none; }
-
-// .divdef {
-//   position: relative;
-// }
-
-// .divdef:hover {
-// 	.divhov { display:grid; margin-top: -11.6rem;  }
-
-// }
-
-// .card {
-//   background-color: aqua;
-  
-// }
+.requestsContainer:last-child {
+  padding-top: 1rem;
+}

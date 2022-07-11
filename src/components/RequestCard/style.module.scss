@@ -1,83 +1,50 @@
 .defaultCard {
-  display: inline-table;
-  place-items: center;
   text-align: initial;
-  margin: 1rem 0 1rem 0;
+  padding: 1rem 0 1rem 0.5rem;
   border: 0.1rem black solid;
   font-size: 1.8rem;
   border-radius: 1rem;
   line-height: 1.7rem;
   background-image: linear-gradient(168deg, #a19797 15%, #E8D9D9, #a19797 90%);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding-left: 0.6rem;
-  width: 90%;
-  
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  width: 31.9rem;
 }
 
-// .defaultCard:hover {
-//   width: 35rem;
-
-//   .requestItens {
-//     display:block;
-//   }
-
-//   .cardInformation {
-//     display:none;
-//   }
-
-//   .icon {
-//     font-size: 4rem;
-//     padding-right: 0.5rem;
-//   }
-// }
+.defaultCard ~ .defaultCard {
+margin-top: 1rem;
+}
 
 .cardInformation {
-  color: #44A3FB94;
-  font-size: 1.2rem;
-  text-align-last: center;
-  line-height: 1.5rem;
-  margin-bottom: 0.4rem;
+color: #44A3FB94;
+font-size: 1.2rem;
+text-align-last: center;
+line-height: 1.5rem;
+margin-bottom: 0.4rem;
 }
 
-// .cardSpanLeft:hover{ 
-//   position: absolute;
-//   display: block;
-//   margin-left: 0.9rem;
-// }
-
-// .cardSpanRight:hover{ 
-//   position: absolute;
-//   display: block;
-//   margin-left: -9.8rem;
-// }
-
 .requestItens {
-  display:none;
-  font-size: 1.8rem;
+display:none;
+font-size: 1.8rem;
 }
 
 .observation {
-  font-size: 1.1rem;
-}
-
-.item {
-  margin: 1rem 3.2rem 0 -0.2rem;
+font-size: 1.1rem;
 }
 
 .line {
-  height: 0.1rem;
-  width: 100%;
-  text-align: center;
-  background-color: black;
-  margin: 2rem 0 2rem -0.5rem;
+height: 0.1rem;
+width: 100%;
+text-align: center;
+background-color: black;
+margin: 2rem 0 2rem -0.5rem;
 }
 
 .request {
-  margin-bottom: 1rem;
+margin-bottom: 1rem;
 }
 
 .icon {
-  font-size: 3rem;
-  float: right;
-  margin: 0.5rem 0.5rem 0 0 ;
+font-size: 3rem;
+float: right;
+margin: 0.5rem 0.5rem 0 0 ;
 }

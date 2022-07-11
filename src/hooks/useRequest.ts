@@ -16,14 +16,9 @@ export function useRequest() {
     }
   }
 
-  const update = () => {
-    getRequests();
-  };
-
   async function updateRequest(id: number, data: IRequestStatus) {
     try {
       const response = await put(`/request/${id}/status`, data);
-      update();
     } catch (error) {
       // console.log(error);
     }

@@ -5,12 +5,14 @@ import style from "./style.module.scss";
 
 const defaultProps = {
   children: "",
+  classInput: "",
 };
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children?: ReactNode | any;
   control: FieldValues | any;
+  classInput?: any;
 }
 
 export function Input({
@@ -20,6 +22,7 @@ export function Input({
   onChange,
   className,
   children,
+  classInput,
   control,
 }: IProps & typeof defaultProps) {
   return (
@@ -30,7 +33,7 @@ export function Input({
         value={value}
         type={type}
         onChange={(e) => onChange(e)}
-        className={style.input}
+        className={`${style.input} ${classInput}`}
       />
     </span>
   );

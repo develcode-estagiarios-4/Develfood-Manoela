@@ -9,10 +9,22 @@ export interface ISelectItem {
   label: string;
 }
 
+const defaultProps = {
+  cNameInput: "",
+  cNameIcon: "",
+  cNameSpan: "",
+  value: "",
+};
+
 interface IProps {
   placeholder: string;
   type: string;
+  cNameSpan?: any;
   onChange: (e: any) => void;
+  cNameIcon?: any;
+  value?: any;
+
+  cNameInput?: any;
 }
 
 const options = [
@@ -23,11 +35,17 @@ const options = [
 ];
 
 const styleOptions: StylesConfig = {
-  input: (styles) => {
+  clearIndicator: (styles) => {
     return {
       ...styles,
-      fontSize: "2rem",
-      outline: "0",
+      padding: "0",
+      display: "none",
+    };
+  },
+  multiValueRemove: (styles) => {
+    return {
+      ...styles,
+      padding: 0,
     };
   },
   placeholder: (styles) => {
@@ -47,40 +65,81 @@ const styleOptions: StylesConfig = {
       fontWeight: "400",
     };
   },
+  dropdownIndicator: (styles) => {
+    return {
+      ...styles,
+      display: "none",
+    };
+  },
   multiValueLabel: (styles) => {
     return {
       ...styles,
       fontSize: "1.4rem",
+      display: "block",
+      color: "black",
+      paddingLeft: "1px",
+      borderRadius: "0.4rem",
+    };
+  },
+  noOptionsMessage: (styles) => {
+    return {
+      ...styles,
+      fontSize: "1rem",
+      fontFamily: "Roboto, sans-serif",
       color: "#8E8E8E",
-      fontFamily: "Arial",
     };
   },
   valueContainer: (styles) => {
     return {
       ...styles,
       color: "#8E8E8E",
-      fontSize: "2.4rem",
+      display: "contents",
+      fontSize: "2rem",
       outline: "0",
       fontFamily: "Roboto, sans-serif",
+    };
+  },
+  multiValue: (styles) => {
+    return {
+      color: "black",
+      display: "flex",
+      borderRadius: "0.5rem",
+      border: "1px black solid",
+      backgroundColor: "#bfbaba",
+      padding: "0 0 0 0.5rem",
+      marginRight: "5px",
     };
   },
   control: (styles) => {
     return {
       ...styles,
       outline: "0",
+      paddingLeft: "1rem",
       ":hover": { borderColor: "white" },
     };
   },
 };
 
-export function SelectSignUp({ placeholder, type, onChange }: IProps) {
+export function SelectSignUp({
+  placeholder,
+  type,
+  onChange,
+  value,
+  cNameInput,
+  cNameSpan,
+  cNameIcon,
+}: IProps & typeof defaultProps) {
   return (
-    <span className={style.spanSelect}>
-      <div className={style.iconInput}>
+    <span className={`${style.spanSelect} ${cNameSpan}`}>
+      <div className={`${style.iconInput} ${cNameIcon}`}>
         {" "}
         <MdIcons.MdFastfood />
       </div>
       <Select
+        value={value}
+        noOptionsMessage={({ inputValue }) =>
+          !inputValue ? "Sem opções" : "No results found"
+        }
         placeholder="Tipos de comida"
         closeMenuOnSelect={false}
         onChange={onChange}
@@ -95,9 +154,10 @@ export function SelectSignUp({ placeholder, type, onChange }: IProps) {
         })}
         styles={styleOptions}
         options={options}
-        defaultValue={undefined}
-        className={style.select}
+        className={`${style.select} ${cNameInput}`}
       />
     </span>
   );
 }
+
+SelectSignUp.defaultProps = defaultProps;

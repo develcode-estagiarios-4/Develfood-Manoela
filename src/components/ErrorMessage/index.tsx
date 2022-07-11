@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { Link, To } from "react-router-dom";
 
 import style from "./style.module.scss";
 
