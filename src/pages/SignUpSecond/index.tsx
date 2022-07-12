@@ -124,11 +124,7 @@ export function SignUpSecond() {
 
           <ErrorMessage>{errors.phone?.message}</ErrorMessage>
 
-          <SelectSignUp
-            placeholder="Tipos de comida"
-            type="select"
-            onChange={handleChange}
-          />
+          <SelectSignUp placeholder="Tipos de comida" onChange={handleChange} />
           {isSelectEmpty ? (
             <ErrorMessage>Escolha uma opção de comida</ErrorMessage>
           ) : (

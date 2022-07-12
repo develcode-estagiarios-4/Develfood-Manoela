@@ -10,20 +10,20 @@ export interface ISelectItem {
 }
 
 const defaultProps = {
-  cNameInput: "",
-  cNameIcon: "",
-  cNameSpan: "",
+  classNameSpan: "",
+  classNameIcon: "",
+  classNameInput: "",
   value: "",
+  placeholder: "",
 };
 
 interface IProps {
-  placeholder: string;
-  type: string;
-  cNameSpan?: any;
+  placeholder?: string;
   onChange: (e: any) => void;
-  cNameIcon?: any;
   value?: any;
-  cNameInput?: any;
+  classNameInput?: string;
+  classNameSpan?: string;
+  classNameIcon?: string;
 }
 
 const options = [
@@ -121,16 +121,15 @@ const styleOptions: StylesConfig = {
 
 export function SelectSignUp({
   placeholder,
-  type,
   onChange,
   value,
-  cNameInput,
-  cNameSpan,
-  cNameIcon,
+  classNameInput,
+  classNameSpan,
+  classNameIcon,
 }: IProps & typeof defaultProps) {
   return (
-    <span className={`${style.spanSelect} ${cNameSpan}`}>
-      <div className={`${style.iconInput} ${cNameIcon}`}>
+    <span className={`${style.spanSelect} ${classNameSpan}`}>
+      <div className={`${style.iconInput} ${classNameIcon}`}>
         {" "}
         <MdIcons.MdFastfood />
       </div>
@@ -139,9 +138,9 @@ export function SelectSignUp({
         noOptionsMessage={({ inputValue }) =>
           !inputValue ? "Sem opções" : "No results found"
         }
-        placeholder="Tipos de comida"
         closeMenuOnSelect={false}
         onChange={onChange}
+        placeholder={placeholder}
         isMulti
         theme={(theme) => ({
           ...theme,
@@ -152,8 +151,9 @@ export function SelectSignUp({
           },
         })}
         styles={styleOptions}
+        isSearchable={false}
         options={options}
-        className={`${style.select} ${cNameInput}`}
+        className={`${style.select} ${classNameInput}`}
       />
     </span>
   );

@@ -1,12 +1,14 @@
 import api from "./api";
 
+const token = localStorage.getItem("token");
+
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    Authorization: `Bearer ${token}`,
   },
 };
 
-const defaultDomainURL = "https://develfood-3.herokuapp.com";
+const defaultDomainURL = "https://deb3-189-7-107-101.ngrok.io";
 
 export const get = (url: string) => {
   return api

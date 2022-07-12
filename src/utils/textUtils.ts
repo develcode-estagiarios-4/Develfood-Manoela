@@ -70,3 +70,9 @@ export const formatPrice = (value: string) => {
     .replace(/(\d)(\d{2})$/, "$1.$2")
     .replace(/(?=(\d{3})+(\D))\B/g, "");
 };
+
+export const capitalizeFirstLetter = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/(?:^|\s)(?!da|de|do)\S/g, (l: string) => l.toUpperCase());
+};
