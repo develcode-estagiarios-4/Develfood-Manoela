@@ -4,7 +4,7 @@ import style from "./style.module.scss";
 export function Perfil() {
   return (
     <Container>
-      <div className={style.perfil}>Olá Nome do Restaurante</div>
+      <div className={style.perfil}>Olá Template</div>
     </Container>
   );
 }
