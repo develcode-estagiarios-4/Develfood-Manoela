@@ -34,7 +34,7 @@ export const cep = (value: string | undefined) => {
     .replace(/(-\d{3})(\d)/, "$2");
 };
 
-export const currency = (e: React.ChangeEvent<HTMLInputElement> | any) => {
+export const currency = (e: React.ChangeEvent<HTMLInputElement>) => {
   // eslint-disable-next-line prefer-destructuring
   let value = e.target.value;
   value = value
@@ -64,7 +64,7 @@ export const formatCurrency = (value: number) => {
     .replace(/(\d)/, "R$ $1");
 };
 
-export const formatPrice = (value: any) => {
+export const formatPrice = (value: string) => {
   return value
     .replace(/[\D]/g, "")
     .replace(/(\d)(\d{2})$/, "$1.$2")

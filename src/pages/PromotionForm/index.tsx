@@ -109,7 +109,7 @@ export function PromotionForm() {
     body.dateFinal = `${values.dateFinal} ${"23:59:59"}`;
     body.photo.code = imageBanner;
     if (restaurant?.id !== undefined) {
-      body.restaurant.id = restaurant.id;
+      body.restaurant.id = restaurant.restaurant.id;
     }
     if (id) {
       updatePromotion(id, body);
@@ -147,8 +147,8 @@ export function PromotionForm() {
   }, []);
 
   useEffect(() => {
-    if (restaurant?.id !== undefined) {
-      body.restaurant.id = restaurant.id;
+    if (restaurant?.restaurant.id !== undefined) {
+      body.restaurant.id = restaurant.restaurant.id;
     }
   }, [restaurant]);
 

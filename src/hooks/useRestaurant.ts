@@ -8,10 +8,10 @@ export function useRestaurant() {
 
   async function getRestaurant() {
     try {
-      const response = await get("/auth");
-      setRestaurant(response.data.restaurant);
+      const response = await get("/user");
+      setRestaurant(response.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

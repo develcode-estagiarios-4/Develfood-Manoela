@@ -47,6 +47,8 @@ export function usePromotion() {
       }, 3000);
     } catch (error) {
       setError(true);
+      console.log(error);
+
       if (error)
         setTimeout(() => {
           setError(false);

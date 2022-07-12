@@ -1,0 +1,38 @@
+@import "../../styles/common/typography.scss";
+
+.requests {
+  text-align: center;
+  font-size: 6.4rem;
+  margin-top: 2rem;
+}
+
+.table {
+  text-align: -webkit-center;
+  margin-top: 5rem;
+}
+
+.title {
+  padding: 0;
+  padding-top: 0.5rem;
+  font-size: 3.7rem;
+  width: 27rem;
+  font-family: $main-font;
+  text-align: center;
+  font-weight: 400;
+  background-color: #E8D9D9;
+  height: 5.5rem;
+  border: 2px solid black; 
+}
+
+.tableSpan {
+  text-align: -webkit-center;
+}
+
+.spanWarn {
+  position: absolute;
+  text-align: -webkit-center;
+  width: 81.6%;
+  margin-top: 2rem;
+  z-index: 1;
+}
+

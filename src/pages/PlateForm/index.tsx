@@ -134,8 +134,8 @@ export function PlateForm() {
     body.price = parseFloat(formatPrice(values.price));
     if (foodType) body.foodType.id = foodType.value;
     validateSelect();
-    if (restaurant?.id !== undefined) {
-      body.restaurant.id = restaurant.id;
+    if (restaurant?.restaurant.id !== undefined) {
+      body.restaurant.id = restaurant.restaurant.id;
     }
     body.photo.code = imageBanner;
     if (id) {
