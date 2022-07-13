@@ -25,7 +25,7 @@ export const cnpj = (value: string | undefined) => {
     .replace(/(-\d{2})(\d)/, "$1");
 };
 
-export const cep = (value: string | undefined) => {
+export const zipCode = (value: string | undefined) => {
   if (!value) return "";
 
   return value

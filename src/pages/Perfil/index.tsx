@@ -18,12 +18,17 @@ import { useRestaurant } from "../../hooks/useRestaurant";
 import { IFoodType } from "../../interface/IFoodType";
 import { IFoodTypeBackend } from "../../interface/IFoodTypeBackend";
 import { IRestaurantUpdate } from "../../interface/IRestaurantEdit";
-import { capitalizeFirstLetter } from "../../utils/textUtils";
+import {
+  capitalizeFirstLetter,
+  cnpj,
+  normalizePhone,
+  zipCode,
+} from "../../utils/textUtils";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
   email: yup.string().required("O campo Email é obrigatório"),
-  cnpj: yup.string().required("O campo CNJPJ é obrigatório"),
+  cnpj: yup.string().required("O campo CNPJ é obrigatório"),
   name: yup.string().required("O campo Nome é obrigatório"),
   phone: yup.string().required("O campo Telefone é obrigatório"),
   street: yup.string().required("O campo Rua é obrigatório"),
@@ -31,8 +36,8 @@ const schema = yup.object().shape({
   neighborhood: yup.string().required("O campo Bairro é obrigatório"),
   city: yup.string().required("O campo Cidade é obrigatório"),
   zipCode: yup.string().required("O campo CEP é obrigatório"),
-  state: yup.string().required("O campo Rua é obrigatório"),
-  nickname: yup.string().required("O campo Rua é obrigatório"),
+  state: yup.string().required("O campo Estado é obrigatório"),
+  nickname: yup.string().required("O campo Apelido é obrigatório"),
 });
 
 function Box({ children }: PropsWithChildren<unknown>) {
@@ -239,7 +244,7 @@ export function Perfil() {
                     render={({ field: { onChange, value } }) => (
                       <Input
                         control={control}
-                        value={value}
+                        value={cnpj(value)}
                         onChange={onChange}
                         className={style.spanInput}
                         classInput={style.input}
@@ -275,7 +280,7 @@ export function Perfil() {
                     render={({ field: { onChange, value } }) => (
                       <Input
                         control={control}
-                        value={value}
+                        value={normalizePhone(value)}
                         onChange={onChange}
                         className={style.spanInput}
                         classInput={style.input}
@@ -386,7 +391,7 @@ export function Perfil() {
                     render={({ field: { onChange, value } }) => (
                       <Input
                         control={control}
-                        value={value}
+                        value={zipCode(value)}
                         onChange={onChange}
                         className={style.spanInput}
                         classInput={style.input}
