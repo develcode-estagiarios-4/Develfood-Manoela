@@ -1,5 +1,7 @@
 import * as MdIcons from "react-icons/md";
-import Select, { StylesConfig } from "react-select";
+import Select, { ActionMeta, StylesConfig } from "react-select";
+
+import { IFoodType } from "../../interface/IFoodType";
 
 import "../../styles/common/typography.scss";
 import style from "./style.module.scss";
@@ -13,14 +15,13 @@ const defaultProps = {
   classNameSpan: "",
   classNameIcon: "",
   classNameInput: "",
-  value: "",
   placeholder: "",
 };
 
 interface IProps {
   placeholder?: string;
   onChange: (e: any) => void;
-  value?: any;
+  value: IFoodType[];
   classNameInput?: string;
   classNameSpan?: string;
   classNameIcon?: string;
@@ -113,6 +114,7 @@ const styleOptions: StylesConfig = {
     return {
       ...styles,
       outline: "0",
+      justifyContent: "flex-start",
       paddingLeft: "1rem",
       ":hover": { borderColor: "white" },
     };

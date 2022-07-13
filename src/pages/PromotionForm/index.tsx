@@ -69,7 +69,7 @@ export function PromotionForm() {
     setImageBanner(fileString);
   };
 
-  const getBase64 = (file: any) => {
+  const getBase64 = (file: File) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {

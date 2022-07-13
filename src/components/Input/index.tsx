@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, ReactNode } from "react";
-import { Control, FieldValues } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 
 import style from "./style.module.scss";
 
@@ -11,8 +11,8 @@ const defaultProps = {
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   children?: ReactNode | any;
-  control: FieldValues | any;
-  classInput?: any;
+  control: FieldValues;
+  classInput?: string;
 }
 
 export function Input({

@@ -16,6 +16,7 @@ import {
 import { Container } from "../../components/Container";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import { IFoodType } from "../../interface/IFoodType";
+import { IFoodTypeBackend } from "../../interface/IFoodTypeBackend";
 import { IRestaurantUpdate } from "../../interface/IRestaurantEdit";
 import { capitalizeFirstLetter } from "../../utils/textUtils";
 import style from "./style.module.scss";
@@ -33,11 +34,6 @@ const schema = yup.object().shape({
   state: yup.string().required("O campo Rua é obrigatório"),
   nickname: yup.string().required("O campo Rua é obrigatório"),
 });
-
-export interface IFoodTypeBackend {
-  id: number;
-  name: string;
-}
 
 function Box({ children }: PropsWithChildren<unknown>) {
   return (
@@ -62,11 +58,13 @@ function Box({ children }: PropsWithChildren<unknown>) {
 export function Perfil() {
   const [imageBanner, setImageBanner] = useState(img);
   const [selectFoodType, setSelectFoodType] = useState<IFoodType[]>([]);
-  const [foodType, setFoodType] = useState<IFoodTypeBackend[] | undefined>([]);
+  const [foodType, setFoodType] = useState<IFoodTypeBackend[]>([]);
   const {
     restaurant,
-    setPutRestaurantSucceeded,
+    getPhoto,
+    photoRestaurant,
     getRestaurant,
+    restaurantAuth,
     editRestaurant,
     putRestaurantSucceeded,
     putRestaurantError,
@@ -77,22 +75,54 @@ export function Perfil() {
     control,
     handleSubmit,
     getValues,
+    register,
     setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
   useEffect(() => {
+    restaurantAuth();
+    // getPhoto();
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
 
+  const foodTypeOptions: any = [];
+
+  useEffect(() => {
+    if (foodType) {
+      foodType.forEach((item: IFoodTypeBackend) => {
+        const lwrLabel = capitalizeFirstLetter(item.name);
+        foodTypeOptions.push({ value: item.id, label: lwrLabel });
+        setSelectFoodType(foodTypeOptions);
+      });
+    }
+  }, [foodType]);
+
+  useEffect(() => {
+    if (restaurant) {
+      setFoodType(restaurant?.restaurant.foodTypes);
+    }
+    setValue("email", restaurant?.email);
+    setValue("cnpj", restaurant?.restaurant.cnpj);
+    setValue("name", restaurant?.restaurant.name);
+    setValue("nickname", restaurant?.restaurant.address.nickname);
+    setValue("phone", restaurant?.restaurant.phone);
+    setValue("street", restaurant?.restaurant.address.street);
+    setValue("number", restaurant?.restaurant.address.number);
+    setValue("neighborhood", restaurant?.restaurant.address.neighborhood);
+    setValue("city", restaurant?.restaurant.address.city);
+    setValue("zipCode", restaurant?.restaurant.address.zipCode);
+    setValue("state", restaurant?.restaurant.address.state);
+  }, [restaurant]);
+
   const onLoad = (fileString: any) => {
     setImageBanner(fileString);
   };
 
-  const getBase64 = (file: any) => {
+  const getBase64 = (file: File) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
@@ -106,7 +136,6 @@ export function Perfil() {
       getBase64(file);
     }
   };
-  const foodTypeOptions: any = [];
 
   const body: IRestaurantUpdate = {
     photo: { code: "" },
@@ -128,32 +157,7 @@ export function Perfil() {
     foodTypes: [{ id: 0, name: "" }],
   };
 
-  useEffect(() => {
-    setValue("email", restaurant?.email);
-    setValue("cnpj", restaurant?.restaurant.cnpj);
-    setValue("name", restaurant?.restaurant.name);
-    setValue("nickname", restaurant?.restaurant.address.nickname);
-    setValue("phone", restaurant?.restaurant.phone);
-    setValue("street", restaurant?.restaurant.address.street);
-    setValue("number", restaurant?.restaurant.address.number);
-    setValue("neighborhood", restaurant?.restaurant.address.neighborhood);
-    setValue("city", restaurant?.restaurant.address.city);
-    setValue("zipCode", restaurant?.restaurant.address.zipCode);
-    setValue("state", restaurant?.restaurant.address.state);
-    setFoodType(restaurant?.restaurant.foodTypes);
-  }, [restaurant]);
-
-  useEffect(() => {
-    if (foodType) {
-      foodType.forEach((item: IFoodTypeBackend) => {
-        const lwrLabel = capitalizeFirstLetter(item.name);
-        foodTypeOptions.push({ value: item.id, label: lwrLabel });
-        setSelectFoodType(foodTypeOptions);
-      });
-    }
-  }, [foodType]);
-
-  const food: any = [];
+  const foodTypeBackend: any = [];
 
   const onSubmit = () => {
     const values = getValues();
@@ -175,12 +179,13 @@ export function Perfil() {
     body.address.state = values.state;
 
     selectFoodType?.forEach((item) => {
-      food.push({ id: item.value, name: item.label.toUpperCase() });
+      foodTypeBackend.push({ id: item.value, name: item.label.toUpperCase() });
     });
-    body.foodTypes = food;
+    body.foodTypes = foodTypeBackend;
     if (selectFoodType?.length !== 0 && restaurant?.restaurant.id) {
       editRestaurant(restaurant?.restaurant.id, body);
     }
+    console.log(body);
   };
 
   return (
@@ -330,6 +335,7 @@ export function Perfil() {
                       <Input
                         control={control}
                         value={value}
+                        {...register("street")}
                         onChange={onChange}
                         className={style.spanInput}
                         classInput={style.input}

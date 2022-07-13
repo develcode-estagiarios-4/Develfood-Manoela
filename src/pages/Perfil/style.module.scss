@@ -9,7 +9,7 @@
 .spanPerfil {
   width: 99rem;
   display: inline-flex;
-  margin-top: 3rem;
+  margin-top: 4.3rem;
   margin-left: 5rem;
   font-family: "Roboto", sans-serif;
   background-color: rgba(191, 27, 27, 0.3);
@@ -103,7 +103,9 @@
   float: right;
   margin-right: 3rem;
   border: 1px solid black;
-  font-size: 3.3rem;
+  font-size: 3.2rem;
+  height: 4rem;
+  font-family: $main-font;
   -webkit-text-stroke: 0.7px black;
 }
 

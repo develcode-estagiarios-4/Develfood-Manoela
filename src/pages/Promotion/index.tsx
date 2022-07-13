@@ -9,6 +9,7 @@ import {
   PromotionCard,
 } from "../../components";
 import { usePromotion } from "../../hooks/usePromotion";
+import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
 function Box({ children }: PropsWithChildren<unknown>) {
@@ -78,7 +79,7 @@ export function Promotions() {
               }
             >
               {promotions.length > 0 ? (
-                promotions.map((promotion: any) => (
+                promotions.map((promotion: IPromotion) => (
                   <div key={promotion.id}>
                     <PromotionCard
                       data={promotion}

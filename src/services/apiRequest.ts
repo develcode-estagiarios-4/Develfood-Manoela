@@ -8,7 +8,7 @@ const config = {
   },
 };
 
-const defaultDomainURL = "https://deb3-189-7-107-101.ngrok.io";
+const defaultDomainURL = "https://7abe-179-235-88-84.ngrok.io";
 
 export const get = (url: string) => {
   return api
