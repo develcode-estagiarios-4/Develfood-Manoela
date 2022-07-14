@@ -11,7 +11,7 @@ export function useRestaurant() {
       const response = await get("/auth");
       setRestaurant(response.data.restaurant);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

@@ -12,17 +12,15 @@ export function Home() {
   const navigate = useNavigate();
   const { restaurant, getRestaurant } = useRestaurant();
 
-  const { getPromotions, promotions, getPromotionBanner, promotionBanner } =
-    usePromotion();
+  const { getPromotions, promotions } = usePromotion();
 
   useEffect(() => {
     getPromotions();
     getRestaurant();
-    console.log();
   }, []);
 
   const oi = () => {
-    console.log("oi");
+    // console.log("oi");
   };
 
   function handleClick() {
@@ -32,10 +30,8 @@ export function Home() {
     navigate("/");
   }
 
-  console.log(promotions[1], promotions[2]);
-
   return (
-    <Container>
+    <Container active="true">
       <div className={style.home}> {restaurant?.name} </div>
       <button type="button" onClick={handleClick}>
         log out
