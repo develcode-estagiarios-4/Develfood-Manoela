@@ -66,8 +66,7 @@ export function Perfil() {
   const [foodType, setFoodType] = useState<IFoodTypeBackend[]>([]);
   const {
     restaurant,
-    getPhoto,
-    photoRestaurant,
+    restaurantPhoto,
     getRestaurant,
     restaurantAuth,
     editRestaurant,
@@ -87,7 +86,6 @@ export function Perfil() {
 
   useEffect(() => {
     restaurantAuth();
-    // getPhoto();
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
@@ -105,6 +103,12 @@ export function Perfil() {
       });
     }
   }, [foodType]);
+
+  useEffect(() => {
+    if (restaurantPhoto) {
+      setImageBanner(restaurantPhoto);
+    }
+  }, [restaurantPhoto]);
 
   useEffect(() => {
     if (restaurant) {
@@ -340,7 +344,6 @@ export function Perfil() {
                       <Input
                         control={control}
                         value={value}
-                        {...register("street")}
                         onChange={onChange}
                         className={style.spanInput}
                         classInput={style.input}

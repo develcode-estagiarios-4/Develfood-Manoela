@@ -6,13 +6,14 @@ import { get, put } from "../services/apiRequest";
 
 export function useRestaurant() {
   const [restaurant, setRestaurant] = useState<IRestaurant>();
-  const [photoRestaurant, setPhotoRestaurant] = useState();
+  const [restaurantPhoto, setRestaurantPhoto] = useState();
   const [putRestaurantSucceeded, setPutRestaurantSucceeded] = useState(false);
   const [putRestaurantError, setPutRestaurantError] = useState(false);
 
   async function getRestaurant() {
     try {
       const response = await get("/user");
+      console.log(response);
       setRestaurant(response.data);
     } catch (error) {
       // console.log(error);
@@ -23,7 +24,6 @@ export function useRestaurant() {
     try {
       const response = await put(`/restaurant/${id}`, data);
       setPutRestaurantSucceeded(true);
-      console.log("oi");
       setTimeout(() => {
         setPutRestaurantSucceeded(false);
       }, 3000);
@@ -36,11 +36,10 @@ export function useRestaurant() {
     }
   }
 
-  async function getPhoto() {
+  async function getPhoto(id: string) {
     try {
-      const response = await get("/photo_url");
-      setPhotoRestaurant(response.data);
-      console.log(response);
+      const response = await get(`/photo/${id}`);
+      setRestaurantPhoto(response.data.code);
     } catch (error) {
       // console.log(error);
     }
@@ -49,8 +48,7 @@ export function useRestaurant() {
   async function restaurantAuth() {
     try {
       const response = await get("/auth");
-      console.log(response.data.restaurant);
-      setPhotoRestaurant(response.data.restaurant);
+      getPhoto(response.data.restaurant.photo_url.slice(40));
     } catch (error) {
       // console.log(error);
     }
@@ -59,7 +57,7 @@ export function useRestaurant() {
   return {
     restaurant,
     getPhoto,
-    photoRestaurant,
+    restaurantPhoto,
     getRestaurant,
     restaurantAuth,
     editRestaurant,
