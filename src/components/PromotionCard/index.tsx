@@ -7,12 +7,30 @@ import { usePromotion } from "../../hooks/usePromotion";
 import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
+const defaultProps = {
+  classNameInable: "",
+  classNameSpanDefaul: "",
+  classNameImage: "",
+  style: "",
+};
+
 interface IPromotionProps {
   data: IPromotion;
   onDelete: () => void;
+  classNameInable?: string;
+  classNameImage?: string;
+  classNameSpanDefaul?: string;
+  style?: any;
 }
 
-export function PromotionCard({ data, onDelete }: IPromotionProps) {
+export function PromotionCard({
+  data,
+  onDelete,
+  classNameInable,
+  style,
+  classNameImage,
+  classNameSpanDefaul,
+}: IPromotionProps & typeof defaultProps) {
   const navigate = useNavigate();
 
   const { deletePromotion, getPromotionBanner, promotionBanner } =
@@ -33,19 +51,21 @@ export function PromotionCard({ data, onDelete }: IPromotionProps) {
 
   return (
     <div className={style.divhover}>
-      <div className={style.promotion}>
+      <div className={`${style.promotion} ${classNameSpanDefaul}`}>
         <div className={style.divS}>
           {promotionBanner ? (
             <img
               src={promotionBanner}
               alt="Promotion Banner"
-              className={style.imagePromotion}
+              className={`${style.imagePromotion} ${classNameImage}`}
             />
           ) : (
             ""
           )}
-          <div className={style.promotionTitle}>{data.name}</div>
-          <div className={style.spanButtons}>
+          <div className={`${style.promotionTitle} ${classNameInable}`}>
+            {data.name}
+          </div>
+          <div className={`${style.spanButtons}  ${classNameInable}`}>
             <button
               className={style.spanDelete}
               onClick={handleDelete}
@@ -66,3 +86,5 @@ export function PromotionCard({ data, onDelete }: IPromotionProps) {
     </div>
   );
 }
+
+PromotionCard.defaultProps = defaultProps;
