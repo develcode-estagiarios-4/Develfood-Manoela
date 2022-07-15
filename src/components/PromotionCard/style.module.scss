@@ -2,15 +2,13 @@
 @import "../../styles/common/colors.scss";
 
 .promotion {
-  font-size: 3rem;
   text-align: center;
-  height: 20.5rem;
-  width: 41rem;
+  height: 30rem;
+  width: 60rem;
   border: 1px solid black;
 }
 
 .promotion:hover {
-  border: 1px solid red;
   background-color: rgba(0, 0, 0, 0.7);
 
   .spanButtons {
@@ -41,13 +39,12 @@
 }
 
 .promotionTitle {
-  height: 8rem;
-  font-size: 3.1rem;
+  height: 14rem;
+  font-size: 4.8rem;
   margin: 0 3rem 0 3rem;
-  margin-top: 1rem;
   color: white;
   font-family: $main-font;
-  -webkit-text-stroke: 0.5px red;
+  -webkit-text-stroke: 0.5px #F36464;
   opacity: 0%;
   display: flex;
   align-items: center;
@@ -55,20 +52,20 @@
 }
 
 .IconDelete {
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
 }
 
 .IconEdit {
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
 }
 
 .spanDelete {
   background-color: $red-delete;
   border-radius: 50%;
-  height: 7rem;
-  width: 8rem;
+  height: 11rem;
+  width: 11rem;
   border: 0;
   box-shadow: inset 0 0 0.2em black;
   cursor: pointer;
@@ -77,21 +74,20 @@
 .spanEdit {
   background-color: $green-edit;
   border-radius: 50%;
-  height: 7rem;
+  height: 11rem;
+  width: 11rem;
   margin: 0 0 0 0;
   box-shadow: inset 0 0 0.2em black;
-
-  width: 8rem;
   border: 0;
   cursor: pointer;
 }
 
 .imagePromotion {
-  height: 20.5rem;
-  width: 41rem;
+  height: 30rem;
+  width: 60rem;
   z-index: -1;
   position: absolute;
-  margin: -1rem 0 00 -20.5rem;
+  margin: 0 0 0 -30.1rem;
 }
 
 @media only screen and (max-width: 1280px) {

@@ -56,8 +56,8 @@ export function Promotions() {
   return (
     <Container>
       <div className={style.spanPage}>
-        <div className={style.promocoes}>Suas promoções</div>
-        <div className={style.spancontent}>
+        <div className={style.title}>Suas promoções</div>
+        <div className={style.spanContent}>
           <Button
             variant="red"
             type="button"
@@ -67,15 +67,15 @@ export function Promotions() {
             Nova Promoção
           </Button>
           {loading ? (
-            <div className={style.contentNoPromotion}>
+            <div className={style.contentPromotion}>
               <Skeleton wrapper={Box} count={4} />
             </div>
           ) : (
             <div
               className={
                 promotions.length > 0
-                  ? style.contentNoPromotion
-                  : style.contentPromotion
+                  ? style.contentPromotion
+                  : style.contentNoPromotion
               }
             >
               {promotions.length > 0 ? (

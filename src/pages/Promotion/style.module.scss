@@ -2,55 +2,49 @@
   width: 100%;
   height: 100%;
   text-align: -webkit-center;
+  display: grid;
+  justify-items: center;
 }
 
-.promocoes {
+.title {
   text-align: center;
-  font-size: 6rem;
-  padding-top: 4.5rem;
+  font-size: 9.6rem;
+  padding: 15rem 0 0 0;
 }
 
-.spancontent {
-  width: 90rem;
+.spanContent {
+  width: 125.1rem;
   max-width: 100%;
-  margin: 4.8rem 3rem 0 3rem; 
   display: flow-root;
-  text-align: -webkit-center;
 }
 
 .buttonPromotion {
-  width: 18rem;
-  height: 4rem;
-  font-size: 2.2rem;
+  width: 27.5rem;
+  height: 5.9rem;
+  font-size: 3.5rem;
   border: 1px solid black;
+  padding-bottom: 0.8rem;
   float: right;
-  padding-bottom: 0.5rem;
-  margin-right: 5.5rem;
 }
-
-
-.contentPromotion {
-   height: 100%;
-   width: 100%;
- }
-
- .spanNoPromotion {
-   margin-top: 6.5rem;
-   width: 100%;
-  }
-
 
 .contentNoPromotion {
   height: 100%;
-  margin-top: 6rem;
-  width: 87rem;
-  margin-left: -7rem;
+  width: 100%;
+}
+
+.spanNoPromotion {
+  margin-top: 6.5rem;
+  width: 100%;
+}
+
+.contentPromotion {
+  margin-top: 8rem;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
   column-gap: 1rem;
-  row-gap: 3.5rem;
-  justify-content: space-between; 
+  row-gap: 5rem;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 1280px) {

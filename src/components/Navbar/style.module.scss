@@ -6,14 +6,15 @@
   width: 49rem;
   background-color: $color-theme;
   display: inline-block;
-  padding: 2rem 0 0 0;
+  padding: 1rem 0 0 0;
 }
 
 .navbarMenu {
   color: black;
   font-size: 11.535rem;
-  line-height: 8rem;
+  line-height: 9.7rem;
   display: flex;;
+  padding-top: 0.5rem;
 }
 
 .navbarMenu:hover {
@@ -22,11 +23,11 @@
 }
 
 .navbarIcons {
-  padding: 0 1rem 3.4rem 0;
-  height: 9rem;
+  padding: 0.1rem 1.5rem 0rem 0rem;
+  height: 8.6rem;
 }
 
 .navbarIconUser {
-  padding: 0 1rem 5rem 0;
-  height: 8rem;
+  padding: 01rem 1.5rem 0rem 0rem;
+  height: 7rem;
 }

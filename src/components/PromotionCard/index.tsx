@@ -32,9 +32,9 @@ export function PromotionCard({ data, onDelete }: IPromotionProps) {
   }, [promotionBanner]);
 
   return (
-    <div className={style.divhover}>
+    <div>
       <div className={style.promotion}>
-        <div className={style.divS}>
+        <div>
           {promotionBanner ? (
             <img
               src={promotionBanner}
