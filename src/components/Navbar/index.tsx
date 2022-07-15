@@ -6,36 +6,36 @@ import style from "./style.module.scss";
 
 function Navbar() {
   return (
-    <nav className={style.navbarActive}>
+    <nav className={style.navbar}>
       <ul>
         <li>
           <Link to="/home" className={style.navbarMenu}>
             <MdIcons.MdHome className={style.navbarIcons} />
-            <div className={style.menuNone}>Home</div>
+            <div>Home</div>
           </Link>
         </li>
         <li>
           <Link to="/perfil" className={style.navbarMenu}>
             <FaIcons.FaUserCircle className={style.navbarIconUser} />
-            <div className={style.menuNone}>Perfil</div>
+            <div>Perfil</div>
           </Link>
         </li>
         <li>
           <Link to="/menu" className={style.navbarMenu}>
             <MdIcons.MdRestaurant className={style.navbarIcons} />
-            <div className={style.menuNone}>Menu</div>
+            <div>Menu</div>
           </Link>
         </li>
         <li>
           <Link to="/requests" className={style.navbarMenu}>
             <MdIcons.MdPhone className={style.navbarIcons} />
-            <div className={style.menuNone}>Pedidos</div>
+            <div>Pedidos</div>
           </Link>
         </li>
         <li>
           <Link to="/promotion" className={style.navbarMenu}>
             <MdIcons.MdOutlineMoneyOffCsred className={style.navbarIcons} />
-            <div className={style.menuNone}>Promoções</div>
+            <div>Promoções</div>
           </Link>
         </li>
       </ul>

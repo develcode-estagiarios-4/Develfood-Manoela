@@ -79,7 +79,6 @@ export function Perfil() {
     control,
     handleSubmit,
     getValues,
-    register,
     setValue,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -194,7 +193,6 @@ export function Perfil() {
     if (selectFoodType?.length !== 0 && restaurant?.restaurant.id) {
       editRestaurant(restaurant?.restaurant.id, body);
     }
-    console.log(body);
   };
 
   return (
