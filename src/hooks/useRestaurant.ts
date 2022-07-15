@@ -39,6 +39,7 @@ export function useRestaurant() {
   async function getPhoto(id: string) {
     try {
       const response = await get(`/photo/${id}`);
+      console.log(response);
       setRestaurantPhoto(response.data.code);
     } catch (error) {
       // console.log(error);
@@ -48,6 +49,7 @@ export function useRestaurant() {
   async function restaurantAuth() {
     try {
       const response = await get("/auth");
+      console.log(response.data);
       getPhoto(response.data.restaurant.photo_url.slice(40));
     } catch (error) {
       // console.log(error);
