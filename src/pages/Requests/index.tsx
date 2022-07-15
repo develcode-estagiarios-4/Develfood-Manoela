@@ -56,7 +56,6 @@ export function Requests() {
     setWarningModal(false);
   };
 
-  console.log(requests);
   return (
     <Container>
       <DndProvider backend={HTML5Backend}>

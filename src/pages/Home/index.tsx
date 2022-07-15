@@ -22,7 +22,7 @@ export function Home() {
 
   return (
     <Container>
-      <div className={style.home}> {restaurant?.restaurant.name}</div>
+      <div className={style.home}> {restaurant?.name}</div>
       <button type="button" onClick={handleClick}>
         log out
       </button>

@@ -1,34 +1,22 @@
 export interface IRestaurant {
   id: number;
-  email: string;
-  password: string;
-  creationDate: string;
-  role: {
-    id: number;
-    name: string;
-    authority: string;
+  name: string;
+  cnpj: string;
+  phone: string;
+  address: {
+    id: string;
+    street: string;
+    number: string;
+    neighborhood: string;
+    city: string;
+    zipCode: string;
+    state: string;
+    nickname: string;
   };
-  costumer: string;
-  restaurant: {
-    id: number;
-    name: string;
-    cnpj: string;
-    phone: string;
-    address: {
-      id: string;
-      street: string;
-      number: string;
-      neighborhood: string;
-      city: string;
-      zipCode: string;
-      state: string;
-      nickname: string;
-    };
-    foodTypes: [
-      {
-        id: number;
-        name: string;
-      }
-    ];
-  };
+  food_types: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
 }

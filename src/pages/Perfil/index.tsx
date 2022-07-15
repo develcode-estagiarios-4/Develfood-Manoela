@@ -66,142 +66,139 @@ export function Perfil() {
   const [foodType, setFoodType] = useState<IFoodTypeBackend[]>([]);
   const {
     restaurant,
+    restaurantAuth,
     restaurantPhoto,
     getRestaurant,
-    restaurantAuth,
+    getRestaurantAuth,
     editRestaurant,
     putRestaurantSucceeded,
     putRestaurantError,
   } = useRestaurant();
   const [loading, setLoading] = useState(true);
 
-  // const {
-  //   control,
-  //   handleSubmit,
-  //   getValues,
-  //   register,
-  //   setValue,
-  //   formState: { errors },
-  // } = useForm({ resolver: yupResolver(schema) });
+  const {
+    control,
+    handleSubmit,
+    getValues,
+    setValue,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   useEffect(() => {
-    restaurantAuth();
+    getRestaurantAuth();
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
 
-  // const foodTypeOptions: any = [];
+  const foodTypeOptions: any = [];
 
-  // // useEffect(() => {
-  // //   if (foodType) {
-  // //     foodType.forEach((item: IFoodTypeBackend) => {
-  // //       const lwrLabel = capitalizeFirstLetter(item.name);
-  // //       foodTypeOptions.push({ value: item.id, label: lwrLabel });
-  // //       setSelectFoodType(foodTypeOptions);
-  // //     });
-  // //   }
-  // // }, [foodType]);
+  useEffect(() => {
+    if (foodType) {
+      foodType.forEach((item: IFoodTypeBackend) => {
+        const lwrLabel = capitalizeFirstLetter(item.name);
+        foodTypeOptions.push({ value: item.id, label: lwrLabel });
+        setSelectFoodType(foodTypeOptions);
+      });
+    }
+  }, [foodType]);
 
-  // useEffect(() => {
-  //   if (restaurantPhoto) {
-  //     setImageBanner(restaurantPhoto);
-  //   }
-  // }, [restaurantPhoto]);
+  useEffect(() => {
+    if (restaurantPhoto) {
+      setImageBanner(restaurantPhoto);
+    }
+  }, [restaurantPhoto]);
 
-  // useEffect(() => {
-  //   if (restaurant) {
-  //     setFoodType(restaurant?.restaurant.foodTypes);
-  //   }
-  //   setValue("email", restaurant?.email);
-  //   setValue("cnpj", restaurant?.restaurant.cnpj);
-  //   setValue("name", restaurant?.restaurant.name);
-  //   setValue("nickname", restaurant?.restaurant.address.nickname);
-  //   setValue("phone", restaurant?.restaurant.phone);
-  //   setValue("street", restaurant?.restaurant.address.street);
-  //   setValue("number", restaurant?.restaurant.address.number);
-  //   setValue("neighborhood", restaurant?.restaurant.address.neighborhood);
-  //   setValue("city", restaurant?.restaurant.address.city);
-  //   setValue("zipCode", restaurant?.restaurant.address.zipCode);
-  //   setValue("state", restaurant?.restaurant.address.state);
-  // }, [restaurant]);
+  useEffect(() => {
+    if (restaurant) {
+      setFoodType(restaurant?.food_types);
+    }
+    setValue("email", restaurantAuth?.email);
+    setValue("cnpj", restaurant?.cnpj);
+    setValue("name", restaurant?.name);
+    setValue("nickname", restaurant?.address.nickname);
+    setValue("phone", restaurant?.phone);
+    setValue("street", restaurant?.address.street);
+    setValue("number", restaurant?.address.number);
+    setValue("neighborhood", restaurant?.address.neighborhood);
+    setValue("city", restaurant?.address.city);
+    setValue("zipCode", restaurant?.address.zipCode);
+    setValue("state", restaurant?.address.state);
+  }, [restaurant]);
 
-  // const onLoad = (fileString: any) => {
-  //   setImageBanner(fileString);
-  // };
+  const onLoad = (fileString: any) => {
+    setImageBanner(fileString);
+  };
 
-  // const getBase64 = (file: File) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = () => {
-  //     onLoad(reader.result);
-  //   };
-  // };
+  const getBase64 = (file: File) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+    };
+  };
 
-  // console.log(restaurant);
+  const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files != null) {
+      const file = e.target.files[0];
+      getBase64(file);
+    }
+  };
 
-  // const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files != null) {
-  //     const file = e.target.files[0];
-  //     getBase64(file);
-  //   }
-  // };
+  const body: IRestaurantUpdate = {
+    photo: { code: "" },
+    user: { id: 0 },
+    id: 0,
+    name: "",
+    cnpj: "",
+    phone: "",
+    address: {
+      id: "",
+      street: "",
+      number: "",
+      neighborhood: "",
+      city: "",
+      zipCode: "",
+      state: "",
+      nickname: "",
+    },
+    foodTypes: [{ id: 0, name: "" }],
+  };
 
-  // const body: IRestaurantUpdate = {
-  //   photo: { code: "" },
-  //   user: { id: 0 },
-  //   id: 0,
-  //   name: "",
-  //   cnpj: "",
-  //   phone: "",
-  //   address: {
-  //     id: "",
-  //     street: "",
-  //     number: "",
-  //     neighborhood: "",
-  //     city: "",
-  //     zipCode: "",
-  //     state: "",
-  //     nickname: "",
-  //   },
-  //   foodTypes: [{ id: 0, name: "" }],
-  // };
+  const foodTypeBackend: any = [];
 
-  // const foodTypeBackend: any = [];
+  const onSubmit = () => {
+    const values = getValues();
+    body.photo.code = imageBanner;
+    if (restaurant) {
+      body.id = restaurant?.id;
+      body.user.id = restaurant.id;
+      body.address.id = restaurant?.address.id;
+    }
+    body.name = values.name;
+    body.cnpj = values.cnpj;
+    body.phone = values.phone;
+    body.address.street = values.street;
+    body.address.number = values.number;
+    body.address.neighborhood = values.neighborhood;
+    body.address.city = values.city;
+    body.address.nickname = values.nickname;
+    body.address.zipCode = values.zipCode;
+    body.address.state = values.state;
 
-  // const onSubmit = () => {
-  //   const values = getValues();
-  //   body.photo.code = imageBanner;
-  //   if (restaurant) {
-  //     body.id = restaurant?.restaurant.id;
-  //     body.user.id = restaurant.id;
-  //     body.address.id = restaurant?.restaurant.address.id;
-  //   }
-  //   body.name = values.name;
-  //   body.cnpj = values.cnpj;
-  //   body.phone = values.phone;
-  //   body.address.street = values.street;
-  //   body.address.number = values.number;
-  //   body.address.neighborhood = values.neighborhood;
-  //   body.address.city = values.city;
-  //   body.address.nickname = values.nickname;
-  //   body.address.zipCode = values.zipCode;
-  //   body.address.state = values.state;
-
-  // selectFoodType?.forEach((item) => {
-  //   foodTypeBackend.push({ id: item.value, name: item.label.toUpperCase() });
-  // });
-  // body.foodTypes = foodTypeBackend;
-  // if (selectFoodType?.length !== 0 && restaurant?.restaurant.id) {
-  //   editRestaurant(restaurant?.restaurant.id, body);
-  // }
-  //   console.log(body);
-  // };
+    selectFoodType?.forEach((item) => {
+      foodTypeBackend.push({ id: item.value, name: item.label.toUpperCase() });
+    });
+    body.foodTypes = foodTypeBackend;
+    if (selectFoodType?.length !== 0 && restaurant?.id) {
+      editRestaurant(restaurant?.id, body);
+    }
+  };
 
   return (
     <Container>
-      {/* {putRestaurantSucceeded && (
+      {putRestaurantSucceeded && (
         <AlertMessage variant="green">
           Restaurante editado com sucesso
         </AlertMessage>
@@ -219,7 +216,7 @@ export function Perfil() {
         </div>
       ) : (
         <>
-          <div className={style.perfil}>Olá {restaurant?.restaurant.name}</div>
+          <div className={style.perfil}>Olá {restaurant?.name}</div>
           <form onSubmit={handleSubmit(onSubmit)} className={style.spanPerfil}>
             <div className={style.spanform}>
               Informações pessoais
@@ -473,7 +470,7 @@ export function Perfil() {
           </form>{" "}
         </>
       )}
-      ; */}
+      ;
     </Container>
   );
 }
