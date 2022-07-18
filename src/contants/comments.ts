@@ -1,4 +1,4 @@
-export const comments = (restaurantName: string) => [
+export const Comments = [
   {
     message:
       "“A comida desse lugar é sensacional. Eu e minha esposa comemos quase todo o domingo!!!”",
@@ -10,7 +10,7 @@ export const comments = (restaurantName: string) => [
     date: "01/02/2022",
   },
   {
-    message: `“O sinônimo de comida boa é ${restaurantName}.”`,
+    message: `“O sinônimo de comida boa é DevelcodeRestaurant.”`,
     date: "01/02/2022",
   },
 ];

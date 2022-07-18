@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PromotionCard } from "../../components";
+import { CommentCard } from "../../components/CommentCard";
 import { Container } from "../../components/Container";
-import { comments } from "../../contants/comments";
+import { Comments } from "../../contants/comments";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import style from "./style.module.scss";

@@ -4,7 +4,7 @@
 }
 
 .homeSpan {
-  //background-color: pink;
+  background-color: pink;
   height: 100rem;
   height: auto;
   display: flex;
@@ -26,6 +26,7 @@
   background-color: yellow;
   border: 0.1rem solid black;
   font-size: 4.8rem;
+  border-radius: 1rem;
 }
 
 .spanPromotionsBanners {
@@ -34,10 +35,12 @@
  // background-color: purple;
   text-align: -webkit-center;
   border: 0.1rem solid black;
+  border-radius: 1rem;
+
 }
 
 .rightSpan {
-  background-color: red;
+  // background-color: red;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -50,6 +53,8 @@
   text-align: -webkit-center;
   height: 67.9rem;
   border: 0.1rem solid black;
+  border-radius: 1rem;
+  box-shadow: 5px 10px #888888 ;
 }
 
 .promotionBanner {
