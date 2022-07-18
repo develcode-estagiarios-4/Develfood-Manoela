@@ -150,6 +150,7 @@ export function PromotionForm() {
     if (restaurant?.id !== undefined) {
       body.restaurant.id = restaurant.id;
     }
+    console.log(restaurant);
   }, [restaurant]);
 
   return (

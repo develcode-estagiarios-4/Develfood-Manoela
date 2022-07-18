@@ -12,7 +12,7 @@ export function useRestaurant() {
 
   async function getRestaurant() {
     try {
-      const response = await get("/user");
+      const response = await get("/restaurant/user");
       console.log(response);
       setRestaurant(response.data);
     } catch (error) {

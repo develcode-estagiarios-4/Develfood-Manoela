@@ -14,13 +14,12 @@
 }
 
 .spanContent {
-  width: 110rem;
+  width: 100rem;
   max-width: 100%;
-  margin: 8rem 2rem 0 2rem;
+  margin: 11rem 2rem 0 2rem;
   display: inline-flex;
   max-width: 100%;
   align-items: center;
-  background-color: pink;
 }
 
 .buttonPromotion {
@@ -35,33 +34,35 @@
 }
 
 .leftSpam {
-  width: 55rem;
+  width: 55.8rem;
   max-width: 100%;
-  background-color: yellow;
 }
 
 .spanRight {
-  width: 36.5rem;
   display: flex;
   max-width: 100%;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  background-color: green;
+  width: 100rem;
+  max-width: 100%;
+  display: inline-flex;
+  max-width: 100%;
 }
 
 .image {
-  width: 22rem;
-  height: 22rem;
+  height: 31rem;
+  width: 31rem;
   float: right;
   display: flex;
   position: absolute;
   max-width: 100%;
   border-radius: 50%;
   border: 0.5px solid black;
+  object-fit: cover;
 }
 
 .nameInput {
-  width: 54.5rem;
+  width: 54.6rem;
   height: 5.6rem;
   margin-bottom: 0.7rem;
 }
@@ -82,29 +83,28 @@
 
 .spanForm {
   display: flex;
-  width: 38rem;
   flex-wrap: wrap;
-  row-gap: 0.5rem;
+  row-gap: 2.2rem;  
   max-width: 100%;
-  margin: 5.8rem 0 5rem 0;
+  margin: 8.8rem 0 7rem 0;
 }
 
 .inputDate {
   display: flex;
-  width: 100%;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  column-gap: 5.2rem;
 }
 
 .uploadImage {
-  height: 25rem;
-  width: 25rem;
+  height: 31rem;
+  width: 31rem;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .uploadSpan {
-  width: 22rem;
-  height: 22rem;
+  height: 31rem;
+  width: 31rem;
   border-radius: 50%;
   position: absolute;
   display: flex;
@@ -112,8 +112,8 @@
 
 .inputUpload {
   cursor: pointer;
-  width: 20rem;
-  height: 20rem;
+  height: 31rem;
+  width: 31rem;
   border-radius: 50%;
   opacity: 0%;
 }
