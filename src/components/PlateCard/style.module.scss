@@ -2,8 +2,8 @@
 @import "../../styles/common/typography.scss";
 
 .promotion {
-  height: 23.6rem;
-  width: 23.6rem;
+  height: 31rem;
+  width: 31rem;
   border: 1px solid black;
 }
 
@@ -66,9 +66,10 @@
 }
 
 .imagePromotion {
-  height: 23.6rem;
-  width: 23.6rem;
+  height: 31rem;
+  width: 31rem;
   z-index: -1;
   position: absolute;
-  margin: -9rem 0 0 -11.8rem;
+  //margin: -9rem 0 0 -15.5rem;
+  margin-top: -9rem;
 }

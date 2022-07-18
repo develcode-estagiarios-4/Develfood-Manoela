@@ -16,13 +16,12 @@ function Box({ children }: PropsWithChildren<unknown>) {
       style={{
         border: "1px solid #ccc",
         display: "inline-block",
-        lineHeight: 36,
-        padding: "1rem",
+        lineHeight: "30.1rem",
         marginBottom: "3rem",
-        width: 217,
+        width: "30.1rem",
         justifyContent: "space-between",
         marginLeft: "3.5rem",
-        columnGap: "6rem",
+        columnGap: "7rem",
         flexWrap: "wrap",
       }}
     >
@@ -105,19 +104,21 @@ export function Menu() {
               />
             </div>
           )}
-          <input
-            className={style.searchPlate}
-            placeholder="Nome do Prato"
-            onChange={handleChange}
-          />
-          <Button
-            variant="red"
-            type="button"
-            className={style.buttonPromotion}
-            onClick={handleClick}
-          >
-            Novo Prato
-          </Button>
+          <div className={style.contentTop}>
+            <input
+              className={style.searchPlate}
+              placeholder="Nome do Prato"
+              onChange={handleChange}
+            />
+            <Button
+              variant="red"
+              type="button"
+              className={style.buttonPromotion}
+              onClick={handleClick}
+            >
+              Novo Prato
+            </Button>
+          </div>
 
           {loading ? (
             <div className={style.contentNoPromotion}>

@@ -2,35 +2,41 @@
 @import "../../styles/common/typography.scss";
 
 .spanPage {
+  // width: 100%;
+  // height: 100%;
+  // text-align: -webkit-center;
   width: 100%;
-  height: 100%;
-  text-align: -webkit-center;
+height: 100%;
+justify-items: center;
+display: inline-grid;
 }
 
 .menu {
   text-align: center;
-  font-size: 6.6rem;
-  margin: -3.5rem 17rem 0 0 ;
+  font-size: 9.6rem;
+  padding: 3rem 0 0 0 ;
 }
 
 .spancontent {
-  width: 90rem;
+  // width: 112rem;
+  // max-width: 100%;
+  // margin: 1rem 3rem 0 3rem;
+  // display: flow-root;
+  // text-align: -webkit-center;
+  width: 112rem;
   max-width: 100%;
   margin: 1rem 3rem 0 3rem;
   display: flow-root;
-  text-align: -webkit-center;
+  justify-self: center;
 }
 
 .searchPlate {
-  width: 20rem;
-  height: 3.4rem;
-  margin-left: 46.5rem;
-  margin-top: 0.2rem;
+  width: 31rem;
+  height: 5.3rem;
   background-color: #F9F8F8;
   outline: 0;
   border: 0.1px solid black;
   padding-left: 1rem;
-  padding-bottom: -0.5rem;
   padding-top: 0.3rem;
 }
 
@@ -44,15 +50,14 @@
 
 
 .buttonPromotion {
-  width: 14rem;
-  height: 4rem;
+  width: 16.9rem;
+  height: 5.6rem;
   -webkit-text-stroke: 0.3px black;
-  font-size: 2rem;
+  font-size: 2.4rem;
   text-shadow: 1rem black solid;
   border: 1px solid black;
   float: right;
-  margin-right: 5.5rem;
-  padding-bottom: 0.10rem;
+  margin-left: 3rem;
 }
 
 .contentPromotion {
@@ -68,12 +73,10 @@
 .contentNoPromotion {
   height: 100%;
   margin-top: 5rem;
-  width:  84rem;
-  margin-left: -3rem;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  column-gap: 6rem;
+  column-gap: 9.2rem;
   row-gap: 3.5rem;
 }
 
@@ -82,6 +85,11 @@
   position: absolute;
   margin-top: 2rem;
   margin-left: 10rem;
+}
+
+.contentTop {
+  display: flex;
+  justify-content: end;
 }
 
 @media only screen and (max-width: 1250px) {

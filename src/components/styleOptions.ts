@@ -64,6 +64,8 @@ export const styleOptions: StylesConfig = {
       ...styles,
       border: "0000.1px solid #8E8E8E",
       outline: "0",
+      width: "34.9rem",
+      height: "5.7rem",
     };
   },
 };

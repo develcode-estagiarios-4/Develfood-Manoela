@@ -13,24 +13,7 @@ import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
 function Box({ children }: PropsWithChildren<unknown>) {
-  return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        display: "inline-block",
-        lineHeight: 31,
-        padding: "1rem",
-        marginBottom: "3rem",
-        width: 365,
-        justifyContent: "space-between",
-        marginLeft: "4.7rem",
-        columnGap: "1rem",
-        flexWrap: "wrap",
-      }}
-    >
-      {children}
-    </div>
-  );
+  return <div className={style.boxSkeleton}>{children}</div>;
 }
 
 export function Promotions() {
