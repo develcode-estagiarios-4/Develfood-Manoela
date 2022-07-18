@@ -114,7 +114,9 @@ export function Perfil() {
     if (restaurant) {
       setFoodType(restaurant?.food_types);
     }
-    setValue("email", restaurantAuth?.email);
+    if (restaurantAuth) {
+      setValue("email", restaurantAuth?.email);
+    }
     setValue("cnpj", restaurant?.cnpj);
     setValue("name", restaurant?.name);
     setValue("nickname", restaurant?.address.nickname);
