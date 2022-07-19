@@ -10,7 +10,7 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
 import { useAuth } from "../../context";
 import { signUp } from "../../hooks/useSignUp";
-import { cep, removeLetters } from "../../utils/textUtils";
+import { zipCode, removeLetters } from "../../utils/textUtils";
 import { newDate } from "../../utils/todayDate";
 import style from "./style.module.scss";
 
@@ -93,7 +93,7 @@ export function SignUpThird() {
                       placeholder="CEP"
                       control={control}
                       type="input"
-                      value={cep(value)}
+                      value={zipCode(value)}
                       onChange={onChange}
                       className={style.inputMargin}
                     >

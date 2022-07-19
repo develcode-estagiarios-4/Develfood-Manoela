@@ -25,7 +25,7 @@ export const cnpj = (value: string | undefined) => {
     .replace(/(-\d{2})(\d)/, "$1");
 };
 
-export const cep = (value: string | undefined) => {
+export const zipCode = (value: string | undefined) => {
   if (!value) return "";
 
   return value
@@ -69,4 +69,10 @@ export const formatPrice = (value: string) => {
     .replace(/[\D]/g, "")
     .replace(/(\d)(\d{2})$/, "$1.$2")
     .replace(/(?=(\d{3})+(\D))\B/g, "");
+};
+
+export const capitalizeFirstLetter = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/(?:^|\s)(?!da|de|do)\S/g, (l: string) => l.toUpperCase());
 };

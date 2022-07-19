@@ -1,4 +1,6 @@
-export interface IRestaurant {
+export interface IRestaurantUpdate {
+  photo: { code: string };
+  user: { id: number };
   id: number;
   name: string;
   cnpj: string;
@@ -13,7 +15,7 @@ export interface IRestaurant {
     state: string;
     nickname: string;
   };
-  food_types: [
+  foodTypes: [
     {
       id: number;
       name: string;

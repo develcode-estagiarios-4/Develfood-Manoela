@@ -1,5 +1,7 @@
 import * as MdIcons from "react-icons/md";
-import Select, { StylesConfig } from "react-select";
+import Select, { ActionMeta, StylesConfig } from "react-select";
+
+import { IFoodType } from "../../interface/IFoodType";
 
 import { IFoodType } from "../../interface/IFoodType";
 
@@ -15,14 +17,14 @@ const defaultProps = {
   classNameSpan: "",
   classNameIcon: "",
   classNameInput: "",
-  value: "",
+  placeholder: "",
 };
 
 interface IProps {
-  placeholder: string;
-  type: string;
+  placeholder?: string;
   onChange: (e: any) => void;
-  value?: IFoodType | IFoodType[];
+  value: IFoodType[];
+
   classNameInput?: string;
   classNameSpan?: string;
   classNameIcon?: string;
@@ -115,6 +117,7 @@ const styleOptions: StylesConfig = {
     return {
       ...styles,
       outline: "0",
+      justifyContent: "flex-start",
       paddingLeft: "1rem",
       ":hover": { borderColor: "white" },
     };
@@ -123,7 +126,6 @@ const styleOptions: StylesConfig = {
 
 export function SelectSignUp({
   placeholder,
-  type,
   onChange,
   value,
   classNameInput,
@@ -141,9 +143,9 @@ export function SelectSignUp({
         noOptionsMessage={({ inputValue }) =>
           !inputValue ? "Sem opções" : "No results found"
         }
-        placeholder="Tipos de comida"
         closeMenuOnSelect={false}
         onChange={onChange}
+        placeholder={placeholder}
         isMulti
         theme={(theme) => ({
           ...theme,
@@ -154,6 +156,7 @@ export function SelectSignUp({
           },
         })}
         styles={styleOptions}
+        isSearchable={false}
         options={options}
         className={`${style.select} ${classNameInput}`}
       />

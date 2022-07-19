@@ -12,6 +12,7 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
 import { SelectSignUp } from "../../components/SelectSignUp";
 import { useAuth } from "../../context";
+import { IFoodType } from "../../interface/IFoodType";
 import { normalizePhone } from "../../utils/textUtils";
 import style from "./style.module.scss";
 
@@ -26,7 +27,7 @@ export function SignUpSecond() {
   const navigate = useNavigate();
 
   const { body } = useAuth();
-  const [selectedOption, setSelectedOption] = useState([]);
+  const [selectedOption, setSelectedOption] = useState<IFoodType[]>([]);
   const [isSelectEmpty, setIsSelectEmpty] = useState(false);
 
   const {
@@ -48,7 +49,7 @@ export function SignUpSecond() {
   };
 
   function formatSelectedOptions() {
-    const optionsList = selectedOption.map((option: any) => {
+    const optionsList = selectedOption.map((option: IFoodType) => {
       const hasValue = !!option.value;
       if (hasValue) {
         const optionObject = { id: option.value };
@@ -126,7 +127,7 @@ export function SignUpSecond() {
 
           <SelectSignUp
             placeholder="Tipos de comida"
-            type="select"
+            value={selectedOption}
             onChange={handleChange}
           />
           {isSelectEmpty ? (

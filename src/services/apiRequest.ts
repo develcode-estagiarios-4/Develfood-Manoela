@@ -1,8 +1,10 @@
 import api from "./api";
 
+const token = localStorage.getItem("token");
+
 const config = {
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    Authorization: `Bearer ${token}`,
   },
 };
 
