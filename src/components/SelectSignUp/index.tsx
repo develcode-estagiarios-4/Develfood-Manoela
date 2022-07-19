@@ -3,6 +3,8 @@ import Select, { ActionMeta, StylesConfig } from "react-select";
 
 import { IFoodType } from "../../interface/IFoodType";
 
+import { IFoodType } from "../../interface/IFoodType";
+
 import "../../styles/common/typography.scss";
 import style from "./style.module.scss";
 
@@ -22,6 +24,7 @@ interface IProps {
   placeholder?: string;
   onChange: (e: any) => void;
   value: IFoodType[];
+
   classNameInput?: string;
   classNameSpan?: string;
   classNameIcon?: string;
