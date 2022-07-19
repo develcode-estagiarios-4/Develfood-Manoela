@@ -20,15 +20,12 @@ import { IFoodTypeBackend } from "../../interface/IFoodTypeBackend";
 import { IRestaurantUpdate } from "../../interface/IRestaurantEdit";
 import {
   capitalizeFirstLetter,
-  cnpj,
   normalizePhone,
   zipCode,
 } from "../../utils/textUtils";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
-  email: yup.string().required("O campo Email é obrigatório"),
-  cnpj: yup.string().required("O campo CNPJ é obrigatório"),
   name: yup.string().required("O campo Nome é obrigatório"),
   phone: yup.string().required("O campo Telefone é obrigatório"),
   street: yup.string().required("O campo Rua é obrigatório"),
@@ -111,17 +108,9 @@ export function Perfil() {
   }, [restaurantPhoto]);
 
   useEffect(() => {
-    if (restaurantAuth) {
-      setValue("email", restaurantAuth?.email);
-    }
-  }, [restaurantAuth]);
-
-  useEffect(() => {
     if (restaurant) {
       setFoodType(restaurant?.food_types);
     }
-
-    setValue("cnpj", restaurant?.cnpj);
     setValue("name", restaurant?.name);
     setValue("nickname", restaurant?.address.nickname);
     setValue("phone", restaurant?.phone);
@@ -235,14 +224,13 @@ export function Perfil() {
                     render={({ field: { onChange, value } }) => (
                       <Input
                         control={control}
-                        value={value}
+                        value={restaurantAuth?.email}
                         onChange={onChange}
-                        className={style.spanInput}
-                        classInput={style.input}
+                        className={`${style.spanInput} ${style.inputDefault}`}
+                        classInput={`${style.input} ${style.inputDefault}`}
                       />
                     )}
                   />
-                  <ErrorMessage> {errors.email?.message}</ErrorMessage>
                 </div>
 
                 <div className={style.spanInputItem}>
@@ -253,14 +241,13 @@ export function Perfil() {
                     render={({ field: { onChange, value } }) => (
                       <Input
                         control={control}
-                        value={cnpj(value)}
+                        value={restaurant?.cnpj}
                         onChange={onChange}
-                        className={style.spanInput}
-                        classInput={style.input}
+                        className={`${style.spanInput} ${style.spanInputDefault}`}
+                        classInput={`${style.input} ${style.inputDefault}`}
                       />
                     )}
                   />
-                  <ErrorMessage> {errors.cnpj?.message}</ErrorMessage>
                 </div>
 
                 <div className={style.spanInputItem}>
