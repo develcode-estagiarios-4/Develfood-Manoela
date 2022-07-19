@@ -1,24 +1,22 @@
 @import "../../styles/common/colors.scss";
-
-.navbar {
+.navvvvvv {
   position: fixed;
   height: 100%;
-  width: 60px;
-  background-color: $color-theme;
+  width: 10rem;
+  background-color: blue;
   display: inline-block;
-
-  .navbarMenu {
-    color: black;
-  }
-
-  .navbarMenu:hover {
-    color: white;
-  }
-  .menuNone {
-    display: none;
-  }
+  padding: 1rem 0 0 0.8rem;
 }
-
+.menuNone {
+  display: none;
+}
+.MENU {
+  color: black;
+  font-size: 7.5rem;
+  font-size: 5rem;
+  display: flex;
+  padding-bottom: 1rem;
+}
 .navbarActive {
   position: fixed;
   height: 100%;
@@ -26,28 +24,26 @@
   background-color: $color-theme;
   display: inline-block;
   padding: 1rem 0 0 0.1rem;
-
-  .navbarMenu {
-    color: black;
-    font-size: 7.5rem;
-    line-height: 6.5rem;
-    display: flex;
-  }
-
-  .navbarMenu:hover {
-    color: white;
-    -webkit-text-stroke: 0.1rem black;
-  }
-  .navbarIcons {
-    padding: 0 2rem 0 0;
-    width: 7rem;
-    height: 5.6rem;
-    padding-top: 0.2rem;
-  }
-  .navbarIconUser {
-    padding: 4rem 2rem 0 0;
-    width: 7rem;
-    height: 4.5rem;
-    padding-top: 0.8rem;
-  }
+}
+.navbarMenu {
+  color: black;
+  font-size: 7.5rem;
+  line-height: 6.5rem;
+  display: flex;
+}
+.navbarMenu:hover {
+  color: white;
+  -webkit-text-stroke: 0.1rem black;
+}
+.navbarIcons {
+  padding: 0 2rem 0 0;
+  width: 7rem;
+  height: 5.6rem;
+  padding-top: 0.2rem;
+}
+.navbarIconUser {
+  padding: 4rem 2rem 0 0;
+  width: 7rem;
+  height: 4.5rem;
+  padding-top: 0.8rem;
 }
