@@ -111,12 +111,16 @@ export function Perfil() {
   }, [restaurantPhoto]);
 
   useEffect(() => {
-    if (restaurant) {
-      setFoodType(restaurant?.food_types);
-    }
     if (restaurantAuth) {
       setValue("email", restaurantAuth?.email);
     }
+  }, [restaurantAuth]);
+
+  useEffect(() => {
+    if (restaurant) {
+      setFoodType(restaurant?.food_types);
+    }
+
     setValue("cnpj", restaurant?.cnpj);
     setValue("name", restaurant?.name);
     setValue("nickname", restaurant?.address.nickname);
