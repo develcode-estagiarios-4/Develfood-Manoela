@@ -170,9 +170,9 @@ export function Perfil() {
       body.id = restaurant?.id;
       body.user.id = restaurant.id;
       body.address.id = restaurant?.address.id;
+      body.cnpj = restaurant?.cnpj;
     }
     body.name = values.name;
-    body.cnpj = values.cnpj;
     body.phone = values.phone;
     body.address.street = values.street;
     body.address.number = values.number;
@@ -181,7 +181,7 @@ export function Perfil() {
     body.address.nickname = values.nickname;
     body.address.zipCode = values.zipCode;
     body.address.state = values.state;
-
+    console.log(body);
     selectFoodType?.forEach((item) => {
       foodTypeBackend.push({ id: item.value, name: item.label.toUpperCase() });
     });

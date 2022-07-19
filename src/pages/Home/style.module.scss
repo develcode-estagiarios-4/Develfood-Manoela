@@ -20,18 +20,24 @@
 .grade {
   height: 30.3rem;
   width: 69.7rem;
-  background-color: yellow;
+  background-color: rgb(105, 197, 209);
   border: 0.1rem solid black;
   font-size: 4.8rem;
   border-radius: 1rem;
+  text-align: center;
+  box-shadow: 8px 8px 5px #888888 ;
+
 }
 .spanPromotionsBanners {
   height: 38.9rem;
   width: 69.9rem;
- // background-color: purple;
   text-align: -webkit-center;
   border: 0.1rem solid black;
   border-radius: 1rem;
+  background-color: rgb(105, 197, 209);
+
+  box-shadow: 8px 8px 5px #888888 ;
+
 }
 .rightSpan {
   // background-color: red;
@@ -41,20 +47,21 @@
 }
 
 .coments {
-  background-color: violet;
+  background-color: rgb(105, 197, 209);
   width: 69.7rem;
   font-size: 6.8rem;
   text-align: -webkit-center;
   height: 67.9rem;
   border: 0.1rem solid black;
   border-radius: 1rem;
-  box-shadow: 5px 10px #888888 ;
+  box-shadow: 8px 8px 5px #888888;
 }
 .promotionBanner {
   // background-color: rgb(77, 182, 91);
   width: 30rem;
   height: 20rem;
  // border: 0.1rem solid black;
+ 
 }
 .scrollPromotions {
   // background-color: rgb(216, 164, 69);
@@ -88,12 +95,23 @@
 .promotionsActiveTitle {
   margin-top: 2rem;
   font-size: 5.6rem;
+  
 }
 
 .spanComments {
-  background-color: aquamarine;
   display: flex;
   flex-wrap: wrap;
   row-gap: 2rem;
   margin-top: 2rem;
+}
+
+.commentsTittle {
+  font-size: 4.8rem;
+  padding-top: 1rem;
+}
+
+.icon {
+  background: -webkit-linear-gradient(red, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

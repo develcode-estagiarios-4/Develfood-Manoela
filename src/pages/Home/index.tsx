@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import * as VscIcons from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 
 import { PromotionCard } from "../../components";
@@ -52,7 +53,13 @@ export function Home() {
 
       <div className={style.homeSpan}>
         <div className={style.leftSpan}>
-          <div className={style.grade}>Sua nota</div>
+          <div className={style.grade}>
+            Sua nota{" "}
+            <div>
+              {" "}
+              <VscIcons.VscStarFull className={style.icon} />{" "}
+            </div>
+          </div>
           <div className={style.spanPromotionsBanners}>
             <div className={style.promotionsActiveTitle}>
               Suas promoções ativas
