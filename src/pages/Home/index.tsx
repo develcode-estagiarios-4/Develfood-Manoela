@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { PromotionCard } from "../../components";
+import { CommentCard, IComment } from "../../components/CommentCard";
 import { Container } from "../../components/Container";
-import { Comments } from "../../contants/comments";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import style from "./style.module.scss";
@@ -25,15 +25,34 @@ export function Home() {
     localStorage.getItem("token");
     navigate("/");
   }
+
+  const comments: IComment[] = [
+    {
+      message:
+        "“A comida desse lugar é sensacional. Eu e minha esposa comemos quase todo o domingo!!!”",
+      date: "01/02/2022",
+    },
+    {
+      message:
+        "“A comida é excelente, mas muitas vezes demora para ficar preparada.“",
+      date: "01/02/2022",
+    },
+    {
+      message: "“O sinônimo de comida boa é DevelcodeRestaurant.“",
+      date: "01/02/2022",
+    },
+  ];
+
   return (
     <Container active="true">
-      <div className={style.home}> {restaurant?.name} </div>
       <button type="button" onClick={handleClick}>
         log out
       </button>
+      <div className={style.home}> {restaurant?.name} </div>
+
       <div className={style.homeSpan}>
         <div className={style.leftSpan}>
-          <div className={style.grade}>SUA NOTA</div>
+          <div className={style.grade}>Sua nota</div>
           <div className={style.spanPromotionsBanners}>
             <div className={style.promotionsActiveTitle}>
               Suas promoções ativas
@@ -57,8 +76,13 @@ export function Home() {
         </div>
         <div className={style.rightSpan}>
           <div className={style.coments}>
-            <div>
+            <div className={style.commentsTittle}>
               O que os cliente estão <br /> achando?
+            </div>
+            <div className={style.spanComments}>
+              {comments.map((comment: IComment) => {
+                return <CommentCard data={comment} />;
+              })}
             </div>
           </div>
         </div>

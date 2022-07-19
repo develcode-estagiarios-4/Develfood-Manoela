@@ -2,9 +2,21 @@ import { ReactNode } from "react";
 
 import style from "./style.module.scss";
 
-interface IErrorMessage {
-  children: ReactNode | any;
+export interface IComment {
+  message: string;
+  date: string;
 }
-export function CommentCard({ children }: IErrorMessage) {
-  return <div className={style.errorMessage}>{children}</div>;
+
+export interface ICommentProps {
+  data: IComment;
+}
+
+export function CommentCard({ data }: ICommentProps) {
+  return (
+    <div className={style.commentCardSpan}>
+      <div className={style.comment}>{data.message}</div>
+      <div className={style.grade}>AVALIAÇÃO</div>
+      <div className={style.date}>{data.date}</div>
+    </div>
+  );
 }
