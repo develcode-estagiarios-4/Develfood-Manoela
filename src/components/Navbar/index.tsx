@@ -11,7 +11,9 @@ function Navbar({ isitHome }: INavbarClosed) {
   const navbarClosed = isitHome;
   return (
     <nav
-      className={navbarClosed ? style.navbarClosed : style.navbarActive}
+      className={`${style.navbar} ${
+        navbarClosed ? style.navbarClosed : style.navbarActive
+      }`}
       id="navbar"
     >
       <ul>
@@ -40,7 +42,7 @@ function Navbar({ isitHome }: INavbarClosed) {
           </Link>
         </li>
         <li>
-          <Link to="/pedidos" className={style.navbarMenu}>
+          <Link to="/requests" className={style.navbarMenu}>
             <MdIcons.MdPhone className={style.icons} />
             <div className={navbarClosed ? style.menuNone : style.menu}>
               Pedidos

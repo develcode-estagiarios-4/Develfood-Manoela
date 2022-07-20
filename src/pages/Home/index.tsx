@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import * as VscIcons from "react-icons/vsc";
+import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 import { PromotionCard } from "../../components";
@@ -14,9 +15,14 @@ export function Home() {
   const navigate = useNavigate();
   const { restaurant, getRestaurant } = useRestaurant();
   const { getPromotions, promotions } = usePromotion();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getPromotions();
     getRestaurant();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
   const oi = () => {
     // console.log("oi");
@@ -45,7 +51,7 @@ export function Home() {
     },
   ];
 
-  const grade = 4.5;
+  const grade = 3.5;
 
   const starGradind = (grade: number) => {
     const gradePortion: Array<number> = [];
@@ -73,75 +79,87 @@ export function Home() {
 
   return (
     <Container active="true">
-      <button type="button" onClick={handleClick}>
-        log out
-      </button>
-      <div className={style.homePage}>
-        <div className={style.home}> {restaurant?.name} </div>
-        <div className={style.homeSpan}>
-          <div className={style.leftSpan}>
-            <div className={style.gradeSpan}>
-              Sua nota{" "}
-              <div>
-                <link
-                  rel="stylesheet"
-                  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-                />
-              </div>
-              {starGradind(grade).map((grade) => (
-                <span>
-                  <i
-                    className="material-symbols-outlined"
-                    style={{
-                      fontSize: "11rem",
-                      background: `linear-gradient(to right, #DFCC1B ${
-                        grade - 10
-                      }%, white ${grade + 10}%`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    star
-                  </i>
-                </span>
-              ))}
-              <div className={style.grade}>{`${grade}/5.0`}</div>
-            </div>
-
-            <div className={style.spanPromotionsBanners}>
-              <div className={style.promotionsActiveTitle}>
-                Suas promoções ativas
-              </div>
-              <div className={style.scrollPromotions}>
-                {promotions &&
-                  promotions.map((promotion) => (
-                    <div className={style.promotionBanner}>
-                      <PromotionCard
-                        data={promotion}
-                        onDelete={oi}
-                        classNameImage={style.promotionImage}
-                        classNameInable={style.itensInable}
-                        classNameSpanDefaul={style.promotionDefault}
-                      />
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-          <div className={style.rightSpan}>
-            <div className={style.coments}>
-              <div className={style.commentsTittle}>
-                O que os cliente estão <br /> achando?
-              </div>
-              <div className={style.spanComments}>
-                {comments.map((comment: IComment) => {
-                  return <CommentCard data={comment} />;
-                })}
-              </div>
-            </div>
-          </div>
+      {loading ? (
+        <div className={style.contentSkeleton}>
+          <Skeleton
+            count={3}
+            style={{ width: "50rem", height: "30rem" }}
+            duration={12000}
+          />
         </div>
-      </div>
+      ) : (
+        <>
+          <button type="button" onClick={handleClick}>
+            log out
+          </button>
+          <div className={style.homePage}>
+            <div className={style.home}> {restaurant?.name} </div>
+            <div className={style.homeSpan}>
+              <div className={style.leftSpan}>
+                <div className={style.gradeSpan}>
+                  Sua nota{" "}
+                  <div>
+                    <link
+                      rel="stylesheet"
+                      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                    />
+                  </div>
+                  {starGradind(grade).map((grade) => (
+                    <span>
+                      <i
+                        className="material-symbols-outlined"
+                        style={{
+                          fontSize: "11rem",
+                          background: `linear-gradient(to right, #DFCC1B ${
+                            grade - 10
+                          }%, white ${grade + 10}%`,
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}
+                      >
+                        star
+                      </i>
+                    </span>
+                  ))}
+                  <div className={style.grade}>{`${grade}/5.0`}</div>
+                </div>
+
+                <div className={style.spanPromotionsBanners}>
+                  <div className={style.promotionsActiveTitle}>
+                    Suas promoções ativas
+                  </div>
+                  <div className={style.scrollPromotions}>
+                    {promotions &&
+                      promotions.map((promotion) => (
+                        <div className={style.promotionBanner}>
+                          <PromotionCard
+                            data={promotion}
+                            onDelete={oi}
+                            classNameImage={style.promotionImage}
+                            classNameInable={style.itensInable}
+                            classNameSpanDefaul={style.promotionDefault}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
+              <div className={style.rightSpan}>
+                <div className={style.coments}>
+                  <div className={style.commentsTittle}>
+                    O que os cliente estão <br /> achando?
+                  </div>
+                  <div className={style.spanComments}>
+                    {comments.map((comment: IComment) => {
+                      return <CommentCard data={comment} />;
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </Container>
   );
 }
