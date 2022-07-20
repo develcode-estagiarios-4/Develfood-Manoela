@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { IconContext } from "react-icons";
 import * as VscIcons from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 
@@ -44,52 +45,99 @@ export function Home() {
     },
   ];
 
+  const grade = 4.5;
+
+  const starGradind = (grade: number) => {
+    const gradePortion: Array<number> = [];
+    const parcialPainted = (grade % 1) * 10;
+    const fullPaited = grade - parcialPainted / 10;
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < fullPaited; i++) {
+      gradePortion[i] = 100;
+    }
+    gradePortion.push(parcialPainted * 10);
+    if (gradePortion.length < 5) {
+      const isMissing = 5 - gradePortion.length;
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < isMissing; i++) {
+        gradePortion.push(0);
+      }
+    }
+    console.log(gradePortion);
+    return gradePortion;
+  };
+
+  useEffect(() => {
+    starGradind(grade);
+  });
+
   return (
     <Container active="true">
       <button type="button" onClick={handleClick}>
         log out
       </button>
-      <div className={style.home}> {restaurant?.name} </div>
+      <div className={style.homePage}>
+        <div className={style.home}> {restaurant?.name} </div>
+        <div className={style.homeSpan}>
+          <div className={style.leftSpan}>
+            <div className={style.gradeSpan}>
+              Sua nota{" "}
+              <div>
+                <link
+                  rel="stylesheet"
+                  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                />
+              </div>
+              {starGradind(grade).map((grade) => (
+                <span>
+                  <i
+                    className="material-symbols-outlined"
+                    style={{
+                      fontSize: "11rem",
+                      background: `linear-gradient(to right, #DFCC1B ${
+                        grade - 10
+                      }%, white ${grade + 10}%`,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    star
+                  </i>
+                </span>
+              ))}
+              <div className={style.grade}>{`${grade}/5.0`}</div>
+            </div>
 
-      <div className={style.homeSpan}>
-        <div className={style.leftSpan}>
-          <div className={style.grade}>
-            Sua nota{" "}
-            <div>
-              {" "}
-              <VscIcons.VscStarFull className={style.icon} />{" "}
+            <div className={style.spanPromotionsBanners}>
+              <div className={style.promotionsActiveTitle}>
+                Suas promoções ativas
+              </div>
+              <div className={style.scrollPromotions}>
+                {promotions &&
+                  promotions.map((promotion) => (
+                    <div className={style.promotionBanner}>
+                      <PromotionCard
+                        data={promotion}
+                        onDelete={oi}
+                        classNameImage={style.promotionImage}
+                        classNameInable={style.itensInable}
+                        classNameSpanDefaul={style.promotionDefault}
+                      />
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
-          <div className={style.spanPromotionsBanners}>
-            <div className={style.promotionsActiveTitle}>
-              Suas promoções ativas
-            </div>
-            <div className={style.scrollPromotions}>
-              {promotions &&
-                promotions.map((promotion) => (
-                  <div className={style.promotionBanner}>
-                    <PromotionCard
-                      data={promotion}
-                      onDelete={oi}
-                      // classNameImage={style.promotionImage}
-                      // classNameInable={style.itensInable}
-                      // classNameSpanDefaul={style.promotionDefault}
-                      // style={{ width: "20rem", position: "block" }}
-                    />
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
-        <div className={style.rightSpan}>
-          <div className={style.coments}>
-            <div className={style.commentsTittle}>
-              O que os cliente estão <br /> achando?
-            </div>
-            <div className={style.spanComments}>
-              {comments.map((comment: IComment) => {
-                return <CommentCard data={comment} />;
-              })}
+          <div className={style.rightSpan}>
+            <div className={style.coments}>
+              <div className={style.commentsTittle}>
+                O que os cliente estão <br /> achando?
+              </div>
+              <div className={style.spanComments}>
+                {comments.map((comment: IComment) => {
+                  return <CommentCard data={comment} />;
+                })}
+              </div>
             </div>
           </div>
         </div>

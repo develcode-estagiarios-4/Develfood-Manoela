@@ -1,49 +1,47 @@
 @import "../../styles/common/colors.scss";
-.navvvvvv {
+
+nav {
   position: fixed;
   height: 100%;
-  width: 10rem;
   background-color: $color-theme;
-  display: inline-block;
-  padding: 1rem 0 0 0.8rem;
-}
-.menuNone {
-  display: none;
-}
-.MENU {
-  color: black;
-  font-size: 7.5rem;
-  font-size: 5rem;
-  display: flex;
-  padding-bottom: 1rem;
-}
-.navbarActive {
-  position: fixed;
-  height: 100%;
-  width: 32rem;
-  background-color: $color-theme;
-  display: inline-block;
   padding: 1rem 0 0 0.1rem;
 }
+
+.navbarClosed {
+  width: 12.7rem; 
+}
+
+.navbarActive {
+  width: 49rem;
+}
+
+.icons {
+  font-size: 9rem;
+  padding: 1.5rem 0 0 1.5rem;
+}
+
 .navbarMenu {
   color: black;
   font-size: 7.5rem;
   line-height: 6.5rem;
   display: flex;
 }
+
 .navbarMenu:hover {
   color: white;
   -webkit-text-stroke: 0.1rem black;
 }
-.navbarIcons {
-  padding: 0 2rem 0 0;
-  width: 7rem;
-  height: 5.6rem;
-  padding-top: 0.2rem;
+
+.iconUser {
+  padding: 1rem 0.5rem 0.5rem 2.3rem;
+  height: 9rem;
 }
-.navbarIconUser {
-  padding: 4rem 2rem 0 0;
-  width: 7rem;
-  height: 4.5rem;
-  padding-top: 0.8rem;
+
+.menu {
+  padding: 3rem 0 0 4rem;
+  font-size: 7.2rem
+}
+
+.menuNone {
+  display: none;
 }

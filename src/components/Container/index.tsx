@@ -11,13 +11,12 @@ export function Container({ children, active }: IContainer) {
       setIsHome(true);
     }
   }, []);
-  useEffect(() => {
-    console.log(isHome);
-  }, [isHome]);
   return (
     <>
       <Navbar isitHome={isHome} />
-      <main className={active ? style.icons : style.main}>{children}</main>
+      <main className={active ? style.icons : style.menuShowing}>
+        {children}
+      </main>
     </>
   );
 }

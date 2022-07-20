@@ -2,11 +2,18 @@
   text-align: center;
   font-size: 9.6rem;
 }
+
+.homePage {
+  justify-content: center;
+  display: grid;
+}
+
 .homeSpan {
-  background-color: pink;
   height: 100rem;
   height: auto;
   display: flex;
+  width: 173rem;
+  margin: 5rem 2rem 3rem 2rem;
 }
 .leftSpan {
   // background-color: aqua;
@@ -17,16 +24,21 @@
   flex-wrap: wrap;
   max-width: 100%;
 }
-.grade {
-  height: 30.3rem;
+.gradeSpan {
+  height: 28.3rem;
   width: 69.7rem;
-  background-color: rgb(105, 197, 209);
+  // background-color: rgb(105, 197, 209);
   border: 0.1rem solid black;
   font-size: 4.8rem;
+  padding-top: 2rem;
   border-radius: 1rem;
   text-align: center;
   box-shadow: 8px 8px 5px #888888 ;
 
+}
+
+.grade {
+  font-size: 5.5rem;
 }
 .spanPromotionsBanners {
   height: 38.9rem;
@@ -34,7 +46,7 @@
   text-align: -webkit-center;
   border: 0.1rem solid black;
   border-radius: 1rem;
-  background-color: rgb(105, 197, 209);
+  // background-color: rgb(105, 197, 209);
 
   box-shadow: 8px 8px 5px #888888 ;
 
@@ -47,7 +59,7 @@
 }
 
 .coments {
-  background-color: rgb(105, 197, 209);
+  // background-color: rgb(105, 197, 209);
   width: 69.7rem;
   font-size: 6.8rem;
   text-align: -webkit-center;
@@ -57,8 +69,9 @@
   box-shadow: 8px 8px 5px #888888;
 }
 .promotionBanner {
-  // background-color: rgb(77, 182, 91);
   width: 30rem;
+  object-fit: cover;
+
   height: 20rem;
  // border: 0.1rem solid black;
  
@@ -110,8 +123,26 @@
   padding-top: 1rem;
 }
 
-.icon {
-  background: -webkit-linear-gradient(red, green);
+
+span i { 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.itensInable {
+  display: none;
+}
+
+.promotionImage {
+  margin: 0;
+  object-fit: cover;
+  position: relative
+}
+
+.promotionDefault:hover {
+  background-color: transparent;
+  height: 20rem;
+  border: 0;
 }
