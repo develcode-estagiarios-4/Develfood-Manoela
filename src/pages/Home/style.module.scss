@@ -89,7 +89,6 @@
   flex-wrap: nowrap;
   column-gap: 5rem;
   overflow: hidden;
-  overflow-x: scroll;
   display: -webkit-box;
   margin-top: 3rem;
 }
@@ -140,6 +139,10 @@ span i {
   display: none;
 }
 
+.itensInable:hover {
+  display: none;
+}
+
 .promotionImage {
   margin: 0;
   object-fit: cover;
@@ -147,7 +150,55 @@ span i {
 }
 
 .promotionDefault:hover {
-  background-color: transparent;
   height: 20rem;
   border: 0;
+}
+
+.arrow {
+  opacity: 0%;
+  padding: 3rem 0rem 5rem 19rem;
+  position: absolute;
+  font-size: 12rem;
+  float: right;
+  margin: 0rem 0rem 0rem 35rem;
+}
+
+.arrow:hover {
+  opacity: 100%;
+  color: white;
+  background: linear-gradient(to right, transparent 40%, black 70%);
+  display: block;
+  padding: 5rem 0rem 6rem 18rem;
+  position: absolute;
+  z-index: 5;
+  font-size: 9rem;
+  background-color: blue;
+ // float: right;
+  margin: 0rem 0rem 0rem 38rem;
+}
+
+
+
+.arrowLeft:hover {
+  // margin: 0rem 38rem 0rem 0;
+  // background: linear-gradient(to left, transparent 40%, black 70%);
+  // padding: 5rem 18rem 6rem 0;
+  opacity: 100%;
+  color: white;
+  background: linear-gradient(to right, transparent 40%, black 70%);
+  display: block;
+  padding: 5rem 0rem 6rem 18rem;
+  position: absolute;
+  z-index: 5;
+  font-size: 9rem;
+ // float: right;
+  margin: 0rem 0rem 0rem 38rem;
+}
+
+.arrowLeft {
+  opacity: 100%;
+  padding: 3rem 18rem 5rem 0;
+  position: absolute;
+  background-color: blue;
+  font-size: 12rem;
 }

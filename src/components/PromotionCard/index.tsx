@@ -59,21 +59,27 @@ export function PromotionCard({
           ) : (
             ""
           )}
-          <div className={style.promotionTitle}>{data.name}</div>
+          <div className={`${style.promotionTitle}  ${classNameInable}`}>
+            {data.name}
+          </div>
           <div className={`${style.spanButtons} ${classNameInable}`}>
             <button
-              className={style.spanDelete}
+              className={`${style.spanDelete} ${classNameInable}`}
               onClick={handleDelete}
               type="button"
             >
-              <MdIcons.MdDelete className={style.IconDelete} />
+              <MdIcons.MdDelete
+                className={`${style.IconDelete} ${classNameInable}`}
+              />
             </button>
             <button
-              className={style.spanEdit}
+              className={`${style.spanEdit} ${classNameInable}`}
               onClick={handleEdit}
               type="button"
             >
-              <RiIcons.RiPencilFill className={style.IconEdit} />
+              <RiIcons.RiPencilFill
+                className={`${style.IconEdit} ${classNameInable}`}
+              />
             </button>
           </div>
         </div>

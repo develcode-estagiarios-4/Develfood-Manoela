@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { IconContext } from "react-icons";
-import * as VscIcons from "react-icons/vsc";
+import * as RiIcons from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +17,7 @@ export function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPromotions();
+    getPromotions(1, 2);
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
@@ -56,9 +55,9 @@ export function Home() {
   const starGradind = (grade: number) => {
     const gradePortion: Array<number> = [];
     const parcialPainted = (grade % 1) * 10;
-    const fullPaited = grade - parcialPainted / 10;
+    const fullPainted = grade - parcialPainted / 10;
     // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < fullPaited; i++) {
+    for (let i = 0; i < fullPainted; i++) {
       gradePortion[i] = 100;
     }
     gradePortion.push(parcialPainted * 10);
@@ -69,7 +68,6 @@ export function Home() {
         gradePortion.push(0);
       }
     }
-    console.log(gradePortion);
     return gradePortion;
   };
 
@@ -129,6 +127,11 @@ export function Home() {
                     Suas promoções ativas
                   </div>
                   <div className={style.scrollPromotions}>
+                    <RiIcons.RiArrowRightSLine className={style.arrow} />
+                    <RiIcons.RiArrowLeftSLine
+                      className={`${style.arroew} ${style.arrowLeft}`}
+                    />
+
                     {promotions &&
                       promotions.map((promotion) => (
                         <div className={style.promotionBanner}>
