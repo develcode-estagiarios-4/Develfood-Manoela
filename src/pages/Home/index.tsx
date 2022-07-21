@@ -1,31 +1,37 @@
 import { useEffect, useState } from "react";
 import * as RiIcons from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { PromotionCard } from "../../components";
 import { CommentCard, IComment } from "../../components/CommentCard";
 import { Container } from "../../components/Container";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
+import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
 export function Home() {
   const navigate = useNavigate();
   const { restaurant, getRestaurant } = useRestaurant();
   const { getPromotions, promotions } = usePromotion();
+  const [pagination, setPagination] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [loadMorePromotions, setLoadMorePromotions] = useState(true);
+  const [promotionsUpdate, setPromotionsUpdate] = useState<IPromotion[]>();
 
   useEffect(() => {
-    getPromotions(1, 2);
+    getPromotions(pagination, 2);
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
+
   const oi = () => {
     // console.log("oi");
   };
+
   function handleClick() {
     sessionStorage.clear();
     localStorage.clear();
@@ -72,8 +78,37 @@ export function Home() {
   };
 
   useEffect(() => {
-    starGradind(grade);
-  });
+    setTimeout(() => {
+      setLoadMorePromotions(false);
+    }, 4000);
+    if (promotions.length > 0) {
+      setPromotionsUpdate(promotions);
+    } else {
+      getPromotions(0, 2);
+      setPagination(0);
+      setPromotionsUpdate(promotions);
+    }
+  }, [promotions]);
+
+  const handleArrowRight = () => {
+    setPagination(pagination + 1);
+    getPromotions(pagination + 1, 2);
+    setLoadMorePromotions(true);
+    setTimeout(() => {
+      setLoadMorePromotions(false);
+    }, 2000);
+  };
+
+  const handleArrowLeft = () => {
+    setPagination(pagination - 1);
+    getPromotions(pagination - 1, 2);
+    setLoadMorePromotions(true);
+    setTimeout(() => {
+      setLoadMorePromotions(false);
+    }, 4000);
+  };
+
+  const isBegging = pagination === 0;
 
   return (
     <Container active="true">
@@ -127,20 +162,60 @@ export function Home() {
                     Suas promoções ativas
                   </div>
                   <div className={style.scrollPromotions}>
-                    <RiIcons.RiArrowRightSLine className={style.arrow} />
-                    <RiIcons.RiArrowLeftSLine
-                      className={`${style.arroew} ${style.arrowLeft}`}
-                    />
+                    {loadMorePromotions && (
+                      <div className={style.skeletonSpanPromotion}>
+                        <Skeleton
+                          count={1}
+                          style={{
+                            width: "30rem",
+                            height: "20rem",
+                            zIndex: -2,
+                            // backgroundColor: "rgb(162, 155, 155)",
+                          }}
+                        />
+                        <Skeleton
+                          count={1}
+                          style={{
+                            width: "30rem",
+                            height: "20rem",
+                            zIndex: -2,
+                            // backgroundColor: "black",
+                          }}
+                        />
+                      </div>
+                    )}
 
-                    {promotions &&
-                      promotions.map((promotion) => (
-                        <div className={style.promotionBanner}>
+                    <RiIcons.RiArrowRightSLine
+                      className={style.arrow}
+                      onClick={handleArrowRight}
+                    />
+                    {!isBegging && (
+                      <RiIcons.RiArrowLeftSLine
+                        className={`${style.arroew} ${style.arrowLeft}`}
+                        onClick={handleArrowLeft}
+                      />
+                    )}
+
+                    {promotionsUpdate &&
+                      promotionsUpdate.map((promotion: IPromotion, index) => (
+                        <div
+                          className={style.promotionBanner}
+                          key={promotion.id}
+                        >
                           <PromotionCard
                             data={promotion}
                             onDelete={oi}
                             classNameImage={style.promotionImage}
                             classNameInable={style.itensInable}
                             classNameSpanDefaul={style.promotionDefault}
+                          />
+                          <Link
+                            to={`/promotion/edit/${promotion.id}`}
+                            className={`${style.link} ${
+                              index === 1
+                                ? style.promotionRight
+                                : style.promotionLeft
+                            }`}
                           />
                         </div>
                       ))}
