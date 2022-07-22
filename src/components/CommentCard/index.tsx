@@ -1,11 +1,8 @@
+import moment from "moment";
+
+import { IComment } from "../../interface/IComment";
 import { StarRating } from "../StarRating";
 import style from "./style.module.scss";
-
-export interface IComment {
-  message: string;
-  date: string;
-  grade: number;
-}
 
 export interface ICommentProps {
   data: IComment;
@@ -14,11 +11,13 @@ export interface ICommentProps {
 export function CommentCard({ data }: ICommentProps) {
   return (
     <div className={style.commentCardSpan}>
-      <div className={style.comment}>{data.message}</div>
+      <textarea className={style.comment}>{`“${data.observation}”`}</textarea>
       <div className={style.grade}>
-        <StarRating grade={data.grade} fontSize={3} />
+        <StarRating grade={data.grade} fontSize={2.6} />
       </div>
-      <div className={style.date}>{data.date}</div>
+      <div className={style.date}>
+        {moment(data.evaluationDate).format("DD/MM/YYYY")}
+      </div>
     </div>
   );
 }

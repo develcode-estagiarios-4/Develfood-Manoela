@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import * as FaIcons from "react-icons/fa";
+import * as FiIcons from "react-icons/fi";
 import * as RiIcons from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 import { Link, useNavigate } from "react-router-dom";
 
 import { PromotionCard } from "../../components";
-import { CommentCard, IComment } from "../../components/CommentCard";
+import { CommentCard } from "../../components/CommentCard";
 import { Container } from "../../components/Container";
 import { StarRating } from "../../components/StarRating";
 import { useEvaluation } from "../../hooks/useEvaluation";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
+import { IComment } from "../../interface/IComment";
 import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
@@ -18,13 +21,21 @@ export function Home() {
   const { restaurant, getRestaurant } = useRestaurant();
   const { getPromotions, promotions } = usePromotion();
   const [pagination, setPagination] = useState(0);
+  const [paginationComment, setPaginationCOmment] = useState(0);
+  const [pagesHowmany, setPages] = useState<number[]>();
+
   const [loading, setLoading] = useState(true);
   const [loadMorePromotions, setLoadMorePromotions] = useState(true);
+  const [isSingle, setIsSingle] = useState(false);
+  const [direction, setDirection] = useState(true);
   const [promotionsUpdate, setPromotionsUpdate] = useState<IPromotion[]>();
-  const { grade, getGrade } = useEvaluation();
+
+  const { grade, getGrade, getEvaluation, evaluation, totalPagesEvaluation } =
+    useEvaluation();
 
   useEffect(() => {
     getPromotions(pagination, 2);
+    getEvaluation(paginationComment, 4);
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
@@ -44,45 +55,44 @@ export function Home() {
     navigate("/");
   }
 
-  const comments: IComment[] = [
-    {
-      message:
-        "“A comida desse lugar é sensacional. Eu e minha esposa comemos quase todo o domingo!!!”",
-      grade: 4,
-      date: "01/02/2022",
-    },
-    {
-      message:
-        "“A comida é excelente, mas muitas vezes demora para ficar preparada.“",
-      date: "01/02/2022",
-      grade: 3,
-    },
-    {
-      message: "“O sinônimo de comida boa é DevelcodeRestaurant.“",
-      date: "01/02/2022",
-      grade: 1,
-    },
-    {
-      message: "“A melhor pizza da cidade! Voltarei mais vezes.“",
-      date: "01/02/2022",
-      grade: 2,
-    },
-  ];
+  const pagesEvaluation: any = [];
+
+  useEffect(() => {
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < totalPagesEvaluation; i++) {
+      console.log(i);
+      pagesEvaluation.push(i);
+    }
+    console.log(pagesEvaluation);
+    setPages(pagesEvaluation);
+  }, [totalPagesEvaluation]);
 
   useEffect(() => {
     setTimeout(() => {
       setLoadMorePromotions(false);
     }, 4000);
+
     if (promotions.length > 0) {
+      setIsSingle(false);
+
       setPromotionsUpdate(promotions);
+      if (promotions.length === 1 && pagination === 0) {
+        setIsSingle(true);
+      }
+      if (promotions.length === 1 && pagination !== 0) {
+        setIsSingle(true);
+      }
     } else {
       getPromotions(0, 2);
+      setIsSingle(false);
+
       setPagination(0);
       setPromotionsUpdate(promotions);
     }
   }, [promotions]);
 
   const handleArrowRight = () => {
+    setDirection(true);
     setPagination(pagination + 1);
     getPromotions(pagination + 1, 2);
     setLoadMorePromotions(true);
@@ -92,16 +102,13 @@ export function Home() {
   };
 
   const handleArrowLeft = () => {
+    setDirection(false);
     setPagination(pagination - 1);
     getPromotions(pagination - 1, 2);
     setLoadMorePromotions(true);
     setTimeout(() => {
       setLoadMorePromotions(false);
     }, 5000);
-  };
-
-  const handlePathPromotion = (id: number) => {
-    navigate(`/edit/${id}`);
   };
 
   const isBegging = pagination === 0;
@@ -138,6 +145,9 @@ export function Home() {
                     {loadMorePromotions ? (
                       <div className={style.skeletonSpanPromotion}>
                         <Skeleton
+                          className={`${
+                            direction ? style.skeletonRight : style.skeletonLeft
+                          } ${style.skeleton}`}
                           count={1}
                           style={{
                             width: "30rem",
@@ -147,6 +157,9 @@ export function Home() {
                         />
                         <Skeleton
                           count={1}
+                          className={`${
+                            direction ? style.skeletonRight : style.skeletonLeft
+                          } ${style.skeleton}`}
                           style={{
                             width: "30rem",
                             height: "20rem",
@@ -156,10 +169,12 @@ export function Home() {
                       </div>
                     ) : (
                       <>
-                        <RiIcons.RiArrowRightSLine
-                          className={`${style.arrow} ${style.arrowRight}`}
-                          onClick={handleArrowRight}
-                        />
+                        {!isSingle && (
+                          <RiIcons.RiArrowRightSLine
+                            className={`${style.arrow} ${style.arrowRight}`}
+                            onClick={handleArrowRight}
+                          />
+                        )}
                         {!isBegging && (
                           <RiIcons.RiArrowLeftSLine
                             className={`${style.arrow} ${style.arrowLeft}`}
@@ -201,9 +216,31 @@ export function Home() {
                     O que os cliente estão <br /> achando?
                   </div>
                   <div className={style.spanComments}>
-                    {comments.map((comment: IComment) => {
-                      return <CommentCard data={comment} />;
-                    })}
+                    {evaluation &&
+                      evaluation.map((data: IComment) => {
+                        return <CommentCard data={data} />;
+                      })}
+                    <div className={style.spanCircles}>
+                      {pagesHowmany &&
+                        pagesHowmany.map((index: number) => (
+                          <>
+                            <FiIcons.FiCircle
+                              className={`${style.pagebleEvaluation} ${
+                                index === paginationComment && style.black
+                              }`}
+                            />
+                            <FaIcons.FaCircle
+                              className={`${style.pagebleEvaluation} ${
+                                index === paginationComment && style.black
+                              }`}
+                            />
+
+                            <div>
+                              {index} {paginationComment}
+                            </div>
+                          </>
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>

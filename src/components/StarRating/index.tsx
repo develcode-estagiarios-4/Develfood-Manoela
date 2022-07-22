@@ -25,6 +25,7 @@ export function StarRating({ grade, fontSize }: IStarProps) {
 
   return (
     <div>
+      {" "}
       <div>
         <link
           rel="stylesheet"

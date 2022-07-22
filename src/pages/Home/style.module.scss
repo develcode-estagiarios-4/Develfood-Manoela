@@ -46,7 +46,7 @@
 .spanPromotionsBanners {
   height: 38.9rem;
   width: 69.9rem;
-  text-align: -webkit-center;
+  text-align: center;
   border: 0.1rem solid black;
   border-radius: 1rem;
   box-shadow: 8px 8px 5px #888888 ;
@@ -61,11 +61,11 @@
 .coments {
   width: 69.7rem;
   font-size: 6.8rem;
-  text-align: -webkit-center;
   height: 67.9rem;
   border: 0.1rem solid black;
   border-radius: 1rem;
   box-shadow: 8px 8px 5px #888888;
+  text-align: center;
 }
 
 .promotionBanner {
@@ -80,6 +80,7 @@
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
 .promotionImage {
@@ -154,6 +155,7 @@ span i {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
 
@@ -199,4 +201,52 @@ span i {
 .arrowRight:hover {
   opacity: 100%;
   background: linear-gradient(to right, transparent 1%, black 91%);
+}
+
+.skeleton {
+  width: "30rem";
+  height: "20rem";
+  z-index: 5;
+}
+
+.skeletonRight {
+  animation: slideRight 2s;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100rem);
+  }
+  to {
+    transform: translateX(0rem);
+  }
+}
+
+.skeletonLeft {
+  animation: slideLeft 2s;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100rem);
+  }
+  to {
+    transform: translateX(0rem);
+  }
+}
+
+.pagebleEvaluation {
+  font-size: 2rem;
+}
+
+.spanCircles {
+  display: table;
+  width: 69rem;
+  display: flex;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+
+.black {
+  color: black
 }
