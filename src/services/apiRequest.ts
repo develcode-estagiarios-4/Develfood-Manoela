@@ -8,7 +8,7 @@ const config = {
   },
 };
 
-const defaultDomainURL = "https://1fef-164-163-142-68.ngrok.io";
+const defaultDomainURL = "https://develfood-3.herokuapp.com";
 
 export const get = (url: string) => {
   return api
