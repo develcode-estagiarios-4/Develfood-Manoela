@@ -11,11 +11,12 @@ const defautProps = {
   classNameImage: "",
   classNameSpanDefaul: "",
   classNameInable: "",
+  onDelete: () => console.log(),
 };
 
 interface IPromotionProps {
   data: IPromotion;
-  onDelete: () => void;
+  onDelete?: () => void;
   classNameImage?: string;
   classNameSpanDefaul?: string;
   classNameInable?: string;

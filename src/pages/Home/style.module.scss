@@ -21,7 +21,6 @@
   margin: 5rem 2rem 3rem 2rem;
 }
 .leftSpan {
-  // background-color: aqua;
   width: 50%;
   row-gap: 5rem;
   justify-content: center;
@@ -32,39 +31,34 @@
 .gradeSpan {
   height: 28.3rem;
   width: 69.7rem;
-  // background-color: rgb(105, 197, 209);
   border: 0.1rem solid black;
   font-size: 4.8rem;
   padding-top: 2rem;
   border-radius: 1rem;
   text-align: center;
   box-shadow: 8px 8px 5px #888888 ;
-
 }
 
 .grade {
   font-size: 5.5rem;
 }
+
 .spanPromotionsBanners {
   height: 38.9rem;
   width: 69.9rem;
   text-align: -webkit-center;
   border: 0.1rem solid black;
   border-radius: 1rem;
-  // background-color: rgb(105, 197, 209);
-
   box-shadow: 8px 8px 5px #888888 ;
-
 }
+
 .rightSpan {
-  // background-color: red;
   width: 50%;
   display: flex;
   justify-content: center;
 }
 
 .coments {
-  // background-color: rgb(105, 197, 209);
   width: 69.7rem;
   font-size: 6.8rem;
   text-align: -webkit-center;
@@ -73,22 +67,18 @@
   border-radius: 1rem;
   box-shadow: 8px 8px 5px #888888;
 }
+
 .promotionBanner {
   width: 30rem;
-  object-fit: cover;
-
   height: 20rem;
- // border: 0.1rem solid black;
- 
 }
+
 .scrollPromotions {
-  width: 65.5rem;
   height: 25rem;
-  flex-wrap: nowrap;
-  column-gap: 5rem;
-  overflow: hidden;
+  margin: 1rem 0rem 0rem 0rem;
+  column-gap: 3rem;
   display: inline-flex;
-  margin-top: 3rem;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -98,21 +88,22 @@
   position: block;
   object-fit: cover;
   margin: 0;
-  
 }
+
 .itensInable {
   display: none;
 }
+
 .promotionDefault {
   display: block;
   width: auto;
   height: auto;
   border: 0;
 }
+
 .promotionsActiveTitle {
   margin-top: 2rem;
   font-size: 5.6rem;
-  
 }
 
 .spanComments {
@@ -126,7 +117,6 @@
   font-size: 4.8rem;
   padding-top: 1rem;
 }
-
 
 span i { 
   -webkit-background-clip: text;
@@ -150,84 +140,63 @@ span i {
 }
 
 .promotionDefault:hover {
-  height: 20rem;
+  height: 0rem;
   border: 0;
 }
 
-.arrow {
-  opacity: 0;
-  padding: 3rem 0rem 5rem 19rem;
-  position: absolute;
-  font-size: 12rem;
-  margin: 0rem 0rem 0rem 35rem;
-}
-
-.arrow:hover {
-  opacity: 100%;
-  color: white;
-  background: linear-gradient(to right, transparent 1%, black 91%);
-  padding: 4rem 0rem 4rem 18rem;
-  position: absolute;
-  font-size: 12rem;
-  margin: 0rem 0rem 0rem 35rem;
-}
-
-.arrowLeft {
-  opacity: 0%;
-  padding: 4rem 18rem 4rem 0;
-  position: absolute;
-  font-size: 12rem;
-  margin: 0rem 38rem 0rem 0;
-}
-
-.arrowLeft:hover {
-  opacity: 100%;
-  background: linear-gradient(to right, transparent 1%, black 91%);
-  color: white;
-}
-
 .skeletonSpanPromotion {
-  width: 64rem;
-  height: 21rem;
-  display: flex;
-  flex-wrap: nowrap;
-  column-gap: 5rem;
-  justify-content: space-between;
+    flex-wrap: nowrap;
+    column-gap: 5rem;
+    justify-content: space-between;
+    height: 25rem;
+    margin: 1rem 0rem 0rem 1rem;
+    column-gap: 3rem;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.arrow {
-  opacity: 0;
-  padding: 3rem 0rem 5rem 19rem;
-  position: absolute;
-  font-size: 12rem;
-  margin: 0rem 0rem 0rem 35rem;
-  cursor: pointer;
-}
-
-.arrow:hover {
-  opacity: 100%;
-  color: white;
-  background: linear-gradient(to right, transparent 0%, black 65%);
-  padding: 6rem 0rem 5rem 2rem;
-  position: absolute;
-  font-size: 9rem;
-  margin: 0rem 0rem 0rem 54rem;
-  background-color: blue;
-}
 
 .link {
+  opacity: 50%;
   position: absolute;
-  width: 30rem;
-  height: 20rem;
-  background-color: blue;
+  width: 30.5rem;
+  height: 20.5rem;
 }
 
 .promotionRight {
   margin: -20.5rem 0rem 0rem -15rem;
-  z-index: -1;
 }
 
 .promotionLeft {
   margin: -20.5rem 0rem 0rem -15rem;
 }
 
+
+.arrow {
+  opacity: 0%;
+  position: absolute;
+  font-size: 9rem;
+  z-index: 2;
+  color: white
+}
+
+.arrowRight {
+  padding: 5.5rem 0rem 5.5rem 4rem;
+  margin: 0rem 0rem 0rem 50rem;
+
+}
+
+.arrowLeft {
+  padding: 5.5rem 4rem 5.5rem 0rem;
+}
+
+.arrowLeft:hover {
+  opacity: 100%;
+  background: linear-gradient(to left, transparent 1%, black 91%);
+}
+
+.arrowRight:hover {
+  opacity: 100%;
+  background: linear-gradient(to right, transparent 1%, black 91%);
+}

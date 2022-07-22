@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { PromotionCard } from "../../components";
 import { CommentCard, IComment } from "../../components/CommentCard";
 import { Container } from "../../components/Container";
+import { StarRating } from "../../components/StarRating";
+import { useEvaluation } from "../../hooks/useEvaluation";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
 import { IPromotion } from "../../interface/IPromotion";
@@ -19,6 +21,7 @@ export function Home() {
   const [loading, setLoading] = useState(true);
   const [loadMorePromotions, setLoadMorePromotions] = useState(true);
   const [promotionsUpdate, setPromotionsUpdate] = useState<IPromotion[]>();
+  const { grade, getGrade } = useEvaluation();
 
   useEffect(() => {
     getPromotions(pagination, 2);
@@ -28,9 +31,11 @@ export function Home() {
     }, 2000);
   }, []);
 
-  const oi = () => {
-    // console.log("oi");
-  };
+  useEffect(() => {
+    if (restaurant) {
+      getGrade(restaurant.id);
+    }
+  }, [restaurant]);
 
   function handleClick() {
     sessionStorage.clear();
@@ -43,39 +48,26 @@ export function Home() {
     {
       message:
         "“A comida desse lugar é sensacional. Eu e minha esposa comemos quase todo o domingo!!!”",
+      grade: 4,
       date: "01/02/2022",
     },
     {
       message:
         "“A comida é excelente, mas muitas vezes demora para ficar preparada.“",
       date: "01/02/2022",
+      grade: 3,
     },
     {
       message: "“O sinônimo de comida boa é DevelcodeRestaurant.“",
       date: "01/02/2022",
+      grade: 1,
+    },
+    {
+      message: "“A melhor pizza da cidade! Voltarei mais vezes.“",
+      date: "01/02/2022",
+      grade: 2,
     },
   ];
-
-  const grade = 3.5;
-
-  const starGradind = (grade: number) => {
-    const gradePortion: Array<number> = [];
-    const parcialPainted = (grade % 1) * 10;
-    const fullPainted = grade - parcialPainted / 10;
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < fullPainted; i++) {
-      gradePortion[i] = 100;
-    }
-    gradePortion.push(parcialPainted * 10);
-    if (gradePortion.length < 5) {
-      const isMissing = 5 - gradePortion.length;
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < isMissing; i++) {
-        gradePortion.push(0);
-      }
-    }
-    return gradePortion;
-  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -105,7 +97,11 @@ export function Home() {
     setLoadMorePromotions(true);
     setTimeout(() => {
       setLoadMorePromotions(false);
-    }, 4000);
+    }, 5000);
+  };
+
+  const handlePathPromotion = (id: number) => {
+    navigate(`/edit/${id}`);
   };
 
   const isBegging = pagination === 0;
@@ -130,30 +126,7 @@ export function Home() {
             <div className={style.homeSpan}>
               <div className={style.leftSpan}>
                 <div className={style.gradeSpan}>
-                  Sua nota{" "}
-                  <div>
-                    <link
-                      rel="stylesheet"
-                      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-                    />
-                  </div>
-                  {starGradind(grade).map((grade) => (
-                    <span>
-                      <i
-                        className="material-symbols-outlined"
-                        style={{
-                          fontSize: "11rem",
-                          background: `linear-gradient(to right, #DFCC1B ${
-                            grade - 10
-                          }%, white ${grade + 10}%`,
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                        }}
-                      >
-                        star
-                      </i>
-                    </span>
-                  ))}
+                  Sua nota <StarRating grade={grade} fontSize={11} />
                   <div className={style.grade}>{`${grade}/5.0`}</div>
                 </div>
 
@@ -162,7 +135,7 @@ export function Home() {
                     Suas promoções ativas
                   </div>
                   <div className={style.scrollPromotions}>
-                    {loadMorePromotions && (
+                    {loadMorePromotions ? (
                       <div className={style.skeletonSpanPromotion}>
                         <Skeleton
                           count={1}
@@ -170,7 +143,6 @@ export function Home() {
                             width: "30rem",
                             height: "20rem",
                             zIndex: -2,
-                            // backgroundColor: "rgb(162, 155, 155)",
                           }}
                         />
                         <Skeleton
@@ -179,46 +151,47 @@ export function Home() {
                             width: "30rem",
                             height: "20rem",
                             zIndex: -2,
-                            // backgroundColor: "black",
                           }}
                         />
                       </div>
-                    )}
-
-                    <RiIcons.RiArrowRightSLine
-                      className={style.arrow}
-                      onClick={handleArrowRight}
-                    />
-                    {!isBegging && (
-                      <RiIcons.RiArrowLeftSLine
-                        className={`${style.arroew} ${style.arrowLeft}`}
-                        onClick={handleArrowLeft}
-                      />
-                    )}
-
-                    {promotionsUpdate &&
-                      promotionsUpdate.map((promotion: IPromotion, index) => (
-                        <div
-                          className={style.promotionBanner}
-                          key={promotion.id}
-                        >
-                          <PromotionCard
-                            data={promotion}
-                            onDelete={oi}
-                            classNameImage={style.promotionImage}
-                            classNameInable={style.itensInable}
-                            classNameSpanDefaul={style.promotionDefault}
+                    ) : (
+                      <>
+                        <RiIcons.RiArrowRightSLine
+                          className={`${style.arrow} ${style.arrowRight}`}
+                          onClick={handleArrowRight}
+                        />
+                        {!isBegging && (
+                          <RiIcons.RiArrowLeftSLine
+                            className={`${style.arrow} ${style.arrowLeft}`}
+                            onClick={handleArrowLeft}
                           />
-                          <Link
-                            to={`/promotion/edit/${promotion.id}`}
-                            className={`${style.link} ${
-                              index === 1
-                                ? style.promotionRight
-                                : style.promotionLeft
-                            }`}
-                          />
-                        </div>
-                      ))}
+                        )}
+                        {promotionsUpdate &&
+                          promotionsUpdate.map(
+                            (promotion: IPromotion, index) => (
+                              <div
+                                className={style.promotionBanner}
+                                key={promotion.id}
+                              >
+                                <PromotionCard
+                                  data={promotion}
+                                  classNameImage={style.promotionImage}
+                                  classNameInable={style.itensInable}
+                                  classNameSpanDefaul={style.promotionDefault}
+                                />
+                                <Link
+                                  to={`/promotion/edit/${promotion.id}`}
+                                  className={`${style.link} ${
+                                    index === 1
+                                      ? style.promotionRight
+                                      : style.promotionLeft
+                                  }`}
+                                />
+                              </div>
+                            )
+                          )}{" "}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
