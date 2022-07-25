@@ -1,0 +1,38 @@
+.spanPage {
+  margin: 10rem;
+  justify-items: center;
+  display: grid;
+}
+
+.logoMark {
+  width: 30rem;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+
+.spanButtons{
+  width: 55.8rem;
+  display: flex;
+  justify-content:space-between
+}
+
+.button {
+  width: 25rem;
+  border-radius: 0.5rem;
+}
+
+.spanInputs{
+  height: 23rem;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.1rem;
+  width: 55.8rem;
+  margin: 5rem 0 4rem 0
+}
+
+.inputEditPassword {
+  width: 55.8rem;
+  height: 5.6rem;
+
+}

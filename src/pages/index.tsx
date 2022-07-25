@@ -10,3 +10,4 @@ export * from "./SignUpThird/index";
 export * from "./SignUpSucess/index";
 export * from "./PlateForm/index";
 export * from "./PromotionForm/index";
+export * from "./EditPassword/index";

@@ -18,6 +18,7 @@ import {
   SignUpSuccess,
   Promotions,
   PlateForm,
+  EditPassword,
 } from "../pages";
 
 export function Routes() {
@@ -38,6 +39,7 @@ export function Routes() {
         <Route path="/plate/new" element={<PlateForm />} />
         <Route path="/plate/edit/:id" element={<PlateForm />} />
         <Route path="/signupsuccess" element={<SignUpSuccess />} />
+        <Route path="/editpassword" element={<EditPassword />} />
         <Route path="*" element={<Navigate to="/signin" />} />
       </Stwitch>
     </BrowserRouter>
