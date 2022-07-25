@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { IComment } from "../interface/IComment";
+import { IEvaluation } from "../interface/IEvaluation";
 import { get } from "../services/apiRequest";
 
 export function useEvaluation() {
@@ -8,7 +8,7 @@ export function useEvaluation() {
   const [totalPagesEvaluation, setTotalPagesEvaluation] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const [evaluation, setEvaluation] = useState<IComment[]>();
+  const [evaluation, setEvaluation] = useState<IEvaluation[]>();
 
   const getGrade = async (id: number) => {
     try {

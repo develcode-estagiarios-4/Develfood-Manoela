@@ -1,14 +1,14 @@
 import moment from "moment";
 
-import { IComment } from "../../interface/IComment";
+import { IEvaluation } from "../../interface/IEvaluation";
 import { StarRating } from "../StarRating";
 import style from "./style.module.scss";
 
-export interface ICommentProps {
-  data: IComment;
+export interface IEvaluationProps {
+  data: IEvaluation;
 }
 
-export function EvaluationCard({ data }: ICommentProps) {
+export function EvaluationCard({ data }: IEvaluationProps) {
   return (
     <div className={style.commentCardSpan}>
       <textarea className={style.comment}>{`“${data.observation}”`}</textarea>

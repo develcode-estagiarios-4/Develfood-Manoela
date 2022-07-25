@@ -1,4 +1,4 @@
-export interface IComment {
+export interface IEvaluation {
   id: number;
   grade: number;
   evaluationDate: string;

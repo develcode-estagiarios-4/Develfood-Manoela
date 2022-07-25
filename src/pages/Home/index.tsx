@@ -14,7 +14,7 @@ import {
 import { useEvaluation } from "../../hooks/useEvaluation";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
-import { IComment } from "../../interface/IComment";
+import { IEvaluation } from "../../interface/IEvaluation";
 import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
@@ -236,7 +236,7 @@ export function Home() {
                   </div>
                   <div className={style.spanComments}>
                     {evaluation &&
-                      evaluation.map((data: IComment) => {
+                      evaluation.map((data: IEvaluation) => {
                         return <EvaluationCard data={data} key={data.id} />;
                       })}
                   </div>
