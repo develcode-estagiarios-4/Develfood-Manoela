@@ -12,3 +12,5 @@ export * from "./PromotionCard/index";
 export * from "./SelectSignUp/index";
 export * from "./NoPlate/index";
 export * from "./Textarea/index";
+export * from "./StarRating/index";
+export * from "./EvaluationCard/index";

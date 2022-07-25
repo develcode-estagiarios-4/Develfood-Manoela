@@ -5,10 +5,12 @@ import * as RiIcons from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 import { Link, useNavigate } from "react-router-dom";
 
-import { PromotionCard } from "../../components";
-import { CommentCard } from "../../components/CommentCard";
-import { Container } from "../../components/Container";
-import { StarRating } from "../../components/StarRating";
+import {
+  PromotionCard,
+  Container,
+  EvaluationCard,
+  StarRating,
+} from "../../components";
 import { useEvaluation } from "../../hooks/useEvaluation";
 import { usePromotion } from "../../hooks/usePromotion";
 import { useRestaurant } from "../../hooks/useRestaurant";
@@ -19,27 +21,35 @@ import style from "./style.module.scss";
 export function Home() {
   const navigate = useNavigate();
   const { restaurant, getRestaurant } = useRestaurant();
-  const { getPromotions, promotions } = usePromotion();
-  const [pagination, setPagination] = useState(0);
-  const [paginationComment, setPaginationCOmment] = useState(0);
+  const { getPromotions, promotions, pageableData } = usePromotion();
+  const [promotionPage, setPromotionPage] = useState(0);
   const [pagesHowmany, setPages] = useState<number[]>();
+  const [starSkeleton, setStarSkeleton] = useState(true);
 
   const [loading, setLoading] = useState(true);
-  const [loadMorePromotions, setLoadMorePromotions] = useState(true);
-  const [isSingle, setIsSingle] = useState(false);
+  const [loadingPromotions, setLoadingPromotions] = useState(true);
   const [direction, setDirection] = useState(true);
   const [promotionsUpdate, setPromotionsUpdate] = useState<IPromotion[]>();
 
-  const { grade, getGrade, getEvaluation, evaluation, totalPagesEvaluation } =
-    useEvaluation();
+  const {
+    grade,
+    getGrade,
+    getEvaluation,
+    evaluation,
+    currentPage,
+    totalPagesEvaluation,
+  } = useEvaluation();
 
   useEffect(() => {
-    getPromotions(pagination, 2);
-    getEvaluation(paginationComment, 4);
+    getPromotions(promotionPage, 2);
+    getEvaluation(0, 3);
     getRestaurant();
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    setTimeout(() => {
+      setStarSkeleton(false);
+    }, 5000);
   }, []);
 
   useEffect(() => {
@@ -48,101 +58,95 @@ export function Home() {
     }
   }, [restaurant]);
 
-  function handleClick() {
-    sessionStorage.clear();
-    localStorage.clear();
-    localStorage.getItem("token");
-    navigate("/");
-  }
-
   const pagesEvaluation: any = [];
 
   useEffect(() => {
-    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < totalPagesEvaluation; i++) {
-      console.log(i);
       pagesEvaluation.push(i);
     }
-    console.log(pagesEvaluation);
     setPages(pagesEvaluation);
   }, [totalPagesEvaluation]);
 
+  const isFirstPage = promotionPage === 0;
+  const isLastPage = pageableData.page === pageableData.totalPages;
+  const onlyOnePage = pageableData.totalPages === 0;
+
   useEffect(() => {
     setTimeout(() => {
-      setLoadMorePromotions(false);
+      setLoadingPromotions(false);
     }, 4000);
-
     if (promotions.length > 0) {
-      setIsSingle(false);
-
-      setPromotionsUpdate(promotions);
-      if (promotions.length === 1 && pagination === 0) {
-        setIsSingle(true);
-      }
-      if (promotions.length === 1 && pagination !== 0) {
-        setIsSingle(true);
-      }
-    } else {
-      getPromotions(0, 2);
-      setIsSingle(false);
-
-      setPagination(0);
       setPromotionsUpdate(promotions);
     }
   }, [promotions]);
 
   const handleArrowRight = () => {
     setDirection(true);
-    setPagination(pagination + 1);
-    getPromotions(pagination + 1, 2);
-    setLoadMorePromotions(true);
+    setPromotionPage(promotionPage + 1);
+    getPromotions(promotionPage + 1, 2);
+    setLoadingPromotions(true);
     setTimeout(() => {
-      setLoadMorePromotions(false);
+      setLoadingPromotions(false);
     }, 2000);
   };
 
   const handleArrowLeft = () => {
     setDirection(false);
-    setPagination(pagination - 1);
-    getPromotions(pagination - 1, 2);
-    setLoadMorePromotions(true);
+    setPromotionPage(promotionPage - 1);
+    getPromotions(promotionPage - 1, 2);
+    setLoadingPromotions(true);
     setTimeout(() => {
-      setLoadMorePromotions(false);
+      setLoadingPromotions(false);
     }, 5000);
   };
 
-  const isBegging = pagination === 0;
+  const handleChangePageEvaluation = (index: number) => {
+    getEvaluation(index, 3);
+  };
 
   return (
     <Container active="true">
-      {loading ? (
-        <div className={style.contentSkeleton}>
-          <Skeleton
-            count={3}
-            style={{ width: "50rem", height: "30rem" }}
-            duration={12000}
-          />
-        </div>
-      ) : (
-        <>
-          <button type="button" onClick={handleClick}>
-            log out
-          </button>
-          <div className={style.homePage}>
-            <div className={style.home}> {restaurant?.name} </div>
-            <div className={style.homeSpan}>
-              <div className={style.leftSpan}>
+      <div className={style.homePage}>
+        {loading ? (
+          <div className={`${style.contentSkeleton} ${style.tittleSkeleton}`}>
+            <Skeleton
+              count={1}
+              style={{
+                width: "70rem",
+                height: "9rem",
+              }}
+            />
+          </div>
+        ) : (
+          <div className={style.home}> {restaurant?.name} </div>
+        )}
+
+        <div className={style.homeSpan}>
+          <div className={style.leftSpan}>
+            {loading ? (
+              <div className={style.contentSkeleton}>
+                <Skeleton count={2} className={style.skeletonStar} />
+              </div>
+            ) : (
+              <>
+                <div
+                  className={`${style.skeletonStarRating}`}
+                  style={{
+                    display: `${starSkeleton ? "block" : "none"}`,
+                  }}
+                >
+                  <Skeleton count={2} className={style.skeletonStar} />
+                </div>
                 <div className={style.gradeSpan}>
                   Sua nota <StarRating grade={grade} fontSize={11} />
                   <div className={style.grade}>{`${grade}/5.0`}</div>
                 </div>
-
                 <div className={style.spanPromotionsBanners}>
-                  <div className={style.promotionsActiveTitle}>
+                  <div className={style.promotionsActiveTittle}>
                     Suas promoções ativas
                   </div>
                   <div className={style.scrollPromotions}>
-                    {loadMorePromotions ? (
+                    {loadingPromotions ? (
                       <div className={style.skeletonSpanPromotion}>
                         <Skeleton
                           className={`${
@@ -169,16 +173,16 @@ export function Home() {
                       </div>
                     ) : (
                       <>
-                        {!isSingle && (
-                          <RiIcons.RiArrowRightSLine
-                            className={`${style.arrow} ${style.arrowRight}`}
-                            onClick={handleArrowRight}
-                          />
-                        )}
-                        {!isBegging && (
+                        {!isFirstPage && !onlyOnePage && (
                           <RiIcons.RiArrowLeftSLine
                             className={`${style.arrow} ${style.arrowLeft}`}
                             onClick={handleArrowLeft}
+                          />
+                        )}
+                        {!isLastPage && !onlyOnePage && (
+                          <RiIcons.RiArrowRightSLine
+                            className={`${style.arrow} ${style.arrowRight}`}
+                            onClick={handleArrowRight}
                           />
                         )}
                         {promotionsUpdate &&
@@ -208,9 +212,24 @@ export function Home() {
                       </>
                     )}
                   </div>
-                </div>
+                </div>{" "}
+              </>
+            )}
+          </div>
+          <div className={style.rightSpan}>
+            {loading ? (
+              <div className={style.contentSkeleton}>
+                <Skeleton
+                  count={1}
+                  style={{
+                    width: "70rem",
+                    rowGap: "15rem",
+                    height: "70rem",
+                  }}
+                />
               </div>
-              <div className={style.rightSpan}>
+            ) : (
+              <>
                 <div className={style.coments}>
                   <div className={style.commentsTittle}>
                     O que os cliente estão <br /> achando?
@@ -218,36 +237,33 @@ export function Home() {
                   <div className={style.spanComments}>
                     {evaluation &&
                       evaluation.map((data: IComment) => {
-                        return <CommentCard data={data} />;
+                        return <EvaluationCard data={data} key={data.id} />;
                       })}
-                    <div className={style.spanCircles}>
-                      {pagesHowmany &&
-                        pagesHowmany.map((index: number) => (
-                          <>
-                            <FiIcons.FiCircle
-                              className={`${style.pagebleEvaluation} ${
-                                index === paginationComment && style.black
-                              }`}
-                            />
-                            <FaIcons.FaCircle
-                              className={`${style.pagebleEvaluation} ${
-                                index === paginationComment && style.black
-                              }`}
-                            />
-
-                            <div>
-                              {index} {paginationComment}
-                            </div>
-                          </>
-                        ))}
-                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                  <div className={style.spanCircles}>
+                    {pagesHowmany &&
+                      pagesHowmany.map((page: number, index) => (
+                        <div key={page}>
+                          {" "}
+                          {page === currentPage ? (
+                            <FaIcons.FaCircle
+                              className={`${style.pagebleEvaluation} `}
+                            />
+                          ) : (
+                            <FiIcons.FiCircle
+                              className={`${style.pagebleEvaluation} ${style.cicleToChangePage}`}
+                              onClick={() => handleChangePageEvaluation(index)}
+                            />
+                          )}
+                        </div>
+                      ))}
+                  </div>
+                </div>{" "}
+              </>
+            )}
           </div>
-        </>
-      )}
+        </div>
+      </div>
     </Container>
   );
 }

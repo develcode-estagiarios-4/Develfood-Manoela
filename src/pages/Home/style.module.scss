@@ -3,14 +3,31 @@
   display: flex;
 }
 
+.skeletonStarRating {
+  position: absolute;
+  z-index: 4;
+  width: 73rem;
+  background-color: white;
+}
+
+.skeletonStar {
+  width: 70rem;
+  row-gap: 15rem;
+  height: 35rem;
+  margin-bottom: 7rem;
+}
+
+
 .home {
   text-align: center;
   font-size: 9.6rem;
 }
 
+
 .homePage {
   justify-content: center;
   display: grid;
+  padding-top: 4rem;
 }
 
 .homeSpan {
@@ -22,7 +39,7 @@
 }
 .leftSpan {
   width: 50%;
-  row-gap: 5rem;
+  row-gap: 9rem;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -102,16 +119,16 @@
   border: 0;
 }
 
-.promotionsActiveTitle {
+.promotionsActiveTittle {
   margin-top: 2rem;
   font-size: 5.6rem;
 }
 
 .spanComments {
-  display: flex;
   flex-wrap: wrap;
   row-gap: 2rem;
-  margin-top: 2rem;
+  height: 49rem;
+  display: block;
 }
 
 .commentsTittle {
@@ -245,8 +262,17 @@ span i {
   display: flex;
   justify-content: center;
   column-gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .black {
   color: black
+}
+
+.cicleToChangePage {
+  cursor: pointer;
+}
+
+.tittleSkeleton {
+  justify-content: center;
 }

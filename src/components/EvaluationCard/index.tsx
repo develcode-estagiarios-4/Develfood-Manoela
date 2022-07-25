@@ -8,7 +8,7 @@ export interface ICommentProps {
   data: IComment;
 }
 
-export function CommentCard({ data }: ICommentProps) {
+export function EvaluationCard({ data }: ICommentProps) {
   return (
     <div className={style.commentCardSpan}>
       <textarea className={style.comment}>{`“${data.observation}”`}</textarea>

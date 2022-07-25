@@ -25,6 +25,11 @@ const defaultPromotionValues = {
   photo_url: "",
 };
 
+interface IPageableData {
+  page: number;
+  totalPages: number;
+}
+
 export function usePromotion() {
   const navigate = useNavigate();
 
@@ -36,6 +41,10 @@ export function usePromotion() {
   const [promotion, setPromotion] = useState(defaultPromotionValues);
   const [promotions, setPromotions] = useState<IPromotion[]>([]);
   const [promotionBanner, setPromotionBanner] = useState(null);
+  const [pageableData, setpageableData] = useState<IPageableData>({
+    page: 0,
+    totalPages: 0,
+  });
 
   const postPromotion = async (data: INewPromotion) => {
     try {
@@ -79,6 +88,10 @@ export function usePromotion() {
         `/restaurantPromotion/restaurant?page=${page}&quantity=${quantity}`
       );
       setPromotions(response.data.content);
+      setpageableData({
+        page: response.data.pageable.pageNumber + 1,
+        totalPages: response.data.totalPages,
+      });
     } catch (error) {
       // console.log(error);
     }
@@ -118,6 +131,7 @@ export function usePromotion() {
     getPromotionBanner,
     putToast,
     putError,
+    pageableData,
     getPromotions,
     promotionBanner,
     setPutToast,

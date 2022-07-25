@@ -1,21 +1,16 @@
-interface IStarProps {
-  grade: number;
-  fontSize: number;
-}
+import { IStarProps } from "../../interface/IStarRating";
 
 export function StarRating({ grade, fontSize }: IStarProps) {
   const starGradind = (grade: number) => {
     const gradePortion: Array<number> = [];
     const parcialPainted = (grade % 1) * 10;
     const fullPainted = grade - parcialPainted / 10;
-    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < fullPainted; i++) {
       gradePortion[i] = 100;
     }
     gradePortion.push(parcialPainted * 10);
     if (gradePortion.length < 5) {
       const isMissing = 5 - gradePortion.length;
-      // eslint-disable-next-line no-plusplus
       for (let i = 0; i < isMissing; i++) {
         gradePortion.push(0);
       }
