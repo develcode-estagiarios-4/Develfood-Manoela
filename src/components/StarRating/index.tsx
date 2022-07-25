@@ -5,13 +5,13 @@ export function StarRating({ grade, fontSize }: IStarProps) {
     const gradePortion: Array<number> = [];
     const parcialPainted = (grade % 1) * 10;
     const fullPainted = grade - parcialPainted / 10;
-    for (let i = 0; i < fullPainted; i++) {
+    for (let i = 0; i < fullPainted; i += 1) {
       gradePortion[i] = 100;
     }
     gradePortion.push(parcialPainted * 10);
     if (gradePortion.length < 5) {
       const isMissing = 5 - gradePortion.length;
-      for (let i = 0; i < isMissing; i++) {
+      for (let i = 0; i < isMissing; i += 1) {
         gradePortion.push(0);
       }
     }

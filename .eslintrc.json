@@ -41,7 +41,6 @@
                 }
             }
         ],
-        "no-plusplus": "off",
         "react/jsx-props-no-spreading": "off",
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",

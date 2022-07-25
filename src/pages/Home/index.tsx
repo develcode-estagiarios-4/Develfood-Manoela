@@ -19,7 +19,6 @@ import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
 export function Home() {
-  const navigate = useNavigate();
   const { restaurant, getRestaurant } = useRestaurant();
   const { getPromotions, promotions, pageableData } = usePromotion();
   const [promotionPage, setPromotionPage] = useState(0);
@@ -58,10 +57,10 @@ export function Home() {
     }
   }, [restaurant]);
 
-  const pagesEvaluation: any = [];
+  const pagesEvaluation: number[] = [];
 
   useEffect(() => {
-    for (let i = 0; i < totalPagesEvaluation; i++) {
+    for (let i = 0; i < totalPagesEvaluation; i += 1) {
       pagesEvaluation.push(i);
     }
     setPages(pagesEvaluation);
@@ -105,7 +104,7 @@ export function Home() {
   };
 
   return (
-    <Container active="true">
+    <Container setIsNavbarInvisible="true">
       <div className={style.homePage}>
         {loading ? (
           <div className={`${style.contentSkeleton} ${style.tittleSkeleton}`}>

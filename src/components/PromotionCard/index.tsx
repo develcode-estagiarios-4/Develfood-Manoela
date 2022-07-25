@@ -7,7 +7,7 @@ import { usePromotion } from "../../hooks/usePromotion";
 import { IPromotion } from "../../interface/IPromotion";
 import style from "./style.module.scss";
 
-const defautProps = {
+const defaultProps = {
   classNameImage: "",
   classNameSpanDefaul: "",
   classNameInable: "",
@@ -28,7 +28,7 @@ export function PromotionCard({
   classNameImage,
   classNameSpanDefaul,
   classNameInable,
-}: IPromotionProps & typeof defautProps) {
+}: IPromotionProps & typeof defaultProps) {
   const navigate = useNavigate();
 
   const { deletePromotion, getPromotionBanner, promotionBanner } =
@@ -89,4 +89,4 @@ export function PromotionCard({
   );
 }
 
-PromotionCard.defaultProps = defautProps;
+PromotionCard.defaultProps = defaultProps;

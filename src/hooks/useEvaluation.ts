@@ -13,7 +13,6 @@ export function useEvaluation() {
   const getGrade = async (id: number) => {
     try {
       const response = await get(`/restaurantEvaluation/${id}/grade`);
-      console.log(response.data);
       if (response.data >= 0) {
         setGrade(response.data);
       }
