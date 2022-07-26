@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as FiIcons from "react-icons/fi";
 import * as RiIcons from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import {
   PromotionCard,
@@ -22,7 +20,6 @@ export function Home() {
   const { restaurant, getRestaurant } = useRestaurant();
   const { getPromotions, promotions, pageableData } = usePromotion();
   const [promotionPage, setPromotionPage] = useState(0);
-  const [pagesHowmany, setPages] = useState<number[]>();
   const [starSkeleton, setStarSkeleton] = useState(true);
 
   const [loading, setLoading] = useState(true);
@@ -56,15 +53,6 @@ export function Home() {
       getGrade(restaurant.id);
     }
   }, [restaurant]);
-
-  const pagesEvaluation: number[] = [];
-
-  useEffect(() => {
-    for (let i = 0; i < totalPagesEvaluation; i += 1) {
-      pagesEvaluation.push(i);
-    }
-    setPages(pagesEvaluation);
-  }, [totalPagesEvaluation]);
 
   const isFirstPage = promotionPage === 0;
   const isLastPage = pageableData.page === pageableData.totalPages;
@@ -100,7 +88,9 @@ export function Home() {
   };
 
   const handleChangePageEvaluation = (index: number) => {
-    getEvaluation(index, 3);
+    if (index !== currentPage) {
+      getEvaluation(index, 3);
+    }
   };
 
   return (
@@ -239,23 +229,25 @@ export function Home() {
                         return <EvaluationCard data={data} key={data.id} />;
                       })}
                   </div>
+
                   <div className={style.spanCircles}>
-                    {pagesHowmany &&
-                      pagesHowmany.map((page: number, index) => (
-                        <div key={page}>
-                          {" "}
-                          {page === currentPage ? (
-                            <FaIcons.FaCircle
-                              className={`${style.pagebleEvaluation} `}
-                            />
-                          ) : (
-                            <FiIcons.FiCircle
-                              className={`${style.pagebleEvaluation} ${style.cicleToChangePage}`}
-                              onClick={() => handleChangePageEvaluation(index)}
-                            />
-                          )}
-                        </div>
-                      ))}
+                    <div>
+                      {Array.from({ length: totalPagesEvaluation }).map(
+                        (_, index: number) => (
+                          <button
+                            className={`${
+                              index === currentPage
+                                ? style.currentPage
+                                : style.iconPage
+                            } ${style.icon}`}
+                            type="button"
+                            onClick={() => handleChangePageEvaluation(index)}
+                          >
+                            icon{" "}
+                          </button>
+                        )
+                      )}
+                    </div>
                   </div>
                 </div>{" "}
               </>

@@ -5,15 +5,14 @@ export function StarRating({ grade, fontSize }: IStarProps) {
     const gradePortion: Array<number> = [];
     const parcialPainted = (grade % 1) * 10;
     const fullPainted = grade - parcialPainted / 10;
-    for (let i = 0; i < fullPainted; i += 1) {
-      gradePortion[i] = 100;
-    }
+    Array.from({ length: fullPainted }).map(
+      // eslint-disable-next-line no-return-assign
+      (_, index: number) => (gradePortion[index] = 100)
+    );
     gradePortion.push(parcialPainted * 10);
     if (gradePortion.length < 5) {
       const isMissing = 5 - gradePortion.length;
-      for (let i = 0; i < isMissing; i += 1) {
-        gradePortion.push(0);
-      }
+      Array.from({ length: isMissing }).map((_, index) => gradePortion.push(0));
     }
     return gradePortion;
   };
@@ -35,7 +34,7 @@ export function StarRating({ grade, fontSize }: IStarProps) {
               fontSize: `${fontSize}rem`,
               background: `linear-gradient(to right, #DFCC1B ${
                 grade - 10
-              }%, white ${grade + 10}%`,
+              }%, white ${grade + 20}%`,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}

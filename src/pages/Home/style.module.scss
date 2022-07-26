@@ -262,7 +262,7 @@ span i {
   display: flex;
   justify-content: center;
   column-gap: 0.5rem;
-  margin-top: 1rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 .black {
@@ -275,4 +275,17 @@ span i {
 
 .tittleSkeleton {
   justify-content: center;
+}
+
+.icon {
+  padding: 0.8rem;
+  border-radius: 50%;
+  border: 1px black solid;
+  cursor: pointer;
+  margin: 0 0.4rem 0 0.4rem;
+  font-size: 0.1px;
+}
+
+.currentPage {
+  background-color: black;
 }

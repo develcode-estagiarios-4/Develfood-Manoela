@@ -5,10 +5,13 @@
   border: 0.1rem black solid;
   width: 65rem;
   margin: 1rem 2rem 0 2rem;
-  background-color: $beige;
+  background-color: #FAEEEE;
   box-shadow: 6px 6px 6px #888888;
   height: 14rem;
+  flex-wrap: inherit;
+  display: flex;
   margin-bottom: 3rem;
+  justify-content: space-between;
 
 }
 
@@ -24,12 +27,10 @@
 }
 
 .date {
-  float: right;
   margin: 1.1rem 0.5rem 0 0;
 }
 
 .grade{
-  float: left;
   bottom: 0;
   padding: 0 0 0.56rem 1.4rem;
 }
