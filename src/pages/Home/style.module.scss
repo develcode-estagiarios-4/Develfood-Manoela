@@ -5,7 +5,7 @@
 
 .skeletonStarRating {
   position: absolute;
-  z-index: 4;
+ // z-index: 4;
   width: 73rem;
   background-color: white;
 }
@@ -163,6 +163,8 @@ span i {
 }
 
 .skeletonSpanPromotion {
+   // z-index: 4;
+    position: absolute;
     flex-wrap: nowrap;
     column-gap: 5rem;
     justify-content: space-between;
@@ -175,6 +177,9 @@ span i {
     overflow: hidden;
 }
 
+.lasPage{
+  margin-left: -17rem;
+}
 
 .link {
   opacity: 50%;
@@ -220,11 +225,11 @@ span i {
   background: linear-gradient(to right, transparent 1%, black 91%);
 }
 
-.skeleton {
-  width: "30rem";
-  height: "20rem";
-  z-index: 5;
-}
+// .skeleton {
+//   width: 39rem;
+//   height: 20rem;
+//   z-index: 5;
+// }
 
 .skeletonRight {
   animation: slideRight 2s;
@@ -288,4 +293,14 @@ span i {
 
 .currentPage {
   background-color: black;
+}
+
+.isLoaded {
+  position: absolute;
+  z-index: 1;
+}
+
+.isNotLoaded {
+  position: absolute;
+  z-index: 1;
 }

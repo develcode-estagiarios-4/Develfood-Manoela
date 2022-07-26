@@ -28,6 +28,7 @@ export function StarRating({ grade, fontSize }: IStarProps) {
       </div>
       {starGradind(grade).map((grade) => (
         <span>
+          {" "}
           <i
             className="material-symbols-outlined"
             style={{

@@ -12,6 +12,7 @@ const defaultProps = {
   classNameSpanDefaul: "",
   classNameInable: "",
   onDelete: () => console.log(),
+  isImageLoaded: "",
 };
 
 interface IPromotionProps {
@@ -20,6 +21,7 @@ interface IPromotionProps {
   classNameImage?: string;
   classNameSpanDefaul?: string;
   classNameInable?: string;
+  isImageLoaded?: any;
 }
 
 export function PromotionCard({
@@ -28,6 +30,7 @@ export function PromotionCard({
   classNameImage,
   classNameSpanDefaul,
   classNameInable,
+  isImageLoaded,
 }: IPromotionProps & typeof defaultProps) {
   const navigate = useNavigate();
 
@@ -53,6 +56,7 @@ export function PromotionCard({
         <div className={style.divS}>
           {promotionBanner ? (
             <img
+              onLoad={isImageLoaded}
               src={promotionBanner}
               alt="Promotion Banner"
               className={`${style.imagePromotion} ${classNameImage}`}

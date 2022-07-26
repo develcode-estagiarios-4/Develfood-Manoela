@@ -20,10 +20,8 @@ export function Home() {
   const { restaurant, getRestaurant } = useRestaurant();
   const { getPromotions, promotions, pageableData } = usePromotion();
   const [promotionPage, setPromotionPage] = useState(0);
-  const [starSkeleton, setStarSkeleton] = useState(true);
-
   const [loading, setLoading] = useState(true);
-  const [loadingPromotions, setLoadingPromotions] = useState(true);
+  const [isImagePromotionLoaded, setIsImagePromotionLoaded] = useState(false);
   const [direction, setDirection] = useState(true);
   const [promotionsUpdate, setPromotionsUpdate] = useState<IPromotion[]>();
 
@@ -43,9 +41,6 @@ export function Home() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    setTimeout(() => {
-      setStarSkeleton(false);
-    }, 5000);
   }, []);
 
   useEffect(() => {
@@ -57,11 +52,9 @@ export function Home() {
   const isFirstPage = promotionPage === 0;
   const isLastPage = pageableData.page === pageableData.totalPages;
   const onlyOnePage = pageableData.totalPages === 0;
+  const onlyOnePromotion = promotions.length === 1;
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoadingPromotions(false);
-    }, 4000);
     if (promotions.length > 0) {
       setPromotionsUpdate(promotions);
     }
@@ -69,28 +62,26 @@ export function Home() {
 
   const handleArrowRight = () => {
     setDirection(true);
+    setIsImagePromotionLoaded(false);
     setPromotionPage(promotionPage + 1);
     getPromotions(promotionPage + 1, 2);
-    setLoadingPromotions(true);
-    setTimeout(() => {
-      setLoadingPromotions(false);
-    }, 2000);
   };
 
   const handleArrowLeft = () => {
     setDirection(false);
+    setIsImagePromotionLoaded(false);
     setPromotionPage(promotionPage - 1);
     getPromotions(promotionPage - 1, 2);
-    setLoadingPromotions(true);
-    setTimeout(() => {
-      setLoadingPromotions(false);
-    }, 5000);
   };
 
   const handleChangePageEvaluation = (index: number) => {
     if (index !== currentPage) {
       getEvaluation(index, 3);
     }
+  };
+
+  const loadImage = () => {
+    setIsImagePromotionLoaded(true);
   };
 
   return (
@@ -118,14 +109,6 @@ export function Home() {
               </div>
             ) : (
               <>
-                <div
-                  className={`${style.skeletonStarRating}`}
-                  style={{
-                    display: `${starSkeleton ? "block" : "none"}`,
-                  }}
-                >
-                  <Skeleton count={2} className={style.skeletonStar} />
-                </div>
                 <div className={style.gradeSpan}>
                   Sua nota <StarRating grade={grade} fontSize={11} />
                   <div className={style.grade}>{`${grade}/5.0`}</div>
@@ -134,72 +117,72 @@ export function Home() {
                   <div className={style.promotionsActiveTittle}>
                     Suas promoções ativas
                   </div>
+                  {!isImagePromotionLoaded && (
+                    <div
+                      className={`${style.skeletonSpanPromotion} ${
+                        onlyOnePromotion && style.lasPage
+                      }`}
+                    >
+                      <Skeleton
+                        className={`${
+                          direction ? style.skeletonRight : style.skeletonLeft
+                        } ${style.skeleton}`}
+                        count={1}
+                        style={{
+                          width: "30rem",
+                          height: "20rem",
+                          zIndex: 1,
+                        }}
+                      />
+                      <Skeleton
+                        count={1}
+                        className={`${
+                          direction ? style.skeletonRight : style.skeletonLeft
+                        } ${style.skeleton}`}
+                        style={{
+                          width: "30rem",
+                          height: "20rem",
+                          zIndex: 1,
+                        }}
+                      />
+                    </div>
+                  )}
                   <div className={style.scrollPromotions}>
-                    {loadingPromotions ? (
-                      <div className={style.skeletonSpanPromotion}>
-                        <Skeleton
-                          className={`${
-                            direction ? style.skeletonRight : style.skeletonLeft
-                          } ${style.skeleton}`}
-                          count={1}
-                          style={{
-                            width: "30rem",
-                            height: "20rem",
-                            zIndex: -2,
-                          }}
-                        />
-                        <Skeleton
-                          count={1}
-                          className={`${
-                            direction ? style.skeletonRight : style.skeletonLeft
-                          } ${style.skeleton}`}
-                          style={{
-                            width: "30rem",
-                            height: "20rem",
-                            zIndex: -2,
-                          }}
-                        />
-                      </div>
-                    ) : (
-                      <>
-                        {!isFirstPage && !onlyOnePage && (
-                          <RiIcons.RiArrowLeftSLine
-                            className={`${style.arrow} ${style.arrowLeft}`}
-                            onClick={handleArrowLeft}
-                          />
-                        )}
-                        {!isLastPage && !onlyOnePage && (
-                          <RiIcons.RiArrowRightSLine
-                            className={`${style.arrow} ${style.arrowRight}`}
-                            onClick={handleArrowRight}
-                          />
-                        )}
-                        {promotionsUpdate &&
-                          promotionsUpdate.map(
-                            (promotion: IPromotion, index) => (
-                              <div
-                                className={style.promotionBanner}
-                                key={promotion.id}
-                              >
-                                <PromotionCard
-                                  data={promotion}
-                                  classNameImage={style.promotionImage}
-                                  classNameInable={style.itensInable}
-                                  classNameSpanDefaul={style.promotionDefault}
-                                />
-                                <Link
-                                  to={`/promotion/edit/${promotion.id}`}
-                                  className={`${style.link} ${
-                                    index === 1
-                                      ? style.promotionRight
-                                      : style.promotionLeft
-                                  }`}
-                                />
-                              </div>
-                            )
-                          )}{" "}
-                      </>
+                    {!isFirstPage && !onlyOnePage && (
+                      <RiIcons.RiArrowLeftSLine
+                        className={`${style.arrow} ${style.arrowLeft}`}
+                        onClick={handleArrowLeft}
+                      />
                     )}
+                    {!isLastPage && !onlyOnePage && (
+                      <RiIcons.RiArrowRightSLine
+                        className={`${style.arrow} ${style.arrowRight}`}
+                        onClick={handleArrowRight}
+                      />
+                    )}
+                    {promotionsUpdate &&
+                      promotionsUpdate.map((promotion: IPromotion, index) => (
+                        <div
+                          className={style.promotionBanner}
+                          key={promotion.id}
+                        >
+                          <PromotionCard
+                            data={promotion}
+                            classNameImage={style.promotionImage}
+                            classNameInable={style.itensInable}
+                            classNameSpanDefaul={style.promotionDefault}
+                            isImageLoaded={loadImage}
+                          />
+                          <Link
+                            to={`/promotion/edit/${promotion.id}`}
+                            className={`${style.link} ${
+                              index === 1
+                                ? style.promotionRight
+                                : style.promotionLeft
+                            }`}
+                          />
+                        </div>
+                      ))}{" "}
                   </div>
                 </div>{" "}
               </>

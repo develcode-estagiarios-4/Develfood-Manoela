@@ -77,6 +77,7 @@ export function usePromotion() {
     try {
       const response = await get(`/restaurantPromotion/${id}`);
       setPromotion(response.data);
+      console.log(response);
     } catch (error) {
       // console.log(error);
     }
