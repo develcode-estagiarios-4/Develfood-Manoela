@@ -38,7 +38,7 @@ export function EditPassword() {
           {" "}
           <MdIcons.MdLockOpen />
         </Input>
-        ;
+
         <Input
           onChange={oi}
           control={oi}
@@ -48,7 +48,6 @@ export function EditPassword() {
           {" "}
           <MdIcons.MdLockOpen />
         </Input>
-        ;
         <Input
           onChange={oi}
           control={oi}
@@ -58,7 +57,6 @@ export function EditPassword() {
           {" "}
           <MdIcons.MdLockOpen />
         </Input>
-        ;
       </div>
 
       <div className={style.spanButtons}>

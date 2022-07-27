@@ -19,7 +19,10 @@
 
 .button {
   width: 25rem;
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
+  box-shadow: inset 0 0 0.2em black;
+  -webkit-text-stroke: 0.5px black;
+  font-size: 3.6rem;
 }
 
 .spanInputs{
