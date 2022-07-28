@@ -227,7 +227,7 @@ export function Perfil() {
                         value={restaurantAuth?.email}
                         onChange={onChange}
                         className={`${style.spanInput} ${style.inputDefault}`}
-                        classInput={`${style.input} ${style.inputDefault}`}
+                        classNameInput={`${style.input} ${style.inputDefault}`}
                       />
                     )}
                   />
@@ -244,7 +244,7 @@ export function Perfil() {
                         value={restaurant?.cnpj}
                         onChange={onChange}
                         className={`${style.spanInput} ${style.spanInputDefault}`}
-                        classInput={`${style.input} ${style.inputDefault}`}
+                        classNameInput={`${style.input} ${style.inputDefault}`}
                       />
                     )}
                   />
@@ -261,7 +261,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -279,7 +279,7 @@ export function Perfil() {
                         value={normalizePhone(value)}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -320,7 +320,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInputStreet}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -338,7 +338,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -355,7 +355,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -372,7 +372,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -389,7 +389,7 @@ export function Perfil() {
                         value={zipCode(value)}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -406,7 +406,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
@@ -423,7 +423,7 @@ export function Perfil() {
                         value={value}
                         onChange={onChange}
                         className={style.spanInput}
-                        classInput={style.input}
+                        classNameInput={style.input}
                       />
                     )}
                   />
