@@ -1,0 +1,74 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanPage {
+  margin: 10rem;
+  justify-items: center;
+  display: grid;
+}
+
+.logoMark {
+  width: 30rem;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+
+.spanButtons{
+  width: 55.8rem;
+  display: flex;
+  justify-content:space-between;
+  margin-top: 4rem;
+}
+
+.button {
+  width: 25rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid black;
+  box-shadow: inset 0 0 0.1em black;
+  -webkit-text-stroke: 0.1rem black;
+  font-weight: 500;
+  font-size: 3.6rem;
+  padding-bottom: 5.2rem;
+  height: 5rem;
+}
+
+.spanInputs {
+  height: 22rem;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  width: 55.8rem;
+  margin: 10rem 0 4rem 0;
+  justify-content: center;
+}
+
+.spanInput {
+  width: 55.8rem;
+  height: 5.6rem;
+  border: 0.1rem solid $grey-midium;
+  margin: 0;
+}
+
+.inputIcon {
+  font-size: 3rem;
+  padding: 0.9rem 1.5rem 0 1rem;
+  color: $grey-midium;
+}
+
+.input {
+  font-size: 1.8rem;
+  width: 40rem;
+  padding-top: 0.4rem;
+}
+
+.passwordVisible {
+  color:$grey-midium;
+  cursor: pointer;
+  margin-left: 46rem;
+  position: absolute;
+}
+
+.error {
+  font-size: 1.6rem;
+}
