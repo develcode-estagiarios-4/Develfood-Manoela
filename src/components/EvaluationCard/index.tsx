@@ -1,4 +1,5 @@
 import moment from "moment";
+import { useEffect } from "react";
 
 import { IEvaluation } from "../../interface/IEvaluation";
 import { StarRating } from "../StarRating";
@@ -11,7 +12,11 @@ export interface IEvaluationProps {
 export function EvaluationCard({ data }: IEvaluationProps) {
   return (
     <div className={style.commentCardSpan}>
-      <textarea className={style.comment}>{`“${data.observation}”`}</textarea>
+      <textarea
+        value={`“${data.observation.trim()}”`}
+        className={style.comment}
+      />
+
       <div className={style.grade}>
         <StarRating
           grade={data.grade}
