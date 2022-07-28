@@ -22,7 +22,6 @@ export function StarRating({
     if (parcialPainted !== 0) {
       gradePercentages.push(parcialPainted * 10);
     }
-    console.log(grade, gradePercentages);
     if (gradePercentages.length < 5) {
       const isMissing = 5 - gradePercentages.length;
       Array.from({ length: isMissing }).map((_, index) =>
