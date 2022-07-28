@@ -59,7 +59,7 @@ export function SignIn() {
                   type="input"
                   value={value}
                   onChange={onChange}
-                  className={style.inputSignIn}
+                  classNameSpan={style.inputSignIn}
                 >
                   <HiOutlineMail />
                 </Input>
@@ -78,7 +78,7 @@ export function SignIn() {
                   type="password"
                   value={value}
                   onChange={onChange}
-                  className={style.inputSignIn}
+                  classNameSpan={style.inputSignIn}
                 >
                   <MdIcons.MdLockOpen />
                 </Input>
@@ -91,7 +91,7 @@ export function SignIn() {
           </Button>
           <div className={style.signInLink}>
             <div>
-              <SignInLink to="/home"> Esqueci minha senha </SignInLink>
+              <SignInLink to="/resetpassword"> Esqueci minha senha </SignInLink>
             </div>
             <div>
               <SignInLink to="/signupfirst">

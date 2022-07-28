@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+import { IConfirmEmail } from "../interface/IConfirmEmail";
 import { IEditPassword } from "../interface/IEditPassword";
-import { put } from "../services/apiRequest";
+import { IResetPassword } from "../interface/IResetPassword";
+import { put, post } from "../services/apiRequest";
 
-export function useEditPassword() {
+export function usePassword() {
   const [editPasswordSuccessed, setEditPasswordSuccessed] = useState(false);
   const [wrongPassword, setWrongPassword] = useState(false);
 
@@ -21,7 +23,27 @@ export function useEditPassword() {
     }
   };
 
+  const confirmEmail = async (data: IConfirmEmail) => {
+    try {
+      const response = await post("/reset-password", data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const changePassword = async (data: IResetPassword) => {
+    try {
+      const response = await put("/reset-password/change-password", data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
+    confirmEmail,
+    changePassword,
     editPassword,
     editPasswordSuccessed,
     wrongPassword,

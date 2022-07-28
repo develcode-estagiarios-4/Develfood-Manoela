@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { Button, ErrorMessage, Input, Logomark } from "../../components";
-import { useEditPassword } from "../../hooks/useEditPassword";
+import { usePassword } from "../../hooks/usePassword";
 import { IEditPassword } from "../../interface/IEditPassword";
 import style from "./style.module.scss";
 
@@ -37,7 +37,7 @@ export function EditPassword() {
     editPasswordSuccessed,
     setWrongPassword,
     wrongPassword,
-  } = useEditPassword();
+  } = usePassword();
   const {
     control,
     handleSubmit,

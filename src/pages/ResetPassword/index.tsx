@@ -7,23 +7,15 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { Button, ErrorMessage, Input, Logomark } from "../../components";
-import { useEditPassword } from "../../hooks/useEditPassword";
+import { usePassword } from "../../hooks/usePassword";
 import { IEditPassword } from "../../interface/IEditPassword";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
-  password: yup.string().required("O campo é obrigatório"),
-  newPassword: yup
+  email: yup
     .string()
-    .required("O campo é obrigatório")
-    .min(6, "A senha deve contem no mínimo 6 dígitos"),
-  confirmPassword: yup
-    .string()
-    .min(6, "A senha deve contem no mínimo 6 dígitos")
-    .required("O campo é obrigatório")
-    .test("passwords-match", "As senhas devem ser iguais", function (value) {
-      return this.parent.newPassword === value;
-    }),
+    .email("Insira um e-mail válido")
+    .required("O campo e-mail é obrigatório"),
 });
 
 export function ResetPassword() {
@@ -75,7 +67,7 @@ export function ResetPassword() {
         <Controller
           control={control}
           rules={{ required: true }}
-          name="password"
+          name="email"
           render={({ field: { onChange, value } }) => (
             <Input
               onChange={onChange}
@@ -85,21 +77,10 @@ export function ResetPassword() {
               classNameIcon={style.inputIcon}
               classNameSpan={style.spanInput}
               classNameInput={style.input}
-              placeholder="Senha atual"
+              placeholder="Email"
             >
               {" "}
               <MdIcons.MdLockOpen />
-              {visiblePassword ? (
-                <IoIcons.IoMdEye
-                  className={style.passwordVisible}
-                  onClick={handleVisiblePassword}
-                />
-              ) : (
-                <IoIcons.IoMdEyeOff
-                  className={style.passwordVisible}
-                  onClick={handleVisiblePassword}
-                />
-              )}
             </Input>
           )}
         />
