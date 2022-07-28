@@ -226,7 +226,7 @@ export function Perfil() {
                         control={control}
                         value={restaurantAuth?.email}
                         onChange={onChange}
-                        className={`${style.spanInput} ${style.inputDefault}`}
+                        classNameSpan={`${style.spanInput} ${style.inputDefault}`}
                         classNameInput={`${style.input} ${style.inputDefault}`}
                       />
                     )}
@@ -243,7 +243,7 @@ export function Perfil() {
                         control={control}
                         value={restaurant?.cnpj}
                         onChange={onChange}
-                        className={`${style.spanInput} ${style.spanInputDefault}`}
+                        classNameSpan={`${style.spanInput} ${style.spanInputDefault}`}
                         classNameInput={`${style.input} ${style.inputDefault}`}
                       />
                     )}
@@ -260,7 +260,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -278,7 +278,7 @@ export function Perfil() {
                         control={control}
                         value={normalizePhone(value)}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -303,7 +303,7 @@ export function Perfil() {
                   )}
                 </div>
 
-                <Link to="/home" className={style.link}>
+                <Link to="/editpassword" className={style.link}>
                   Alterar Senha
                 </Link>
               </div>
@@ -319,7 +319,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInputStreet}
+                        classNameSpan={style.spanInputStreet}
                         classNameInput={style.input}
                       />
                     )}
@@ -337,7 +337,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -354,7 +354,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -371,7 +371,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -388,7 +388,7 @@ export function Perfil() {
                         control={control}
                         value={zipCode(value)}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -405,7 +405,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
@@ -422,7 +422,7 @@ export function Perfil() {
                         control={control}
                         value={value}
                         onChange={onChange}
-                        className={style.spanInput}
+                        classNameSpan={style.spanInput}
                         classNameInput={style.input}
                       />
                     )}
