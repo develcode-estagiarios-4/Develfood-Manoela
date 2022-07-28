@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { IEditPassword } from "../interface/IEditPassword";
 import { IResetPassword } from "../interface/IResetPassword";
 import { put, post } from "../services/apiRequest";
 
 export function usePassword() {
+  const navigate = useNavigate();
+
   const [editPasswordSuccessed, setEditPasswordSuccessed] = useState(false);
   const [wrongPassword, setWrongPassword] = useState(false);
   const [recoveryToken, setRecoveryToken] = useState(false);
@@ -27,6 +30,12 @@ export function usePassword() {
     try {
       const response = await post(`/reset-password?email=${email}`);
       setRecoveryToken(response);
+      if (response.status === 200) {
+        navigate("/resetpasswordSecond");
+      }
+      if (response.status === 403) {
+        setWrongPassword(true);
+      }
       console.log(response);
     } catch (error) {
       console.log(error);

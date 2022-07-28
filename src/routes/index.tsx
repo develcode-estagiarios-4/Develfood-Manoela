@@ -21,6 +21,7 @@ import {
   EditPassword,
   ResetPassword,
 } from "../pages";
+import { ResetPasswordSecond } from "../pages/ResetPasswordSecond";
 import { ResetPasswordToken } from "../pages/ResetPasswordToken";
 
 export function Routes() {
@@ -44,6 +45,7 @@ export function Routes() {
         <Route path="/editpassword" element={<EditPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/resetpasswordToken" element={<ResetPasswordToken />} />
+        <Route path="/resetpasswordSecond" element={<ResetPasswordSecond />} />
 
         <Route path="*" element={<Navigate to="/signin" />} />
       </Stwitch>

@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as HiIcons from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +6,6 @@ import * as yup from "yup";
 
 import { Button, ErrorMessage, Input, Logomark } from "../../components";
 import { usePassword } from "../../hooks/usePassword";
-import { useRestaurant } from "../../hooks/useRestaurant";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
@@ -18,8 +16,7 @@ const schema = yup.object().shape({
 });
 
 export function ResetPassword() {
-  const navigate = useNavigate();
-  const { confirmEmail } = usePassword();
+  const { confirmEmail, wrongPassword } = usePassword();
 
   const {
     control,
@@ -33,10 +30,6 @@ export function ResetPassword() {
   const onSubmit = () => {
     const values = getValues();
     confirmEmail(values.email);
-  };
-
-  const handleContinuar = () => {
-    navigate("/resetpasswordToken");
   };
 
   return (
@@ -70,14 +63,13 @@ export function ResetPassword() {
           {" "}
           {errors.email?.message}
         </ErrorMessage>
-
+        {wrongPassword && (
+          <ErrorMessage classNameErrorMessage={style.error}>
+            Este e-mail
+          </ErrorMessage>
+        )}
         <div className={style.spanButtons}>
-          <Button
-            variant="red"
-            className={style.button}
-            type="submit"
-            onClick={handleContinuar}
-          >
+          <Button variant="red" className={style.button} type="submit">
             Continuar
           </Button>
         </div>
