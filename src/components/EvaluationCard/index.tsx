@@ -13,7 +13,12 @@ export function EvaluationCard({ data }: IEvaluationProps) {
     <div className={style.commentCardSpan}>
       <textarea className={style.comment}>{`“${data.observation}”`}</textarea>
       <div className={style.grade}>
-        <StarRating grade={data.grade} fontSize={2.6} />
+        <StarRating
+          grade={data.grade}
+          fontSize={2.6}
+          colorEmptyStar="grey"
+          strokeWidth={50}
+        />
       </div>
       <div className={style.date}>
         {moment(data.evaluationDate).format("DD/MM/YYYY")}

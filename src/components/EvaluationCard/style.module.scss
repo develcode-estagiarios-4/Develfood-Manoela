@@ -2,35 +2,35 @@
 @import "../../styles/common/typography.scss";
 
 .commentCardSpan {
-  border: 0.1rem black solid;
+  border: 0.2rem black solid;
   width: 65rem;
   margin: 1rem 2rem 0 2rem;
-  background-color: #FAEEEE;
+  background-color:  $beige;
   box-shadow: 6px 6px 6px #888888;
   height: 14rem;
   flex-wrap: inherit;
   display: flex;
   margin-bottom: 3rem;
   justify-content: space-between;
-
 }
 
 .comment {
   font-size: 2.4rem;
-  padding: 1.5rem 0.8rem 2rem 0.8rem;
+  font-family: $main-font;
   text-align: left;
+  margin: 0.2rem 1rem 0 0.5rem;
   width: 62rem;
-  height: 5.9rem;
+  height: 8.4rem;
   overflow: hidden;
   border: 0;
   background-color: $beige;
 }
 
 .date {
-  margin: 1.1rem 0.5rem 0 0;
+  margin: 1rem 0.5rem 0 0;
 }
 
 .grade{
   bottom: 0;
-  padding: 0 0 0.56rem 1.4rem;
+  padding: 0 0 0rem 2rem;
 }

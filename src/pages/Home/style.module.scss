@@ -5,7 +5,6 @@
 
 .skeletonStarRating {
   position: absolute;
- // z-index: 4;
   width: 73rem;
   background-color: white;
 }
@@ -27,7 +26,7 @@
 .homePage {
   justify-content: center;
   display: grid;
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
 
 .homeSpan {
@@ -35,7 +34,7 @@
   height: auto;
   display: flex;
   width: 173rem;
-  margin: 5rem 2rem 3rem 2rem;
+  margin: 7.5rem 2rem 3rem 2rem;
 }
 .leftSpan {
   width: 50%;
@@ -45,26 +44,33 @@
   flex-wrap: wrap;
   max-width: 100%;
 }
+
 .gradeSpan {
   height: 28.3rem;
   width: 69.7rem;
-  border: 0.1rem solid black;
+  border: 0.2rem solid black;
   font-size: 4.8rem;
   padding-top: 2rem;
   border-radius: 1rem;
   text-align: center;
   box-shadow: 8px 8px 5px #888888 ;
+  background-color: #FFFAFA;
+  row-gap: 0.2rem;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .grade {
   font-size: 5.5rem;
+  margin-top: -1rem;
 }
 
 .spanPromotionsBanners {
-  height: 38.9rem;
+  height: 38.6rem;
   width: 69.9rem;
   text-align: center;
-  border: 0.1rem solid black;
+  border: 0.2rem solid black;
   border-radius: 1rem;
   box-shadow: 8px 8px 5px #888888 ;
 }
@@ -79,7 +85,7 @@
   width: 69.7rem;
   font-size: 6.8rem;
   height: 67.9rem;
-  border: 0.1rem solid black;
+  border: 0.2rem solid black;
   border-radius: 1rem;
   box-shadow: 8px 8px 5px #888888;
   text-align: center;

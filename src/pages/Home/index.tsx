@@ -110,7 +110,12 @@ export function Home() {
             ) : (
               <>
                 <div className={style.gradeSpan}>
-                  Sua nota <StarRating grade={grade} fontSize={11} />
+                  Sua nota{" "}
+                  <StarRating
+                    grade={grade}
+                    fontSize={12}
+                    colorEmptyStar="white"
+                  />
                   <div className={style.grade}>{`${grade}/5.0`}</div>
                 </div>
                 <div className={style.spanPromotionsBanners}>
