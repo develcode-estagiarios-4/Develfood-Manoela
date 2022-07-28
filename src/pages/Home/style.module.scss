@@ -27,24 +27,32 @@
 
 .homePage {
   justify-content: center;
-  display: grid;
+  display: block;
   padding-top: 3rem;
 }
 
 .homeSpan {
-  height: 100rem;
   height: auto;
   display: flex;
   width: 173rem;
-  margin: 7.5rem 2rem 3rem 2rem;
+  margin-right: auto;
+  margin-top: 7.5rem;
+  margin-left: auto;
 }
+
+.centralizeSpanContent {
+  width: 100%;
+  display: inline-flex;
+}
+
 .leftSpan {
-  width: 50%;
+  width: 73rem;
   row-gap: 9rem;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
+  margin: 0 0rem 0 2rem;
+  padding: 0 6rem 0 6rem;
 }
 
 .gradeSpan {

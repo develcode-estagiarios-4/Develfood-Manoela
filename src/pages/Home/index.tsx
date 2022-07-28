@@ -91,115 +91,116 @@ export function Home() {
         ) : (
           <div className={style.home}> {restaurant?.name} </div>
         )}
-
-        <div className={style.homeSpan}>
-          <div className={style.leftSpan}>
-            {loading ? (
-              <div className={style.contentSkeleton}>
-                <Skeleton count={2} className={style.skeletonStar} />
-              </div>
-            ) : (
-              <>
-                <div className={style.gradeSpan}>
-                  Sua nota{" "}
-                  <StarRating
-                    grade={grade}
-                    fontSize={12}
-                    colorEmptyStar="white"
-                  />
-                  <div className={style.grade}>{`${grade}/5.0`}</div>
+        <div className={style.centralizeSpanContent}>
+          <div className={style.homeSpan}>
+            <div className={style.leftSpan}>
+              {loading ? (
+                <div className={style.contentSkeleton}>
+                  <Skeleton count={2} className={style.skeletonStar} />
                 </div>
-                <div className={style.spanPromotionsBanners}>
-                  <div className={style.promotionsActiveTittle}>
-                    Suas promoções ativas
+              ) : (
+                <>
+                  <div className={style.gradeSpan}>
+                    Sua nota{" "}
+                    <StarRating
+                      grade={grade}
+                      fontSize={12}
+                      colorEmptyStar="white"
+                    />
+                    <div className={style.grade}>{`${grade}/5.0`}</div>
                   </div>
-                  <div className={style.scrollPromotions}>
-                    {!isFirstPage && !onlyOnePage && (
-                      <RiIcons.RiArrowLeftSLine
-                        className={`${style.arrow} ${style.arrowLeft}`}
-                        onClick={handleArrowLeft}
-                      />
-                    )}
-                    {!isLastPage && !onlyOnePage && (
-                      <RiIcons.RiArrowRightSLine
-                        className={`${style.arrow} ${style.arrowRight}`}
-                        onClick={handleArrowRight}
-                      />
-                    )}
-                    {promotionsUpdate &&
-                      promotionsUpdate.map((promotion: IPromotion, index) => (
-                        <div
-                          className={style.promotionBanner}
-                          key={promotion.id}
-                        >
-                          <PromotionCard
-                            data={promotion}
-                            classNameImage={style.promotionImage}
-                            classNameInable={style.itensInable}
-                            classNameSpanDefaul={style.promotionDefault}
-                          />
-                          <Link
-                            to={`/promotion/edit/${promotion.id}`}
-                            className={`${style.link} ${
-                              index === 1
-                                ? style.promotionRight
-                                : style.promotionLeft
-                            }`}
-                          />
-                        </div>
-                      ))}{" "}
-                  </div>
-                </div>{" "}
-              </>
-            )}
-          </div>
-          <div className={style.rightSpan}>
-            {loading ? (
-              <div className={style.contentSkeleton}>
-                <Skeleton
-                  count={1}
-                  style={{
-                    width: "70rem",
-                    rowGap: "15rem",
-                    height: "70rem",
-                  }}
-                />
-              </div>
-            ) : (
-              <>
-                <div className={style.coments}>
-                  <div className={style.commentsTittle}>
-                    O que os cliente estão <br /> achando?
-                  </div>
-                  <div className={style.spanComments}>
-                    {evaluation &&
-                      evaluation.map((data: IEvaluation) => {
-                        return <EvaluationCard data={data} key={data.id} />;
-                      })}
-                  </div>
-
-                  <div className={style.spanCircles}>
-                    <div>
-                      {Array.from({ length: totalPagesEvaluation }).map(
-                        (_, index: number) => (
-                          <button
-                            className={`${
-                              index === currentPage
-                                ? style.currentPage
-                                : style.iconPage
-                            } ${style.icon}`}
-                            type="button"
-                            onClick={() => handleChangePageEvaluation(index)}
-                          >
-                            icon{" "}
-                          </button>
-                        )
-                      )}
+                  <div className={style.spanPromotionsBanners}>
+                    <div className={style.promotionsActiveTittle}>
+                      Suas promoções ativas
                     </div>
-                  </div>
-                </div>{" "}
-              </>
-            )}
+                    <div className={style.scrollPromotions}>
+                      {!isFirstPage && !onlyOnePage && (
+                        <RiIcons.RiArrowLeftSLine
+                          className={`${style.arrow} ${style.arrowLeft}`}
+                          onClick={handleArrowLeft}
+                        />
+                      )}
+                      {!isLastPage && !onlyOnePage && (
+                        <RiIcons.RiArrowRightSLine
+                          className={`${style.arrow} ${style.arrowRight}`}
+                          onClick={handleArrowRight}
+                        />
+                      )}
+                      {promotionsUpdate &&
+                        promotionsUpdate.map((promotion: IPromotion, index) => (
+                          <div
+                            className={style.promotionBanner}
+                            key={promotion.id}
+                          >
+                            <PromotionCard
+                              data={promotion}
+                              classNameImage={style.promotionImage}
+                              classNameInable={style.itensInable}
+                              classNameSpanDefaul={style.promotionDefault}
+                            />
+                            <Link
+                              to={`/promotion/edit/${promotion.id}`}
+                              className={`${style.link} ${
+                                index === 1
+                                  ? style.promotionRight
+                                  : style.promotionLeft
+                              }`}
+                            />
+                          </div>
+                        ))}{" "}
+                    </div>
+                  </div>{" "}
+                </>
+              )}
+            </div>
+            <div className={style.rightSpan}>
+              {loading ? (
+                <div className={style.contentSkeleton}>
+                  <Skeleton
+                    count={1}
+                    style={{
+                      width: "70rem",
+                      rowGap: "15rem",
+                      height: "70rem",
+                    }}
+                  />
+                </div>
+              ) : (
+                <>
+                  <div className={style.coments}>
+                    <div className={style.commentsTittle}>
+                      O que os cliente estão <br /> achando?
+                    </div>
+                    <div className={style.spanComments}>
+                      {evaluation &&
+                        evaluation.map((data: IEvaluation) => {
+                          return <EvaluationCard data={data} key={data.id} />;
+                        })}
+                    </div>
+
+                    <div className={style.spanCircles}>
+                      <div>
+                        {Array.from({ length: totalPagesEvaluation }).map(
+                          (_, index: number) => (
+                            <button
+                              className={`${
+                                index === currentPage
+                                  ? style.currentPage
+                                  : style.iconPage
+                              } ${style.icon}`}
+                              type="button"
+                              onClick={() => handleChangePageEvaluation(index)}
+                            >
+                              icon{" "}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  </div>{" "}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
