@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { IConfirmEmail } from "../interface/IConfirmEmail";
 import { IEditPassword } from "../interface/IEditPassword";
 import { IResetPassword } from "../interface/IResetPassword";
 import { put, post } from "../services/apiRequest";
@@ -8,6 +7,7 @@ import { put, post } from "../services/apiRequest";
 export function usePassword() {
   const [editPasswordSuccessed, setEditPasswordSuccessed] = useState(false);
   const [wrongPassword, setWrongPassword] = useState(false);
+  const [recoveryToken, setRecoveryToken] = useState(false);
 
   const editPassword = async (data: IEditPassword) => {
     try {
@@ -23,9 +23,10 @@ export function usePassword() {
     }
   };
 
-  const confirmEmail = async (data: IConfirmEmail) => {
+  const confirmEmail = async (email: string) => {
     try {
-      const response = await post("/reset-password", data);
+      const response = await post(`/reset-password?email=${email}`);
+      setRecoveryToken(response);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -48,5 +49,6 @@ export function usePassword() {
     editPasswordSuccessed,
     wrongPassword,
     setWrongPassword,
+    recoveryToken,
   };
 }

@@ -21,7 +21,7 @@ export const get = (url: string) => {
     });
 };
 
-export const post = (url: string, body: string | object) => {
+export const post = (url: string, body?: string | object) => {
   return api
     .post(`${defaultDomainURL}${url}`, body, config)
     .then((response) => {

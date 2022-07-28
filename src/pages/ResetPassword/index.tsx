@@ -1,14 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import * as IoIcons from "react-icons/io";
-import * as MdIcons from "react-icons/md";
+import * as HiIcons from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { Button, ErrorMessage, Input, Logomark } from "../../components";
 import { usePassword } from "../../hooks/usePassword";
-import { IEditPassword } from "../../interface/IEditPassword";
+import { useRestaurant } from "../../hooks/useRestaurant";
 import style from "./style.module.scss";
 
 const schema = yup.object().shape({
@@ -20,9 +19,7 @@ const schema = yup.object().shape({
 
 export function ResetPassword() {
   const navigate = useNavigate();
-  const [visiblePassword, setVisiblePassword] = useState(false);
-  const [visibleNewPassword, setVisibleNewPassword] = useState(false);
-  const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
+  const { confirmEmail } = usePassword();
 
   const {
     control,
@@ -33,28 +30,13 @@ export function ResetPassword() {
     resolver: yupResolver(schema),
   });
 
-  const body: IEditPassword = {
-    oldPassword: "",
-    newPasword: "",
-  };
-
   const onSubmit = () => {
     const values = getValues();
-    console.log(values);
-    body.oldPassword = values.password;
-    body.newPasword = values.confirmPassword;
+    confirmEmail(values.email);
   };
 
-  const handleVisiblePassword = () => {
-    setVisiblePassword(!visiblePassword);
-  };
-
-  const handleVisibleNewPassword = () => {
-    setVisibleNewPassword(!visibleNewPassword);
-  };
-
-  const handleVisibleConfirmPassword = () => {
-    setVisibleConfirmPassword(!visibleConfirmPassword);
+  const handleContinuar = () => {
+    navigate("/resetpasswordToken");
   };
 
   return (
@@ -71,7 +53,7 @@ export function ResetPassword() {
           render={({ field: { onChange, value } }) => (
             <Input
               onChange={onChange}
-              type={visiblePassword ? "input" : "password"}
+              type="input"
               control={control}
               value={value}
               classNameIcon={style.inputIcon}
@@ -80,20 +62,22 @@ export function ResetPassword() {
               placeholder="Email"
             >
               {" "}
-              <MdIcons.MdLockOpen />
+              <HiIcons.HiOutlineMail />
             </Input>
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
           {" "}
-          {errors.password?.message}
+          {errors.email?.message}
         </ErrorMessage>
 
         <div className={style.spanButtons}>
-          <Button variant="green" className={style.button}>
-            Voltar
-          </Button>
-          <Button variant="red" className={style.button} type="submit">
+          <Button
+            variant="red"
+            className={style.button}
+            type="submit"
+            onClick={handleContinuar}
+          >
             Continuar
           </Button>
         </div>
