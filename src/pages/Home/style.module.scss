@@ -1,6 +1,8 @@
 .contentSkeleton {
   width: 90%;
   display: flex;
+  position:relative;
+
 }
 
 .skeletonStarRating {
@@ -169,8 +171,7 @@ span i {
 }
 
 .skeletonSpanPromotion {
-   // z-index: 4;
-    position: absolute;
+    position:relative;
     flex-wrap: nowrap;
     column-gap: 5rem;
     justify-content: space-between;
@@ -230,12 +231,6 @@ span i {
   opacity: 100%;
   background: linear-gradient(to right, transparent 1%, black 91%);
 }
-
-// .skeleton {
-//   width: 39rem;
-//   height: 20rem;
-//   z-index: 5;
-// }
 
 .skeletonRight {
   animation: slideRight 2s;

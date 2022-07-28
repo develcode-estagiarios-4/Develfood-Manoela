@@ -21,8 +21,6 @@ export function Home() {
   const { getPromotions, promotions, pageableData } = usePromotion();
   const [promotionPage, setPromotionPage] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [isImagePromotionLoaded, setIsImagePromotionLoaded] = useState(false);
-  const [direction, setDirection] = useState(true);
   const [promotionsUpdate, setPromotionsUpdate] = useState<IPromotion[]>();
 
   const {
@@ -61,15 +59,11 @@ export function Home() {
   }, [promotions]);
 
   const handleArrowRight = () => {
-    setDirection(true);
-    setIsImagePromotionLoaded(false);
     setPromotionPage(promotionPage + 1);
     getPromotions(promotionPage + 1, 2);
   };
 
   const handleArrowLeft = () => {
-    setDirection(false);
-    setIsImagePromotionLoaded(false);
     setPromotionPage(promotionPage - 1);
     getPromotions(promotionPage - 1, 2);
   };
@@ -78,10 +72,6 @@ export function Home() {
     if (index !== currentPage) {
       getEvaluation(index, 3);
     }
-  };
-
-  const loadImage = () => {
-    setIsImagePromotionLoaded(true);
   };
 
   return (
@@ -94,6 +84,7 @@ export function Home() {
               style={{
                 width: "70rem",
                 height: "9rem",
+                position: "relative",
               }}
             />
           </div>
@@ -122,36 +113,6 @@ export function Home() {
                   <div className={style.promotionsActiveTittle}>
                     Suas promoções ativas
                   </div>
-                  {!isImagePromotionLoaded && (
-                    <div
-                      className={`${style.skeletonSpanPromotion} ${
-                        onlyOnePromotion && style.lasPage
-                      }`}
-                    >
-                      <Skeleton
-                        className={`${
-                          direction ? style.skeletonRight : style.skeletonLeft
-                        } ${style.skeleton}`}
-                        count={1}
-                        style={{
-                          width: "30rem",
-                          height: "20rem",
-                          zIndex: 1,
-                        }}
-                      />
-                      <Skeleton
-                        count={1}
-                        className={`${
-                          direction ? style.skeletonRight : style.skeletonLeft
-                        } ${style.skeleton}`}
-                        style={{
-                          width: "30rem",
-                          height: "20rem",
-                          zIndex: 1,
-                        }}
-                      />
-                    </div>
-                  )}
                   <div className={style.scrollPromotions}>
                     {!isFirstPage && !onlyOnePage && (
                       <RiIcons.RiArrowLeftSLine
@@ -176,7 +137,6 @@ export function Home() {
                             classNameImage={style.promotionImage}
                             classNameInable={style.itensInable}
                             classNameSpanDefaul={style.promotionDefault}
-                            isImageLoaded={loadImage}
                           />
                           <Link
                             to={`/promotion/edit/${promotion.id}`}
