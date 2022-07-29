@@ -45,7 +45,6 @@ export function SignIn() {
     login({ email: values.email, password: values.password });
   };
 
-  console.log(state);
   useEffect(() => {
     if (state === "true") {
       setEditPasswordAlert(true);
