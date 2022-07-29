@@ -57,6 +57,14 @@ function Navbar({ isitHome }: INavbarClosed) {
             </div>
           </Link>
         </li>
+        <li>
+          <Link to="/promotion" className={style.navbarMenu}>
+            <MdIcons.MdOutlineLogout className={style.icons} />
+            <div className={navbarClosed ? style.menuNone : style.menu}>
+              Logout
+            </div>
+          </Link>
+        </li>
       </ul>
     </nav>
   );
