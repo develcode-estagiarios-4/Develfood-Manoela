@@ -1,7 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import * as HiIcons from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { Button, ErrorMessage, Input, Logomark } from "../../components";
@@ -16,7 +15,7 @@ const schema = yup.object().shape({
 });
 
 export function ResetPassword() {
-  const { confirmEmail, wrongPassword } = usePassword();
+  const { confirmEmail, wrongPassword, setWrongPassword } = usePassword();
 
   const {
     control,
@@ -44,30 +43,36 @@ export function ResetPassword() {
           rules={{ required: true }}
           name="email"
           render={({ field: { onChange, value } }) => (
-            <Input
-              onChange={onChange}
-              type="input"
-              control={control}
-              value={value}
-              classNameIcon={style.inputIcon}
-              classNameSpan={style.spanInput}
-              classNameInput={style.input}
-              placeholder="Email"
+            <span
+              onClick={() => setWrongPassword(false)}
+              onKeyDown={() => setWrongPassword(false)}
+              aria-hidden="true"
             >
-              {" "}
-              <HiIcons.HiOutlineMail />
-            </Input>
+              <Input
+                onChange={onChange}
+                type="input"
+                control={control}
+                value={value}
+                classNameIcon={style.inputIcon}
+                classNameSpan={style.spanInput}
+                classNameInput={style.input}
+                placeholder="Email"
+              >
+                {" "}
+                <HiIcons.HiOutlineMail />
+              </Input>{" "}
+            </span>
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
-          {" "}
+          {wrongPassword && (
+            <ErrorMessage classNameErrorMessage={style.error}>
+              E-mail não encontrado. Tente novamente.
+            </ErrorMessage>
+          )}{" "}
           {errors.email?.message}
         </ErrorMessage>
-        {wrongPassword && (
-          <ErrorMessage classNameErrorMessage={style.error}>
-            Este e-mail
-          </ErrorMessage>
-        )}
+
         <div className={style.spanButtons}>
           <Button variant="red" className={style.button} type="submit">
             Continuar

@@ -1,53 +1,54 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../context";
 import { IEditPassword } from "../interface/IEditPassword";
 import { IResetPassword } from "../interface/IResetPassword";
 import { put, post } from "../services/apiRequest";
 
 export function usePassword() {
   const navigate = useNavigate();
-
-  const [editPasswordSuccessed, setEditPasswordSuccessed] = useState(false);
+  const { recoveryToken } = useAuth();
   const [wrongPassword, setWrongPassword] = useState(false);
-  const [recoveryToken, setRecoveryToken] = useState(false);
 
   const editPassword = async (data: IEditPassword) => {
     try {
       const response = await put("/change-password/logged", data);
-      console.log(response);
-      setEditPasswordSuccessed(true);
-      setTimeout(() => {
-        setEditPasswordSuccessed(false);
-      }, 3000);
+      if (response.status === 204) {
+        navigate("/signin", { state: "true" });
+        setWrongPassword(false);
+      } else {
+        setWrongPassword(true);
+      }
     } catch (error) {
-      console.log(error);
-      setWrongPassword(true);
+      // console.log(error);
     }
   };
 
   const confirmEmail = async (email: string) => {
     try {
       const response = await post(`/reset-password?email=${email}`);
-      setRecoveryToken(response);
       if (response.status === 200) {
         navigate("/resetpasswordSecond");
-      }
-      if (response.status === 403) {
+        recoveryToken.token = response.data;
+      } else {
         setWrongPassword(true);
       }
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
   const changePassword = async (data: IResetPassword) => {
     try {
       const response = await put("/reset-password/change-password", data);
-      console.log(response);
+      if (response.status === 204) {
+        navigate("/signin", { state: "true" });
+      } else {
+        setWrongPassword(true);
+      }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -55,7 +56,6 @@ export function usePassword() {
     confirmEmail,
     changePassword,
     editPassword,
-    editPasswordSuccessed,
     wrongPassword,
     setWrongPassword,
     recoveryToken,

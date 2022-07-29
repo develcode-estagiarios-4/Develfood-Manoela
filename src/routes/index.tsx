@@ -20,9 +20,9 @@ import {
   PlateForm,
   EditPassword,
   ResetPassword,
+  ResetPasswordThird,
+  ResetPasswordSecond,
 } from "../pages";
-import { ResetPasswordSecond } from "../pages/ResetPasswordSecond";
-import { ResetPasswordToken } from "../pages/ResetPasswordToken";
 
 export function Routes() {
   return (
@@ -44,7 +44,7 @@ export function Routes() {
         <Route path="/signupsuccess" element={<SignUpSuccess />} />
         <Route path="/editpassword" element={<EditPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/resetpasswordToken" element={<ResetPasswordToken />} />
+        <Route path="/resetpasswordThird" element={<ResetPasswordThird />} />
         <Route path="/resetpasswordSecond" element={<ResetPasswordSecond />} />
 
         <Route path="*" element={<Navigate to="/signin" />} />

@@ -1,28 +1,16 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
 
 import { Button, Logomark } from "../../components";
-import { usePassword } from "../../hooks/usePassword";
+import { useAuth } from "../../context";
 import style from "./style.module.scss";
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Insira um e-mail válido")
-    .required("O campo e-mail é obrigatório"),
-});
-
 export function ResetPasswordSecond() {
+  const { recoveryToken } = useAuth();
+
   const navigate = useNavigate();
-  const { confirmEmail, recoveryToken } = usePassword();
 
   const handleContinuar = () => {
-    navigate("/resetpasswordToken");
-  };
-
-  const handleVoltar = () => {
-    navigate("/resetpassword");
+    navigate("/resetpasswordThird");
   };
 
   return (
@@ -34,18 +22,11 @@ export function ResetPasswordSecond() {
       <div className={style.spanInputs}>
         Código de Validação
         <div className={style.message}>
-          Copie ou anote este código, ele será <b /> utilizado para você
+          Copie ou anote este código, ele seráutilizado para <b /> você
           finalizar a recuperação de senha!
         </div>
-        {recoveryToken}
+        <div className={style.token}>{recoveryToken.token.slice(39)}</div>
         <div className={style.spanButtons}>
-          <Button
-            variant="green"
-            className={style.button}
-            onClick={handleVoltar}
-          >
-            Voltar
-          </Button>
           <Button
             variant="red"
             className={style.button}

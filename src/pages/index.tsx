@@ -12,4 +12,5 @@ export * from "./PlateForm/index";
 export * from "./PromotionForm/index";
 export * from "./EditPassword/index";
 export * from "./ResetPassword/index";
-export * from "./ResetPasswordToken/index";
+export * from "./ResetPasswordThird/index";
+export * from "./ResetPasswordSecond/index";

@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
@@ -31,13 +31,7 @@ export function EditPassword() {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleNewPassword, setVisibleNewPassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
-
-  const {
-    editPassword,
-    editPasswordSuccessed,
-    setWrongPassword,
-    wrongPassword,
-  } = usePassword();
+  const { editPassword, setWrongPassword, wrongPassword } = usePassword();
 
   const {
     control,
@@ -50,14 +44,13 @@ export function EditPassword() {
 
   const body: IEditPassword = {
     oldPassword: "",
-    newPasword: "",
+    newPassword: "",
   };
 
   const onSubmit = () => {
     const values = getValues();
     body.oldPassword = values.password;
-    body.newPasword = values.confirmPassword;
-    setWrongPassword(true);
+    body.newPassword = values.confirmPassword;
     editPassword(body);
   };
 
@@ -66,11 +59,6 @@ export function EditPassword() {
     if (value === "newPassword") setVisibleNewPassword(!visibleNewPassword);
     if (value === "confirmPassword")
       setVisibleConfirmPassword(!visibleConfirmPassword);
-  };
-
-  const handleErrorResponse = () => {
-    setWrongPassword(false);
-    console.log("Oi");
   };
 
   const handleVoltar = () => {
@@ -89,39 +77,49 @@ export function EditPassword() {
           rules={{ required: true }}
           name="password"
           render={({ field: { onChange, value } }) => (
-            <Input
-              onChange={onChange}
-              type={visiblePassword ? "input" : "password"}
-              control={control}
-              value={value}
-              classNameIcon={style.inputIcon}
-              classNameSpan={style.spanInput}
-              classNameInput={style.input}
-              placeholder="Senha atual"
-              onClick={() => console.log("Oi")}
-              onInput={() => handleErrorResponse()}
-              onKeyDown={() => console.log("Oi")}
+            <span
+              onClick={() => setWrongPassword(false)}
+              onKeyDown={() => setWrongPassword(false)}
+              aria-hidden="true"
             >
               {" "}
-              <MdIcons.MdLockOpen />
-              {visiblePassword ? (
-                <IoIcons.IoMdEye
-                  className={style.passwordVisible}
-                  onClick={() => handleVisiblePasswords("password")}
-                />
-              ) : (
-                <IoIcons.IoMdEyeOff
-                  className={style.passwordVisible}
-                  onClick={() => handleVisiblePasswords("password")}
-                />
-              )}
-            </Input>
+              <Input
+                onChange={onChange}
+                type={visiblePassword ? "input" : "password"}
+                control={control}
+                value={value}
+                classNameIcon={style.inputIcon}
+                classNameSpan={style.spanInput}
+                classNameInput={style.input}
+                placeholder="Senha atual"
+              >
+                {" "}
+                <MdIcons.MdLockOpen />
+                {visiblePassword ? (
+                  <IoIcons.IoMdEye
+                    className={style.passwordVisible}
+                    onClick={() => handleVisiblePasswords("password")}
+                  />
+                ) : (
+                  <IoIcons.IoMdEyeOff
+                    className={style.passwordVisible}
+                    onClick={() => handleVisiblePasswords("password")}
+                  />
+                )}
+              </Input>{" "}
+            </span>
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
           {" "}
           {errors.password?.message}
         </ErrorMessage>
+        {wrongPassword && (
+          <ErrorMessage classNameErrorMessage={style.error}>
+            {" "}
+            Senha incorreta. Tente novamente{" "}
+          </ErrorMessage>
+        )}
 
         <Controller
           control={control}
@@ -194,12 +192,7 @@ export function EditPassword() {
           {" "}
           {errors.confirmPassword?.message}
         </ErrorMessage>
-        {wrongPassword && (
-          <ErrorMessage classNameErrorMessage={style.error}>
-            {" "}
-            Senha incorreta. Tente novamente{" "}
-          </ErrorMessage>
-        )}
+
         <div className={style.spanButtons}>
           <Button
             variant="green"

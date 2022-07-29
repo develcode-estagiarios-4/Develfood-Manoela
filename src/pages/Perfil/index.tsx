@@ -181,7 +181,6 @@ export function Perfil() {
     body.address.nickname = values.nickname;
     body.address.zipCode = values.zipCode;
     body.address.state = values.state;
-    console.log(body);
     selectFoodType?.forEach((item) => {
       foodTypeBackend.push({ id: item.value, name: item.label.toUpperCase() });
     });

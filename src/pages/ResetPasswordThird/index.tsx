@@ -1,16 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import * as HiIcons from "react-icons/hi";
 import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { Button, ErrorMessage, Input, Logomark } from "../../components";
+import { useAuth } from "../../context";
 import { usePassword } from "../../hooks/usePassword";
-import { useRestaurant } from "../../hooks/useRestaurant";
-import { IEditPassword } from "../../interface/IEditPassword";
 import { IResetPassword } from "../../interface/IResetPassword";
 import style from "./style.module.scss";
 
@@ -25,17 +23,15 @@ const schema = yup.object().shape({
     .min(6, "A senha deve contem no mínimo 6 dígitos")
     .required("O campo é obrigatório")
     .test("passwords-match", "As senhas devem ser iguais", function (value) {
-      return this.parent.newPassword === value;
+      return this.parent.password === value;
     }),
 });
 
-export function ResetPasswordToken() {
+export function ResetPasswordThird() {
   const navigate = useNavigate();
   const [visiblePassword, setVisiblePassword] = useState(false);
-  const [visibleNewPassword, setVisibleNewPassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
-  const { getRestaurantAuth, restaurantAuth } = useRestaurant();
-  const { confirmEmail, recoveryToken } = usePassword();
+  const { changePassword, wrongPassword, setWrongPassword } = usePassword();
 
   const {
     control,
@@ -46,11 +42,19 @@ export function ResetPasswordToken() {
     resolver: yupResolver(schema),
   });
 
+  const body: IResetPassword = {
+    password: "",
+    token: "",
+  };
+
   const onSubmit = () => {
     const values = getValues();
-    console.log(values);
-    confirmEmail(values.email);
+    body.token = values.token;
+    body.password = values.confirmPassword;
+    changePassword(body);
   };
+
+  const { recoveryToken } = useAuth();
 
   const handleVisiblePassword = () => {
     setVisiblePassword(!visiblePassword);
@@ -58,6 +62,14 @@ export function ResetPasswordToken() {
 
   const handleVisibleConfirmPassword = () => {
     setVisibleConfirmPassword(!visibleConfirmPassword);
+  };
+
+  const handleVoltar = () => {
+    if (recoveryToken.token.length > 0) {
+      navigate("/resetpasswordSecond");
+    } else {
+      navigate("/resetpassword");
+    }
   };
 
   return (
@@ -72,26 +84,42 @@ export function ResetPasswordToken() {
           rules={{ required: true }}
           name="token"
           render={({ field: { onChange, value } }) => (
-            <Input
-              onChange={onChange}
-              type="input"
-              control={control}
-              value={value}
-              classNameIcon={style.inputIcon}
-              classNameSpan={style.spanInput}
-              classNameInput={style.input}
-              placeholder="Token"
+            <span
+              onClick={() => setWrongPassword(false)}
+              onKeyDown={() => setWrongPassword(false)}
+              aria-hidden="true"
+              className={style.spanToken}
             >
               {" "}
-              <HiIcons.HiOutlineMail />
-            </Input>
+              <Input
+                onChange={onChange}
+                type="input"
+                control={control}
+                value={value}
+                classNameIcon={style.inputIcon}
+                classNameSpan={`${style.spanInput} ${style.spanToken}`}
+                classNameInput={style.input}
+                placeholder="Código de Válidação"
+              >
+                {" "}
+                <MdIcons.MdLockOpen />
+              </Input>
+            </span>
           )}
         />
-        <ErrorMessage classNameErrorMessage={style.error}>
+        <ErrorMessage
+          classNameErrorMessage={`${style.error} ${style.errorToken}`}
+        >
           {" "}
           {errors.token?.message}
         </ErrorMessage>
-
+        {wrongPassword && (
+          <ErrorMessage
+            classNameErrorMessage={`${style.error} ${style.errorToken}`}
+          >
+            Token incorreto. Tente novamente.
+          </ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -105,7 +133,7 @@ export function ResetPasswordToken() {
               classNameIcon={style.inputIcon}
               classNameSpan={style.spanInput}
               classNameInput={style.input}
-              placeholder="Senha atual"
+              placeholder="Nova Senha"
             >
               {" "}
               <MdIcons.MdLockOpen />
@@ -165,10 +193,14 @@ export function ResetPasswordToken() {
         </ErrorMessage>
 
         <div className={style.spanButtons}>
-          <Button variant="green" className={style.button}>
+          <Button
+            variant="green"
+            className={style.buttonVoltar}
+            onClick={handleVoltar}
+          >
             Voltar
           </Button>
-          <Button variant="red" className={style.button} type="submit">
+          <Button variant="red" className={style.buttonContinuar} type="submit">
             Continuar
           </Button>
         </div>
