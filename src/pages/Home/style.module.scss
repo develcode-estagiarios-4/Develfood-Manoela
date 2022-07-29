@@ -1,4 +1,315 @@
+.contentSkeleton {
+  width: 90%;
+  display: flex;
+  position:relative;
+
+}
+
+.skeletonStarRating {
+  position: absolute;
+  width: 73rem;
+  background-color: white;
+}
+
+.skeletonStar {
+  width: 70rem;
+  row-gap: 15rem;
+  height: 35rem;
+  margin-bottom: 7rem;
+}
+
+
 .home {
   text-align: center;
-  font-size: 42px;
+  font-size: 9.6rem;
+}
+
+
+.homePage {
+  justify-content: center;
+  display: block;
+  padding-top: 3rem;
+}
+
+.homeSpan {
+  height: auto;
+  display: flex;
+  width: 173rem;
+  margin-right: auto;
+  margin-top: 7.5rem;
+  margin-left: auto;
+}
+
+.centralizeSpanContent {
+  width: 100%;
+  display: inline-flex;
+}
+
+.leftSpan {
+  width: 73rem;
+  row-gap: 9rem;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0rem 0 2rem;
+  padding: 0 6rem 0 6rem;
+}
+
+.gradeSpan {
+  height: 28.3rem;
+  width: 69.7rem;
+  border: 0.2rem solid black;
+  font-size: 4.8rem;
+  padding-top: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 8px 8px 5px #888888 ;
+  background-color: #FFFAFA;
+  row-gap: 0.2rem;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grade {
+  font-size: 5.5rem;
+  margin-top: -1rem;
+}
+
+.spanPromotionsBanners {
+  height: 38.6rem;
+  width: 69.9rem;
+  text-align: center;
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  box-shadow: 8px 8px 5px #888888 ;
+}
+
+.rightSpan {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.coments {
+  width: 69.7rem;
+  font-size: 6.8rem;
+  height: 67.9rem;
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  box-shadow: 8px 8px 5px #888888;
+  text-align: center;
+}
+
+.promotionBanner {
+  width: 30rem;
+  height: 20rem;
+}
+
+.scrollPromotions {
+  height: 25rem;
+  margin: 1rem 0rem 0rem 0rem;
+  column-gap: 3rem;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.promotionImage {
+  width: 30rem;
+  height: 20rem;
+  position: block;
+  object-fit: cover;
+  margin: 0;
+}
+
+.itensInable {
+  display: none;
+}
+
+.promotionDefault {
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+}
+
+.promotionsActiveTittle {
+  margin-top: 2rem;
+  font-size: 5.6rem;
+}
+
+.spanComments {
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  height: 49rem;
+  display: block;
+}
+
+.commentsTittle {
+  font-size: 4.8rem;
+  padding-top: 1rem;
+}
+
+span i { 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.itensInable {
+  display: none;
+}
+
+.itensInable:hover {
+  display: none;
+}
+
+.promotionImage {
+  margin: 0;
+  object-fit: cover;
+  position: relative
+}
+
+.promotionDefault:hover {
+  height: 0rem;
+  border: 0;
+}
+
+.skeletonSpanPromotion {
+    position:relative;
+    flex-wrap: nowrap;
+    column-gap: 5rem;
+    justify-content: space-between;
+    height: 25rem;
+    margin: 1rem 0rem 0rem 1rem;
+    column-gap: 3rem;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.lasPage{
+  margin-left: -17rem;
+}
+
+.link {
+  opacity: 50%;
+  position: absolute;
+  width: 30.5rem;
+  height: 20.5rem;
+}
+
+.promotionRight {
+  margin: -20.5rem 0rem 0rem -15rem;
+}
+
+.promotionLeft {
+  margin: -20.5rem 0rem 0rem -15rem;
+}
+
+
+.arrow {
+  opacity: 0%;
+  position: absolute;
+  font-size: 9rem;
+  z-index: 2;
+  color: white
+}
+
+.arrowRight {
+  padding: 5.5rem 0rem 5.5rem 4rem;
+  margin: 0rem 0rem 0rem 50rem;
+
+}
+
+.arrowLeft {
+  padding: 5.5rem 4rem 5.5rem 0rem;
+}
+
+.arrowLeft:hover {
+  opacity: 100%;
+  background: linear-gradient(to left, transparent 1%, black 91%);
+}
+
+.arrowRight:hover {
+  opacity: 100%;
+  background: linear-gradient(to right, transparent 1%, black 91%);
+}
+
+.skeletonRight {
+  animation: slideRight 2s;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100rem);
+  }
+  to {
+    transform: translateX(0rem);
+  }
+}
+
+.skeletonLeft {
+  animation: slideLeft 2s;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100rem);
+  }
+  to {
+    transform: translateX(0rem);
+  }
+}
+
+.pagebleEvaluation {
+  font-size: 2rem;
+}
+
+.spanCircles {
+  display: table;
+  width: 69rem;
+  display: flex;
+  justify-content: center;
+  column-gap: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.black {
+  color: black
+}
+
+.cicleToChangePage {
+  cursor: pointer;
+}
+
+.tittleSkeleton {
+  justify-content: center;
+}
+
+.icon {
+  padding: 0.8rem;
+  border-radius: 50%;
+  border: 1px black solid;
+  cursor: pointer;
+  margin: 0 0.4rem 0 0.4rem;
+  font-size: 0.1px;
+}
+
+.currentPage {
+  background-color: black;
+}
+
+.isLoaded {
+  position: absolute;
+  z-index: 1;
+}
+
+.isNotLoaded {
+  position: absolute;
+  z-index: 1;
 }

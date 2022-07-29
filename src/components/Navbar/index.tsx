@@ -4,43 +4,61 @@ import { Link } from "react-router-dom";
 
 import style from "./style.module.scss";
 
-function Navbar() {
+interface INavbarClosed {
+  isitHome: boolean;
+}
+function Navbar({ isitHome }: INavbarClosed) {
+  const navbarClosed = isitHome;
   return (
-    <nav className={style.navbarActive}>
+    <nav
+      className={`${style.navbar} ${
+        navbarClosed ? style.navbarClosed : style.navbarActive
+      }`}
+      id="navbar"
+    >
       <ul>
         <li>
           <Link to="/home" className={style.navbarMenu}>
-            <MdIcons.MdHome className={style.navbarIcons} />
-            <div className={style.menuNone}>Home</div>
+            <MdIcons.MdHome className={style.icons} />
+            <div className={navbarClosed ? style.menuNone : style.menu}>
+              Home
+            </div>
           </Link>
         </li>
         <li>
           <Link to="/perfil" className={style.navbarMenu}>
-            <FaIcons.FaUserCircle className={style.navbarIconUser} />
-            <div className={style.menuNone}>Perfil</div>
+            <FaIcons.FaUserCircle className={style.iconUser} />
+            <div className={navbarClosed ? style.menuNone : style.menu}>
+              Perfil
+            </div>
           </Link>
         </li>
         <li>
           <Link to="/menu" className={style.navbarMenu}>
-            <MdIcons.MdRestaurant className={style.navbarIcons} />
-            <div className={style.menuNone}>Menu</div>
+            <MdIcons.MdRestaurant className={style.icons} />
+            <div className={navbarClosed ? style.menuNone : style.menu}>
+              Menu
+            </div>
           </Link>
         </li>
         <li>
           <Link to="/requests" className={style.navbarMenu}>
-            <MdIcons.MdPhone className={style.navbarIcons} />
-            <div className={style.menuNone}>Pedidos</div>
+            <MdIcons.MdPhone className={style.icons} />
+            <div className={navbarClosed ? style.menuNone : style.menu}>
+              Pedidos
+            </div>
           </Link>
         </li>
         <li>
           <Link to="/promotion" className={style.navbarMenu}>
-            <MdIcons.MdOutlineMoneyOffCsred className={style.navbarIcons} />
-            <div className={style.menuNone}>Promoções</div>
+            <MdIcons.MdOutlineMoneyOffCsred className={style.icons} />
+            <div className={navbarClosed ? style.menuNone : style.menu}>
+              Promoções
+            </div>
           </Link>
         </li>
       </ul>
     </nav>
   );
 }
-
 export default Navbar;
