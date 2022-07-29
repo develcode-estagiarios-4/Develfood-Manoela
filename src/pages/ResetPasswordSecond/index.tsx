@@ -16,7 +16,6 @@ export function ResetPasswordSecond() {
   return (
     <div className={style.spanPage}>
       <div className={style.logoMark}>
-        {" "}
         <Logomark />
       </div>
       <div className={style.spanInputs}>

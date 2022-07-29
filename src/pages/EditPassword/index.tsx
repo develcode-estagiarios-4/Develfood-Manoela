@@ -68,7 +68,6 @@ export function EditPassword() {
   return (
     <div className={style.spanPage}>
       <div className={style.logoMark}>
-        {" "}
         <Logomark />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={style.spanInputs}>
@@ -82,7 +81,6 @@ export function EditPassword() {
               onKeyDown={() => setWrongPassword(false)}
               aria-hidden="true"
             >
-              {" "}
               <Input
                 onChange={onChange}
                 type={visiblePassword ? "input" : "password"}
@@ -93,7 +91,6 @@ export function EditPassword() {
                 classNameInput={style.input}
                 placeholder="Senha atual"
               >
-                {" "}
                 <MdIcons.MdLockOpen />
                 {visiblePassword ? (
                   <IoIcons.IoMdEye
@@ -106,18 +103,16 @@ export function EditPassword() {
                     onClick={() => handleVisiblePasswords("password")}
                   />
                 )}
-              </Input>{" "}
+              </Input>
             </span>
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
-          {" "}
           {errors.password?.message}
         </ErrorMessage>
         {wrongPassword && (
           <ErrorMessage classNameErrorMessage={style.error}>
-            {" "}
-            Senha incorreta. Tente novamente{" "}
+            Senha incorreta. Tente novamente
           </ErrorMessage>
         )}
 
@@ -136,8 +131,7 @@ export function EditPassword() {
               classNameInput={style.input}
               placeholder="Nova senha"
             >
-              {" "}
-              <MdIcons.MdLockOpen />{" "}
+              <MdIcons.MdLockOpen />
               {visibleNewPassword ? (
                 <IoIcons.IoMdEye
                   className={style.passwordVisible}
@@ -153,7 +147,6 @@ export function EditPassword() {
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
-          {" "}
           {errors.newPassword?.message}
         </ErrorMessage>
 
@@ -172,7 +165,6 @@ export function EditPassword() {
               classNameInput={style.input}
               placeholder="Confirmar senha"
             >
-              {" "}
               <MdIcons.MdLockOpen />
               {visibleConfirmPassword ? (
                 <IoIcons.IoMdEye
@@ -189,7 +181,6 @@ export function EditPassword() {
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
-          {" "}
           {errors.confirmPassword?.message}
         </ErrorMessage>
 

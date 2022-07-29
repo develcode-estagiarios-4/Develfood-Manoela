@@ -75,7 +75,6 @@ export function ResetPasswordThird() {
   return (
     <div className={style.spanPage}>
       <div className={style.logoMark}>
-        {" "}
         <Logomark />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={style.spanInputs}>
@@ -90,7 +89,6 @@ export function ResetPasswordThird() {
               aria-hidden="true"
               className={style.spanToken}
             >
-              {" "}
               <Input
                 onChange={onChange}
                 type="input"
@@ -101,7 +99,6 @@ export function ResetPasswordThird() {
                 classNameInput={style.input}
                 placeholder="Código de Válidação"
               >
-                {" "}
                 <MdIcons.MdLockOpen />
               </Input>
             </span>
@@ -110,7 +107,6 @@ export function ResetPasswordThird() {
         <ErrorMessage
           classNameErrorMessage={`${style.error} ${style.errorToken}`}
         >
-          {" "}
           {errors.token?.message}
         </ErrorMessage>
         {wrongPassword && (
@@ -135,7 +131,6 @@ export function ResetPasswordThird() {
               classNameInput={style.input}
               placeholder="Nova Senha"
             >
-              {" "}
               <MdIcons.MdLockOpen />
               {visiblePassword ? (
                 <IoIcons.IoMdEye
@@ -152,7 +147,6 @@ export function ResetPasswordThird() {
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
-          {" "}
           {errors.password?.message}
         </ErrorMessage>
 
@@ -171,7 +165,6 @@ export function ResetPasswordThird() {
               classNameInput={style.input}
               placeholder="Confirmar senha"
             >
-              {" "}
               <MdIcons.MdLockOpen />
               {visibleConfirmPassword ? (
                 <IoIcons.IoMdEye
@@ -188,7 +181,6 @@ export function ResetPasswordThird() {
           )}
         />
         <ErrorMessage classNameErrorMessage={style.error}>
-          {" "}
           {errors.confirmPassword?.message}
         </ErrorMessage>
 

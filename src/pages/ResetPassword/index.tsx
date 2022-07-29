@@ -34,7 +34,6 @@ export function ResetPassword() {
   return (
     <div className={style.spanPage}>
       <div className={style.logoMark}>
-        {" "}
         <Logomark />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={style.spanInputs}>
@@ -58,9 +57,8 @@ export function ResetPassword() {
                 classNameInput={style.input}
                 placeholder="Email"
               >
-                {" "}
                 <HiIcons.HiOutlineMail />
-              </Input>{" "}
+              </Input>
             </span>
           )}
         />
@@ -69,7 +67,7 @@ export function ResetPassword() {
             <ErrorMessage classNameErrorMessage={style.error}>
               E-mail não encontrado. Tente novamente.
             </ErrorMessage>
-          )}{" "}
+          )}
           {errors.email?.message}
         </ErrorMessage>
 

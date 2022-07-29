@@ -296,8 +296,7 @@ export function Perfil() {
 
                   {selectFoodType.length === 0 && (
                     <ErrorMessage>
-                      {" "}
-                      O campo Tipo de Comida é obrigatório{" "}
+                      O campo Tipo de Comida é obrigatório
                     </ErrorMessage>
                   )}
                 </div>
@@ -459,7 +458,7 @@ export function Perfil() {
                 </Button>
               </div>
             </div>
-          </form>{" "}
+          </form>
         </>
       )}
       ;

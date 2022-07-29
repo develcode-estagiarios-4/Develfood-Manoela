@@ -59,7 +59,7 @@ export function Requests() {
             <WarningModal
               onReject={handleCancleUpdate}
               onAccept={handleUpdate}
-            />{" "}
+            />
           </div>
         )}
         <div className={style.tableSpan}>

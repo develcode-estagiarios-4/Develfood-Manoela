@@ -133,7 +133,6 @@ export function SelectSignUp({
   return (
     <span className={`${style.spanSelect} ${classNameSpan}`}>
       <div className={`${style.iconInput} ${classNameIcon}`}>
-        {" "}
         <MdIcons.MdFastfood />
       </div>
       <Select
