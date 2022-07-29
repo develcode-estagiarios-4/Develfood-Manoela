@@ -1,0 +1,58 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanPage {
+  margin: 22rem 10rem 10rem 10rem;
+  justify-items: center;
+  display: grid;
+}
+
+.logoMark {
+  width: 30rem;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+}
+
+.spanButtons{
+  width: 55.8rem;
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.button {
+  width: 25.1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid black;
+  font-weight: 500;
+  font-size: 3.6rem;
+  height: 6.3rem;
+  font-family: $mogra;
+}
+
+.spanInputs {
+  display: flex;
+  font-weight: 500;
+  flex-wrap: wrap;
+  width: 55.8rem;
+  margin: 10rem 0 4rem 0;
+  justify-content: center;
+  font-size: 2.8rem;
+  font-family: $roboto-400;
+}
+
+.message {
+  font-size: 2.4rem;
+  color: $grey-light;
+  margin: 4rem 0 2rem 0;
+  font-weight: 500;
+  font-family: $roboto-400
+}
+
+.token {
+  margin: 3rem 0 3rem 0;
+  font-size: 2.4rem;
+  font-weight: 500;
+  font-family: $roboto-400
+}

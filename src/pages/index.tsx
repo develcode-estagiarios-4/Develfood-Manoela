@@ -10,3 +10,7 @@ export * from "./SignUpThird/index";
 export * from "./SignUpSucess/index";
 export * from "./PlateForm/index";
 export * from "./PromotionForm/index";
+export * from "./EditPassword/index";
+export * from "./ResetPassword/index";
+export * from "./ResetPasswordThird/index";
+export * from "./ResetPasswordSecond/index";

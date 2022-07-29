@@ -44,8 +44,7 @@ export function RequestCardHover({ topCard, data, initialStatus }: IProps) {
               Nome do prato: {item.plateDTO.name} <br />
               {item.observation.length > 0 ? (
                 <div className={style.observation}>
-                  {" "}
-                  Observação: {item.observation}{" "}
+                  Observação: {item.observation}
                 </div>
               ) : (
                 ""
@@ -57,7 +56,7 @@ export function RequestCardHover({ topCard, data, initialStatus }: IProps) {
           <div className={style.line} />
         </div>
         <div className={style.request}>
-          Data do pedido: {moment(data.dateLastUpdated).format("DD/MM/YYYY")}{" "}
+          Data do pedido: {moment(data.dateLastUpdated).format("DD/MM/YYYY")}
           <br />
           Valor total do pedido: {formatCurrency(data.totalValue)} <br />
           Tipo de pagamento {data.paymentType === "card" ? "cartão" : ""}

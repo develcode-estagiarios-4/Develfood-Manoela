@@ -95,7 +95,7 @@ export function Menu() {
         <div className={style.menu}>
           Menu do restaurante: <br />
           {restaurant?.name}
-        </div>{" "}
+        </div>
         <div className={style.spancontent}>
           {warmingModal && (
             <div className={style.deleteMessage}>

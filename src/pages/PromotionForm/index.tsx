@@ -194,7 +194,7 @@ export function PromotionForm() {
                       value={value}
                       onChange={onChange}
                       control={control}
-                      className={style.nameInput}
+                      classNameSpan={style.nameInput}
                     />
                   )}
                 />
@@ -212,7 +212,7 @@ export function PromotionForm() {
                       value={id ? percent(value) : percent(value)}
                       onChange={(e) => onChange(removeLetters(e.target.value))}
                       control={control}
-                      className={style.percentInput}
+                      classNameSpan={style.percentInput}
                     />
                   )}
                 />

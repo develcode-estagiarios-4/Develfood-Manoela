@@ -1,15 +1,18 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as FiIcons from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 import * as MdIcons from "react-icons/md";
+import { useLocation } from "react-router-dom";
 import * as yup from "yup";
 
 import img from "../../assets/img/signIn.png";
-import { Logomark, SignInLink, Loader } from "../../components";
+import { Logomark, SignInLink, Loader, AlertMessage } from "../../components";
 import { Button } from "../../components/Button";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { Input } from "../../components/Input";
+import { usePassword } from "../../hooks/usePassword";
 import { useSignIn } from "../../hooks/useSignIn";
 import style from "./style.module.scss";
 
@@ -34,14 +37,28 @@ export function SignIn() {
     resolver: yupResolver(schema),
   });
   const { signInSucceeded, login } = useSignIn();
+  const { state } = useLocation();
+  const [editPasswordAlert, setEditPasswordAlert] = useState(false);
 
   const onSubmit = () => {
     const values = getValues();
     login({ email: values.email, password: values.password });
   };
 
+  useEffect(() => {
+    if (state === "true") {
+      setEditPasswordAlert(true);
+      setTimeout(() => {
+        setEditPasswordAlert(false);
+      }, 3000);
+    }
+  }, [state]);
+
   return (
     <>
+      {editPasswordAlert && (
+        <AlertMessage variant="green">Senha editada com sucesso</AlertMessage>
+      )}
       <div className={style.spanSignIn}>
         <form className={style.formRegister} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.spanLogotype}>
@@ -59,7 +76,7 @@ export function SignIn() {
                   type="input"
                   value={value}
                   onChange={onChange}
-                  className={style.inputSignIn}
+                  classNameSpan={style.inputSignIn}
                 >
                   <HiOutlineMail />
                 </Input>
@@ -78,7 +95,7 @@ export function SignIn() {
                   type="password"
                   value={value}
                   onChange={onChange}
-                  className={style.inputSignIn}
+                  classNameSpan={style.inputSignIn}
                 >
                   <MdIcons.MdLockOpen />
                 </Input>
@@ -91,7 +108,7 @@ export function SignIn() {
           </Button>
           <div className={style.signInLink}>
             <div>
-              <SignInLink to="/home"> Esqueci minha senha </SignInLink>
+              <SignInLink to="/resetpassword"> Esqueci minha senha </SignInLink>
             </div>
             <div>
               <SignInLink to="/signupfirst">

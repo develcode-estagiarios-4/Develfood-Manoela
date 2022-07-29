@@ -26,7 +26,7 @@ export function SignUpSuccess() {
               className={style.imageSuccess}
             />
             <p className={style.textBody}>
-              Parabéns! Agora você pode aproveitar nossas ofertas e <br />{" "}
+              Parabéns! Agora você pode aproveitar nossas ofertas e <br />
               serviços e economizar com super cupons Develfood.
             </p>
             <Button
@@ -34,7 +34,6 @@ export function SignUpSuccess() {
               onClick={handleClick}
               className={style.buttonSuccess}
             >
-              {" "}
               Concluir
             </Button>
           </div>

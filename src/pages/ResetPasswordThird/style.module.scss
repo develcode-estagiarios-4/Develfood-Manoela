@@ -1,0 +1,93 @@
+@import "../../styles/common/colors.scss";
+@import "../../styles/common/typography.scss";
+
+.spanPage {
+  margin: 22rem 10rem 10rem 10rem;
+  justify-items: center;
+  display: grid;
+}
+
+.logoMark {
+  width: 30rem;
+}
+
+.spanButtons{
+  width: 55.8rem;
+  display: flex;
+  margin-top: 2rem;
+  justify-content:space-between;
+}
+
+.buttonVoltar {
+  width: 25rem;
+  border-radius: 1rem;
+  border: 0.1rem solid black;
+  -webkit-text-stroke: 0.1rem black;
+  font-weight: 500;
+  font-size: 3.6rem;
+  padding-bottom: 5.2rem;
+  height: 5rem;
+  margin-left: 1rem;
+
+}
+
+.buttonContinuar {
+  width: 25.1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid black;
+  font-weight: 500;
+  font-size: 3.6rem;
+  padding-top: 0.6rem;
+  height: 5.4rem;
+  font-family: $mogra;
+  margin-right: 1rem;
+}
+
+.spanInputs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 55.8rem;
+  margin: 10rem 0 4rem 0;
+  justify-content: center;
+}
+
+.spanInput {
+  width: 55.8rem;
+  height: 5.6rem;
+  border: 0.1rem solid $grey-midium;
+  margin: 0;
+  margin-bottom: 1.3rem;
+}
+
+.inputIcon {
+  font-size: 3rem;
+  padding: 0.9rem 1.5rem 0 1rem;
+  color: $grey-midium;
+}
+
+.input {
+  font-size: 1.8rem;
+  width: 40rem;
+  padding-top: 0.4rem;
+}
+
+.passwordVisible {
+  color:$grey-midium;
+  cursor: pointer;
+  margin-left: 46rem;
+  position: absolute;
+}
+
+.error {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.spanToken {
+  width: 54.7rem;
+  margin: 0 1.1rem 1.2rem 0rem;
+}
+
+.errorToken {
+  margin-top: -1rem;
+}

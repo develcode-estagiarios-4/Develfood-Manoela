@@ -11,12 +11,14 @@ interface IAuthContextData {
   authState: string;
   setAuthState: React.Dispatch<React.SetStateAction<string>>;
   body: IBodyContext;
+  recoveryToken: { token: string };
 }
 
 export const authenticationContext = createContext({} as IAuthContextData);
 
 export function AuthenticationProvider({ children }: IAuthProps) {
   const [authState, setAuthState] = useState("");
+  const recoveryToken = { token: "" };
 
   const body = {
     email: "",
@@ -51,6 +53,7 @@ export function AuthenticationProvider({ children }: IAuthProps) {
         authState,
         setAuthState,
         body,
+        recoveryToken,
       }}
     >
       {children}
